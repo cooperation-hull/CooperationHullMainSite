@@ -1,3 +1,5 @@
+/* Default css*/
+
 html {
   font-size: 14px;
 }
@@ -20,3 +22,135 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+/* Abby's CSS */
+
+:root {
+    --city-orange: #F5A117;
+    --cooperation-orange: #D05000;
+    --cooperation-white: #E8D9D4;
+    --off-black: #23201E;
+    --border-radius: 0.5rem;
+}
+
+@font-face {
+    font-family: 'Basic Sans SF';
+    src: url('./assets/fonts/basicsanssf.ttf') format('ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Basic Sans SF';
+    src: url('./assets/fonts/basicsanssfbold.ttf') format('ttf');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Basic Sans SF';
+    src: url('./assets/fonts/basicsanssfitalic.ttf') format('ttf');
+    font-weight: 400;
+    font-style: italic;
+}
+
+body {
+    font-family: 'Basic Sans SF', 'Times New Roman', Times, serif;
+    font-size: 1.25rem;
+    max-width: 1920px;
+    margin: auto;
+}
+
+/*.container {
+    max-width: 1920px;
+    margin: auto;
+}*/
+
+[class^='heading-'] {
+    font-weight: 700;
+}
+
+.heading-xl {
+    font-size: clamp(4rem, .7vw + 3rem, 5rem);
+}
+
+.heading-lg {
+    font-size: clamp(3.5rem, .7vw + 2.5rem, 4rem);
+}
+
+.heading-md {
+    font-size: clamp(2rem, .7vw + 1rem, 3rem);
+}
+
+.heading-sm {
+    font-size: clamp(1rem, .5vw + 1rem, 2rem);
+}
+
+.heading-xs {
+    font-size: clamp(1rem, .2vw + 1rem, 1.5rem);
+}
+
+
+/* Nav bar */
+
+.navbar {
+    background-color: var(--cooperation-white) !important;
+    color: var(--off-black);
+}
+
+.navbar-brand a {
+    vertical-align: top;
+    color: var(--off-black);
+    text-decoration: none;
+}
+
+.navbar .nav-link {
+    margin-right: 1rem;
+    font-weight: 600;
+}
+
+
+.navbar-brand img {
+    height: 4rem;
+    vertical-align: middle;
+    margin: 0.4rem;
+}
+
+
+.navbar-brand h1 {
+    font-size: 2em;
+    font-weight: 700;
+    margin:auto;
+}
+
+
+    /*.navbar-brand img {
+    height: 4rem;
+    vertical-align: middle;
+    margin: 0.4rem;
+}
+
+.navbar-brand h1 {
+    font-size:2em;
+    font-weight:700;
+}
+
+*/
+    /*Hero*/
+
+    .hero {
+    background-image: url('/assets/img/Colour-Hero.jpg');
+    background-position: center !important;
+    background-size: cover !important;
+    color: var(--off-black);
+}
+
+    .hero button {
+        color: white;
+        background-color: var(--off-black);
+    }
+
+    .hero .text-container {
+        margin: 3rem 3rem 3rem 5rem;
+    }
