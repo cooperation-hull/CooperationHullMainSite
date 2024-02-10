@@ -125,6 +125,28 @@ body {
 }
 
 
+/* footer */
+
+.footer {
+    background-color: black;
+    background-image: url('/assets/img/footer-sketch.png');
+}
+
+
+
+/* standard page defaults */
+
+
+.main-content {
+    background-color: var(--city-orange);
+    min-height: 86vh;
+    color: var(--off-black);
+}
+
+
+
+/* Home Page */
+
     /*Hero*/
 
     .hero {
@@ -140,5 +162,51 @@ body {
     }
 
     .hero .text-container {
-        margin: 3rem 3rem 3rem 5rem;
+        margin: 3rem 3rem 3rem 3rem;
+        max-width: 80%;
     }
+
+
+
+    /* Homepage block */
+
+.homepage-block > div {
+        min-height:10vh;
+        margin-left:0.1rem;
+        margin-right:0.1rem;
+    }
+
+
+.homepage-block .white {
+    background-color:white;
+}
+
+
+.homepage-block .black {
+    background-color:black;
+    color:white;
+}
+
+    .homepage-block .text-container {
+        padding:4rem;
+    }
+
+.homepage-block .pattern-image {
+    max-width: 100%;
+    opacity: 0.3;
+}
+
+
+.homepage-block .video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+/*Content Page*/
+
+.content-text {
+    margin:2rem;
+}
