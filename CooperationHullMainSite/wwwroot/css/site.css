@@ -34,6 +34,10 @@ body {
     --border-radius: 0.5rem;
 }
 
+
+/* TODO work out what file formats we need to get the font working right across multiple browsers and on mobile.
+    Google open sans currently being used as a fallback
+*/
 @font-face {
     font-family: 'Basic Sans SF';
     src: url('./assets/fonts/basicsanssf.ttf') format('ttf');
@@ -42,21 +46,22 @@ body {
 }
 
 @font-face {
-    font-family: 'Basic Sans SF';
+    font-family: 'Basic Sans SF Bold';
     src: url('./assets/fonts/basicsanssfbold.ttf') format('ttf');
     font-weight: 700;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Basic Sans SF';
+    font-family: 'Basic Sans SF Italic';
     src: url('./assets/fonts/basicsanssfitalic.ttf') format('ttf');
     font-weight: 400;
     font-style: italic;
 }
 
 body {
-    font-family: 'Basic Sans SF', 'Times New Roman', Times, serif;
+/*    font-family: 'Basic Sans SF', 'Open Sans', sans-serif;
+*/    font-family: 'Basic Sans SF', 'Open Sans', sans-serif;
     font-size: 1.25rem;
     max-width: 1920px;
     margin: auto;
