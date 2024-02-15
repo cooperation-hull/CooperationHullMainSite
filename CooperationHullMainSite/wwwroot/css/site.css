@@ -100,8 +100,8 @@ body {
 /* Nav bar */
 
 .navbar {
-    background-color: var(--cooperation-white) !important;
     color: var(--off-black);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(189,224,235,1) 48%, rgba(178,228,238,1) 64%);
 }
 
 .navbar-brand a {
@@ -154,12 +154,22 @@ body {
 
     /*Hero*/
 
-    .hero {
-    background-image: url('/assets/img/Colour-Hero.jpg');
-    background-position: center !important;
-    background-size: cover !important;
+.hero {
     color: var(--off-black);
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(189,224,235,1) 48%, rgba(178,228,238,1) 64%);
 }
+
+
+.hero-image-container {
+    min-height:40rem;
+}
+
+    .hero img {
+        width: 100%;
+        opacity: 20%;
+        object-fit: contain;
+    }
 
     .hero button {
         color: white;
