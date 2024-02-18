@@ -176,10 +176,10 @@ body {
         background-color: var(--off-black);
     }
 
-    .hero .text-container {
-        margin: 3rem 3rem 3rem 3rem;
-        max-width: 80%;
-    }
+.hero .hero-text {
+    margin: 3rem 3rem 3rem 3rem;
+    max-width: 80%;
+}
 
 
 
@@ -202,9 +202,12 @@ body {
     color:white;
 }
 
-    .homepage-block .text-container {
-        padding:4rem;
-    }
+
+
+.homepage-block p {
+    line-height: normal;
+    margin-bottom: 0.3rem;
+}
 
 .homepage-block .pattern-image {
     max-width: 100%;
@@ -220,8 +223,40 @@ body {
 }
 
 
+
+.homepage-block.big-answer {
+    background-image: url("../assets/img/spot 3 1.png");
+    background-position-x: left;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+}
+
+@media(max-width:765px)
+{
+    .homepage-block.big-answer {
+        background-image: url("../assets/img/spot 3 1.png");
+        background-position-x: right;
+        background-position-y: top;
+        background-repeat: no-repeat;
+    }
+}
+
+
 /*Content Page*/
 
 .content-text {
     margin:2rem;
+}
+
+
+
+/* Forms*/
+
+.form-container {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.form-container label {
+    color:white;
 }
