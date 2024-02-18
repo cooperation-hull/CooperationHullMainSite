@@ -19,7 +19,8 @@
             </div>
 
                 <div class="position-absolute">
-                        <div class="col-12 col-md-11 col-lg-9 col-xl-7 col-xxl-6 text-left text-container ">
+
+                    <div class="col-12 col-md-11 col-lg-9 col-xl-7 col-xxl-6 text-left hero-text">
                         <h1 class="heading-xl">THE BIG QUESTION</h1>
                         <p class="heading-sm">Strong, caring communities.</p>
                         <p class="heading-sm">Enough food for everyone.</p>
@@ -38,7 +39,60 @@
 </section>
 
 
-<section class="homepage-block">
+
+<section class="homepage-block big-answer ">
+    <div class=" row">
+
+         <div class="col-lg-6 col-md-12 p-4 order-lg-1 order-md-0">
+            <h1 class="heading-lg">THE BIG ANSWER</h1>
+            <p>People's Assemblies are a simple tool that will change everything.</p>
+            <p>Public meetings, happening everywhere, replacing party politics with people power.</p>
+            <br>
+            <p>The Hull People's Assembly will be the first of its kind in the UK.</p>
+            <p>And we need your help to pull it off.</p>
+            <br>
+            <p>We'll only launch when we have 2,000 signatures from local people.</p>
+            <p>Pledge your support to the Hull People's Assembly by signing here, now</p>
+            <br>
+            <a class="" asp-area="" asp-controller="Home" asp-action="Donate">Find out more about People's Assemblies'</a>
+        </div>
+
+
+        <div class="col-lg-6 col-md-12 form-container order-lg-0 order-md-1">
+
+            <div class="row m-3"> 
+                <div class="col-xl-6 col-lg-12">
+                    <label for="PledgeFormFirstName" class="form-label">First Name</label>
+                    <input id="PledgeFormFirstName" class="form-control form-control-lg" type="text" placeholder="First Name" aria-label="First Name">
+                </div>
+                <div class="col-xl-6 col-lg-12">
+                    <label for="PledgeFormSurname" class="form-label">Surname</label>
+                    <input id="PledgeFormSurname" class="form-control form-control-lg" type="text" placeholder="Surname" aria-label="Surname">
+                </div>
+            </div>
+
+
+            <div class="row m-3">
+               <div class="col-xl-9 col-lg-8 col-md-7">
+                    <label for="PledgeFormEmail" class="form-label">Email</label>
+                    <input id="PledgeFormEmail" class="form-control form-control-lg" type="text" placeholder="Email" aria-label="Email">
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-5 container align-self-end">
+                   <div>
+                       <button type="button" class="btn btn-light btn-lg px-4 gap-3">Sign</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+</section>
+
+
+
+@* <section class="homepage-block">
     <div class=" row">
         <div class="col-lg-8 col-md-12 text-container">
             <h1 class="heading-lg">THE BIG QUESTION</h1>
@@ -52,12 +106,12 @@
             <img class="pattern-image" src="~/assets/img/pattern 1.jpeg" />
         </div>
     </div>
-</section>
+</section> *@
 
 
 <section class="homepage-block">
     <div class=" row black">
-        <div class="col-md-12 col-lg-4 text-container">
+        <div class="col-md-12 col-lg-4 p-4">
             <h1 class="heading-lg">THE BIG IDEA </h1>
 
             <h2 class="heading-md">MOVE</h2>
@@ -80,7 +134,7 @@
 
 <section class="homepage-block ">
     <div class="row white">
-            <div class="col-lg-8 col-md-12 text-container">
+            <div class="col-lg-8 col-md-12 p-4">
                 <h1 class="heading-lg">THE BIG ANSWER</h1>
                 <p><strong>People’s Assemblies</strong> are a simple tool that will change everything.</p>
                 <p>Public meetings, happening everywhere, replacing party politics with people power.</p>
