@@ -231,7 +231,19 @@ body {
     background-repeat: no-repeat;
 }
 
-@media(max-width:765px)
+
+
+.homepage-block .feature-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+    .homepage-block .feature-image img {
+        max-width: 100%;
+    }
+/*@media(max-width:765px)
 {
     .homepage-block.big-answer {
         background-image: url("../assets/img/spot 3 1.png");
@@ -239,13 +251,10 @@ body {
         background-position-y: top;
         background-repeat: no-repeat;
     }
-}
-
-
+}*/
 /*Content Page*/
-
 .content-text {
-    margin:2rem;
+    margin: 2rem;
 }
 
 
