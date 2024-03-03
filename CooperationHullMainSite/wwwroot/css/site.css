@@ -281,3 +281,38 @@ body {
 .form-container label {
     color:white;
 }
+
+
+.happening-next-item {
+    width:100%;
+    background-color:black;
+    color:white;
+}
+
+    .happening-next-item h3 {
+        font-weight: bolder;
+        padding: 1rem;
+    }
+
+    .happening-next-item img {
+        width: inherit;
+        position: relative;
+        top: -2rem;
+    }
+
+    .happening-next-item .descBlock {
+    padding:2rem;
+    display:flex;
+    }
+
+    .happening-next-item .dateDisplay {
+        background-color: aqua;
+        position: relative;
+        bottom: -3rem;
+        width: 30%;
+        font-size: larger;
+        color: black;
+        z-index: 100;
+        text-align: center;
+        margin-left: 60%;
+    }
