@@ -1,0 +1,22 @@
+﻿<div class="col-lg-4 col-md-6 col-sm-6 p-5">
+
+    <div class="happening-next-item">
+        <div class="dateDisplay"><p>@Model.date.ToString("dd MMM")</p></div>
+        <img src="~/assets/img/@(Model.imagesName)" />
+
+        <div>
+            <h3>@(Html.Encode(Model.title))</h3>
+            <div class="descBlock">
+                <div>
+                    <p>@(Html.Encode(Model.description))</p>
+                </div>
+                <div>
+                    <a href='@(Model.eventLink)' target='_blank'>
+                        <img src="~/assets/img/next arrow.png" />
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
