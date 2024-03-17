@@ -17,51 +17,9 @@
 <body>
 
     <header>
-        <nav class="navbar navbar-expand-lg navbar-toggleable-lg navbar-light border-bottom">
-            <div class="container-fluid">
-
-                <div class="navbar-brand ">
-                    
-                    <a class="" asp-area="" asp-controller="Home" asp-action="Index">
-                       <div class="d-inline-flex"> 
-                            <img class="nav-bar-logo" src="..\assets\img\Cooperation Hull Circle Logo 2.png" />
-                            <h1> Cooperation Hull</h1>
-                        </div>
-                    </a>
-
-                </div>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="navbar-collapse collapse d-lg-inline-flex">
-
-                    <ul class="navbar-nav flex-grow-1 flex-wrap justify-content-xxl-end  justify-content-xl-center">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark heading-sm" asp-area="" asp-controller="Home" asp-action="WhoWeAre">Who We Are</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark heading-sm" asp-area="" asp-controller="Home" asp-action="TheBigIdea">The Big Idea</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark heading-sm" asp-area="" asp-controller="Home" asp-action="AroundTheWorld">Around The World</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark heading-sm" asp-area="" asp-controller="Home" asp-action="FAQs">FAQ's</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark heading-sm" asp-area="" asp-controller="Home" asp-action="Donate">Donate</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark heading-sm" asp-area="" asp-controller="Home" asp-action="HelpToAttend">Help To Attend</a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        @{
+            Html.RenderPartialAsync("_MainNavBar");
+        }    
     </header>
 
 
@@ -71,17 +29,10 @@
         </main>
     </div>
 
-    <footer class="footer text-muted">
-        <div class="row">
-            <div class="col-lg-6 col-md-12">
-                <h3>Cooperation Hull 2024</h3>  
-            </div>
-            <div class="col-lg-6 col-md-12 footer-links">
-                <p> <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a></p>
-                <p> <a asp-area="" asp-controller="Home" asp-action="Privacy">Contact Us</a></p>
-                <p> <a asp-area="" asp-controller="Home" asp-action="Privacy">Cookies Policy</a></p>
-            </div>
-        </div>
+    <footer class="footer">
+        @{
+            Html.RenderPartialAsync("_footer");
+        }
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

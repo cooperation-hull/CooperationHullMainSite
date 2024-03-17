@@ -1,0 +1,61 @@
+﻿<nav id="topNavBar" class="navbar navbar-expand-lg navbar-toggleable-lg navbar-light border-bottom" role="navigation" aria-label="Main">
+    <div class="container-fluid">
+
+        <div class="navbar-brand ">
+
+            <a class="" asp-area="" asp-controller="Home" asp-action="Index">
+                <div class="d-inline-flex">
+                    <img class="nav-bar-logo" src="..\assets\img\Cooperation Hull Circle Logo 2.png" alt="" />
+                    <h1> Cooperation Hull</h1>
+                </div>
+            </a>
+
+        </div>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="navbar-collapse collapse d-lg-inline-flex" >
+
+            <ul class="navbar-nav flex-grow-1 flex-wrap justify-content-xxl-end  justify-content-xl-center">
+                <li class="nav-item">
+                    <a class="nav-link text-dark heading-sm" asp-controller="Home" asp-action="TheBigIdea">The Big Idea</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark heading-sm" asp-controller="Home" asp-action="Membership">Join Cooperation Hull</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark heading-sm" asp-controller="Home" asp-action="FAQs">FAQs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark heading-sm" href="https://www.gofundme.com/f/hull-assembly" target="_blank">Donate</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark heading-sm" asp-controller="Home" asp-action="HelpToAttend">Help To Attend</a>
+                </li>
+
+                <li>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                            About Us
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark heading-sm" asp-controller="Home" asp-action="WhoWeAre">Who Are Cooperation Hull</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark heading-sm" asp-controller="Home" asp-action="ToolsOfTheTrade">Tools of the trade</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark heading-sm" asp-controller="Home" asp-action="AroundTheWorld">Around the World</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>

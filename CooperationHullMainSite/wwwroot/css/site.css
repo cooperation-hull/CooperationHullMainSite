@@ -110,6 +110,11 @@ body {
 }
 
 
+#topNavBar ul li.active {
+background-color:grey;
+}
+
+
 .navbar-brand img {
     height: 4rem;
     vertical-align: middle;
@@ -125,14 +130,13 @@ body {
 
 
 /* footer */
-
 .footer {
     background-color: black;
     background-image: url(/assets/img/footer-sketch.png);
     height: 250px;
     background-position: bottom;
     background-repeat: no-repeat;
-    color:white;
+    color: white;
 }
 
     .footer .footer-links {
