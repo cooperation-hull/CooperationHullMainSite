@@ -25,9 +25,6 @@ namespace CooperationHullMainSite.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-
-            _logger.LogCritical("This is a test");
-
             HomePageModel model = new HomePageModel();
             try
             {
@@ -37,7 +34,7 @@ namespace CooperationHullMainSite.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex.ToString());
+                _logger.LogError(ex, "Could not deserialize content file, defaults used");
             }
  
             return View(model);

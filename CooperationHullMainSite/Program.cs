@@ -2,7 +2,7 @@ using CooperationHullMainSite.Services;
 using NLog;
 using NLog.Web;
 
-var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
+var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Debug("init main");
 
 try
@@ -43,16 +43,15 @@ try
 
     app.Run();
 }
-catch (Exception exception)
+catch (Exception ex)
 {
-    // NLog: catch setup errors
-    logger.Error(exception, "Stopped program because of exception");
+    logger.Fatal(ex, "Stopped program because of exception");
     throw;
 }
 finally
 {
-    NLog.LogManager.Flush();
-    NLog.LogManager.Shutdown();
+    LogManager.Flush();
+    LogManager.Shutdown();
 }
 
 
