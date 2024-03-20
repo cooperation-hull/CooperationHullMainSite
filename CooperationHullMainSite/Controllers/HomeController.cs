@@ -25,10 +25,20 @@ namespace CooperationHullMainSite.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            string temp = await _jsonFileReader.ReadFile("\\content\\homepageContent.json");
 
-            //TODO error handling!!!!
-           HomePageModel model = JsonSerializer.Deserialize<HomePageModel>(temp);
+            _logger.LogCritical("This is a test");
+
+            HomePageModel model = new HomePageModel();
+            try
+            {
+                string temp = await _jsonFileReader.ReadFile("\\content\\homepageContent.json");
+
+                model = JsonSerializer.Deserialize<HomePageModel>(temp);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+            }
  
             return View(model);
         }
@@ -135,6 +145,8 @@ namespace CooperationHullMainSite.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
+            _logger.LogError(Activity.Current?.Id ?? HttpContext.TraceIdentifier);
+
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

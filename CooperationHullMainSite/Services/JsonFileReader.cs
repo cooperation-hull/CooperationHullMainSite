@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using CooperationHullMainSite.Controllers;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using System.Threading.Tasks;
 
@@ -8,10 +9,13 @@ namespace CooperationHullMainSite.Services
     {
 
         private IWebHostEnvironment _hostingEnvironment;
+        private readonly ILogger<JsonFileReader> _logger;
 
-        public JsonFileReader(IWebHostEnvironment hostingEnvironment)
+        public JsonFileReader(IWebHostEnvironment hostingEnvironment,
+                              ILogger<JsonFileReader> logger)
         {
             _hostingEnvironment = hostingEnvironment;
+            _logger = logger;
         }
 
 
@@ -30,7 +34,7 @@ namespace CooperationHullMainSite.Services
             }
             catch (Exception ex)
             {
-                ex.ToString();
+                _logger.LogError(ex.ToString());
             }
 
             return jsonString;
