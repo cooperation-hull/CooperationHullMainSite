@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="FontAwesome" Version="4.7.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.2" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.8" />
   </ItemGroup>
 
   <ItemGroup>

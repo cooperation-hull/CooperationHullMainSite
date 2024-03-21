@@ -25,10 +25,17 @@ namespace CooperationHullMainSite.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            string temp = await _jsonFileReader.ReadFile("\\content\\homepageContent.json");
+            HomePageModel model = new HomePageModel();
+            try
+            {
+                string temp = await _jsonFileReader.ReadFile("\\content\\homepageContent.json");
 
-            //TODO error handling!!!!
-           HomePageModel model = JsonSerializer.Deserialize<HomePageModel>(temp);
+                model = JsonSerializer.Deserialize<HomePageModel>(temp);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Could not deserialize content file, defaults used");
+            }
  
             return View(model);
         }
@@ -135,6 +142,8 @@ namespace CooperationHullMainSite.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
+            _logger.LogError(Activity.Current?.Id ?? HttpContext.TraceIdentifier);
+
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

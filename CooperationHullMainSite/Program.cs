@@ -1,32 +1,57 @@
 using CooperationHullMainSite.Services;
+using NLog;
+using NLog.Web;
 
-var builder = WebApplication.CreateBuilder(args);
+var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
+logger.Debug("init main");
 
-// Add services to the container.
-builder.Services.AddRazorPages();
-builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<IJsonFileReader, JsonFileReader>();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+try
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+
+    var builder = WebApplication.CreateBuilder(args);
+
+    // Add services to the container.
+    builder.Services.AddRazorPages();
+    builder.Services.AddControllersWithViews();
+    builder.Services.AddSingleton<IJsonFileReader, JsonFileReader>();
+
+    builder.Logging.ClearProviders();
+    builder.Host.UseNLog();
+
+
+    var app = builder.Build();
+
+    // Configure the HTTP request pipeline.
+    if (!app.Environment.IsDevelopment())
+    {
+        app.UseExceptionHandler("/Home/Error");
+        // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+        app.UseHsts();
+    }
+
+    app.UseHttpsRedirection();
+    app.UseStaticFiles();
+
+    app.UseRouting();
+
+    app.UseAuthorization();
+
+    app.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
+    app.Run();
+}
+catch (Exception ex)
+{
+    logger.Fatal(ex, "Stopped program because of exception");
+    throw;
+}
+finally
+{
+    LogManager.Flush();
+    LogManager.Shutdown();
 }
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
 
-app.UseRouting();
-
-app.UseAuthorization();
-
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
-
-
-app.Run();
