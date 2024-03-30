@@ -1,6 +1,8 @@
+using CooperationHullMainSite;
 using CooperationHullMainSite.Services;
 using NLog;
 using NLog.Web;
+
 
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Debug("init main");
@@ -14,6 +16,7 @@ try
     builder.Services.AddRazorPages();
     builder.Services.AddControllersWithViews();
     builder.Services.AddSingleton<IJsonFileReader, JsonFileReader>();
+    builder.Services.AddSingleton<IActionNetworkCalls, ActionNetworkCalls>();
 
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();

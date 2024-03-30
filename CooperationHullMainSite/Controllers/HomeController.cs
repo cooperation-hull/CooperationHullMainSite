@@ -1,11 +1,8 @@
 using CooperationHullMainSite.Models;
 using CooperationHullMainSite.Services;
-using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting.Internal;
 using System.Diagnostics;
 using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace CooperationHullMainSite.Controllers
 {
@@ -13,12 +10,14 @@ namespace CooperationHullMainSite.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IJsonFileReader _jsonFileReader;
-
+        private readonly IActionNetworkCalls _actionNetworkCalls;
         public HomeController(ILogger<HomeController> logger,
-                                IJsonFileReader jsonFileReader)
+                                IJsonFileReader jsonFileReader,
+                                IActionNetworkCalls actionNetworkCalls)
         {
             _logger = logger;
             _jsonFileReader = jsonFileReader;
+            _actionNetworkCalls = actionNetworkCalls;
         }
 
 
@@ -36,7 +35,16 @@ namespace CooperationHullMainSite.Controllers
             {
                 _logger.LogError(ex, "Could not deserialize content file, defaults used");
             }
- 
+
+            try {
+                model.formSignedCounter = await _actionNetworkCalls.GetNumberSigned("");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Could not retreive form counter, defaults used");
+                model.formSignedCounter = -1;
+            }
+
             return View(model);
         }
 

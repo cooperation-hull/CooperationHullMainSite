@@ -40,6 +40,17 @@
     <div class="row">
 
          <div class="col-lg-6 col-md-12 p-4 order-lg-1 order-md-0">
+
+            @if (Model.formSignedCounter >= 0)
+            {
+                <p>@($"{Model.formSignedCounter} have signed so far")</p>
+            }
+            else
+            {
+                <p>Alternate text instead just in case the api call goes wrong</p>
+            }
+
+
             <h1 class="heading-lg">THE BIG ANSWER</h1>
             <p>People's Assemblies are a simple tool that will change everything.</p>
             <p>Public meetings, happening everywhere, replacing party politics with people power.</p>
