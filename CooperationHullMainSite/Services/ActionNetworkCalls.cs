@@ -43,12 +43,14 @@ namespace CooperationHullMainSite.Services
 
                 HttpResponseMessage response = await client.GetAsync(endpoint);
 
-               if(response.StatusCode == System.Net.HttpStatusCode.OK)
+                var data = "";
+
+               if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
 
-                 var data = response.Content;
+                 data = await response.Content.ReadAsStringAsync();
 
-                    //Do stuff
+                    //Do stuff to get data into a useful format
                 }
                else {
                     _logger.LogError($"API Call to {endpoint} failed: {response.StatusCode.ToString()}");
