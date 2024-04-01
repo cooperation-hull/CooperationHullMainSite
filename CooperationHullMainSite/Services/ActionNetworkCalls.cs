@@ -1,4 +1,6 @@
-﻿using CooperationHullMainSite.Controllers;
+﻿using CooperationHullMainSite.Models.ActionNetworkAPI;
+using Microsoft.Extensions.Options;
+using System.Text.Json;
 
 namespace CooperationHullMainSite.Services
 {
@@ -6,51 +8,53 @@ namespace CooperationHullMainSite.Services
     {
 
         private readonly ILogger<ActionNetworkCalls> _logger;
-        private readonly IConfiguration _configuration;
+        private ActionNetworkConfig config { get; set; }
 
-        private string APIKey { get; set; }
-        private string baseURL { get; set; }
-        public ActionNetworkCalls(IConfiguration configuration,
+        public ActionNetworkCalls(IOptions<ActionNetworkConfig> configuration,
                                     ILogger<ActionNetworkCalls> logger)
         {
-            _configuration = configuration;
+            config = configuration.Value;
             _logger = logger;
-
-            APIKey = _configuration["ActionNetworkConfig:APIKey"];
-            baseURL = _configuration["ActionNetworkConfig:baseURL"];
         }
 
         public async Task<int> GetNumberSigned(string formName)
         {
+            ActionNetworkFormData data = await GetFormData(formName);
 
-            var result = MakeAPICall("", new object());
-
-            return 500;
+            return data.total_submissions;
         }
+
         public async Task<bool> SubmitForm(string formName, object formData)
         {
             throw new NotImplementedException();
         }
 
 
-        private  async Task<object> MakeAPICall(string endpoint, object dataModel)
+        private async Task<ActionNetworkFormData> GetFormData(string formName)
         {
+            var formInfo = config.FormList.Where<FormData>(x => x.FormName == formName).FirstOrDefault();
+
+            string endpoint = $"forms/{formInfo.FormGUID}";
+            var result = await MakeAPICall(endpoint, new object());
+            var item = JsonSerializer.Deserialize<ActionNetworkFormData>(result);
+            return item;
+        }
+
+
+        private  async Task<string> MakeAPICall(string endpoint, object dataModel)
+        {
+            var data = "";
 
             using (HttpClient client = new HttpClient())
             {
-                client.BaseAddress = new Uri(baseURL);
-                client.DefaultRequestHeaders.Add("OSDI-API-Token", APIKey);
+                client.BaseAddress = new Uri(config.baseURL);
+                client.DefaultRequestHeaders.Add("OSDI-API-Token", config.APIKey);
 
                 HttpResponseMessage response = await client.GetAsync(endpoint);
 
-                var data = "";
-
                if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-
                  data = await response.Content.ReadAsStringAsync();
-
-                    //Do stuff to get data into a useful format
                 }
                else {
                     _logger.LogError($"API Call to {endpoint} failed: {response.StatusCode.ToString()}");
@@ -58,7 +62,7 @@ namespace CooperationHullMainSite.Services
 
             }
 
-            return new object();
+            return data;
         }
 
 

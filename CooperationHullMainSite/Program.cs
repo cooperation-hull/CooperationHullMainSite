@@ -2,6 +2,7 @@ using CooperationHullMainSite;
 using CooperationHullMainSite.Services;
 using NLog;
 using NLog.Web;
+using static CooperationHullMainSite.ActionNetworkConfig;
 
 
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
@@ -12,12 +13,19 @@ try
 
     var builder = WebApplication.CreateBuilder(args);
 
-    // Add services to the container.
+    // Base services
     builder.Services.AddRazorPages();
     builder.Services.AddControllersWithViews();
+
+    //Custom config options
+    builder.Services.Configure<ActionNetworkConfig>(
+        builder.Configuration.GetSection("ActionNetworkConfig"));
+
+    //Custom services
     builder.Services.AddSingleton<IJsonFileReader, JsonFileReader>();
     builder.Services.AddSingleton<IActionNetworkCalls, ActionNetworkCalls>();
 
+    //NLog setup
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();
 
