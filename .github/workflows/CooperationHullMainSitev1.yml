@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Setup .NET SDK
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
     - name: Restore
@@ -26,8 +26,16 @@ jobs:
       run: dotnet test "${{ env.WORKING_DIRECTORY }}" --no-build
     - name: Publish
       run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
+    - name: App Settings Variable Substitution
+      uses: microsoft/variable-substitution@v1
+      with:
+          files: '${{env.DOTNET_ROOT}}\appsettings.json'
+      env:
+          ActionNetworkConfig.APIKey: ${{ secrets.ACTION_NETWORK_CONFIG_API_KEY }}
+          ActionNetworkConfig.baseURL: ${{ secrets.ACTION_NETWORK_CONFIG_BASE_URL }}
+          ActionNetworkConfig.FormList: ${{ secrets.ACTION_NETWORK_CONFIG_FORMS_LIST }}
     - name: Publish Artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: webapp
         path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}

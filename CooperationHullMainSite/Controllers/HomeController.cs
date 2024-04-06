@@ -37,7 +37,7 @@ namespace CooperationHullMainSite.Controllers
             }
 
             try {
-                model.formSignedCounter = await _actionNetworkCalls.GetNumberSigned("stay-in-touch-with-cooperation-hull");
+                model.formSignedCounter = await _actionNetworkCalls.GetNumberSigned("support-the-hull-peoples-assembly");
             }
             catch (Exception ex)
             {
