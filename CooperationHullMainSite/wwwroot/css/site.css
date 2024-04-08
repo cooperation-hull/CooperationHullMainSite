@@ -23,6 +23,11 @@ body {
   margin-bottom: 60px;
 }
 
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
 
 /* Abby's CSS */
 
@@ -111,7 +116,7 @@ body {
 
 
 #topNavBar ul li.active {
-background-color:grey;
+    background-color:grey;
 }
 
 
@@ -132,17 +137,57 @@ background-color:grey;
 /* footer */
 .footer {
     background-color: black;
-    background-image: url(/assets/img/footer-sketch.png);
-    height: 250px;
-    background-position: bottom;
-    background-repeat: no-repeat;
     color: white;
+    position: relative;
+    min-height: 200px;
+    overflow-y: hidden;
 }
 
-    .footer .footer-links {
-        display: inline-flex;
-        justify-content: space-evenly;
+    .footer .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
     }
+    
+    .footer .footer-content-left {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .footer .footer-links {
+        display: flex;
+        gap: 24px;
+    }
+    
+    .footer .footer-socials {
+        display: flex;
+        gap: 24px;
+    }
+    
+    .footer .footer-illustration {
+        position: absolute;
+        bottom: -6px;
+        right: 0;
+        width: clamp(500px, 100vw, 50%);
+        filter: invert(1);
+    }
+
+@media(min-width: 768px) {
+    .footer .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 12px;
+    }
+}
+
+@media(min-width: 1280px) {
+    .footer .footer-content-left {
+        flex-direction: row;
+        gap: 48px;
+    }
+}
 
 /* standard page defaults */
 
