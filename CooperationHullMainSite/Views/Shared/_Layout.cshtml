@@ -18,7 +18,7 @@
 
     <header>
         @{
-            Html.RenderPartialAsync("_MainNavBar");
+            await Html.RenderPartialAsync("_MainNavBar");
         }    
     </header>
 
@@ -31,7 +31,7 @@
 
     <footer class="footer">
         @{
-            Html.RenderPartialAsync("_footer");
+            await Html.RenderPartialAsync("_footer");
         }
     </footer>
 
