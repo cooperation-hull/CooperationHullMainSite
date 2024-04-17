@@ -49,10 +49,17 @@ namespace CooperationHullMainSite.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index_post()
+        public async Task<JsonResult> Index_post()
         {
             //Homepage form handling will go here.
-            throw new NotImplementedException();
+
+            //todo - give this a sensible name and handle return to update something on page (ajax?)
+            // VALIDATION!!!!!
+            // general xxs etc protection
+
+          var result =  await _actionNetworkCalls.SubmitForm("", new object());
+
+            return Json(result);
         }
 
 

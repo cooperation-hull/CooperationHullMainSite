@@ -67,29 +67,32 @@
 
         <div class="col-lg-6 col-md-12 form-container order-lg-0 order-md-1">
 
-            <div class="row m-3"> 
-                <div class="col-xl-6 col-lg-12">
-                    <label for="PledgeFormFirstName" class="form-label">First Name</label>
-                    <input id="PledgeFormFirstName" class="form-control form-control-lg" type="text" placeholder="First Name" aria-label="First Name">
-                </div>
-                <div class="col-xl-6 col-lg-12">
-                    <label for="PledgeFormSurname" class="form-label">Surname</label>
-                    <input id="PledgeFormSurname" class="form-control form-control-lg" type="text" placeholder="Surname" aria-label="Surname">
-                </div>
-            </div>
-
-
-            <div class="row m-3">
-               <div class="col-xl-9 col-lg-8 col-md-7">
-                    <label for="PledgeFormEmail" class="form-label">Email</label>
-                    <input id="PledgeFormEmail" class="form-control form-control-lg" type="text" placeholder="Email" aria-label="Email">
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-5 container align-self-end">
-                   <div>
-                       <button type="button" class="btn btn-light btn-lg px-4 gap-3">Sign</button>
+            <form method="post" asp-action="Index_post" asp-controller="Home">
+                <div class="row m-3"> 
+                    <div class="col-xl-6 col-lg-12">
+                        <label for="PledgeFormFirstName" class="form-label">First Name</label>
+                        <input id="PledgeFormFirstName" class="form-control form-control-lg" type="text" placeholder="First Name" aria-label="First Name">
+                    </div>
+                    <div class="col-xl-6 col-lg-12">
+                        <label for="PledgeFormSurname" class="form-label">Surname</label>
+                        <input id="PledgeFormSurname" class="form-control form-control-lg" type="text" placeholder="Surname" aria-label="Surname">
                     </div>
                 </div>
-            </div>
+
+
+                <div class="row m-3">
+                   <div class="col-xl-9 col-lg-8 col-md-7">
+                        <label for="PledgeFormEmail" class="form-label">Email</label>
+                        <input id="PledgeFormEmail" class="form-control form-control-lg" type="text" placeholder="Email" aria-label="Email">
+                    </div>
+                    <div class="col-xl-3 col-lg-4 col-md-5 container align-self-end">
+                       <div>
+@*                            <button type="button" class="btn btn-light btn-lg px-4 gap-3">Sign</button>
+ *@                            <input type="submit" class="btn btn-light btn-lg px-4 gap-3" value="Sign" />
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
 
     </div>
