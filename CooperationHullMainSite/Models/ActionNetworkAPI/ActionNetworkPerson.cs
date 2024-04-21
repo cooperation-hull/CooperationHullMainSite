@@ -28,7 +28,7 @@ namespace CooperationHullMainSite.Models.ActionNetworkAPI
         [JsonInclude] 
         public List<ActionNetworkEmail> email_addresses;
         [JsonInclude] 
-        public List<ActionNetworkPhone> phone_number;
+        public List<ActionNetworkPhone> phone_numbers;
         public List<ActionNetworkAddress> postal_addresses;
         public List<KeyValuePair<string, string>> custom_fields;
         public DateTime? created_date {  get; set; }
@@ -36,7 +36,7 @@ namespace CooperationHullMainSite.Models.ActionNetworkAPI
 
         public ActionNetworkPerson() {
             email_addresses = new List<ActionNetworkEmail>();
-            phone_number = new List<ActionNetworkPhone>();
+            phone_numbers = new List<ActionNetworkPhone>();
             postal_addresses = new List<ActionNetworkAddress>();
             custom_fields = new List<KeyValuePair<string, string>>();
         }
@@ -65,7 +65,7 @@ namespace CooperationHullMainSite.Models.ActionNetworkAPI
     public class ActionNetworkPhone
     {
         public bool? primary { get; set; }
-        public string? number_type { get; set; } = "mobile";
+        public string? number_type { get; set; }
         public string? number { get; set; }
         public string? status { get; set; }
 

@@ -26,21 +26,14 @@ namespace CooperationHullMainSite.Services
             return data.total_submissions;
         }
 
-        public async Task<bool> SubmitForm(string formName, object formData)
+        public async Task<bool> SubmitForm(string formName, ActionNetworkPerson formData)
         {
-
             // docs - https://actionnetwork.org/docs/v2/record_submission_helper
 
-            var data = new ActionNetworkPerson();
-            data.family_name = "Roberts";
-            data.given_name = "Jane";
-            data.email_addresses.Add(new ActionNetworkEmail("jane@notmail.com"));
-            data.phone_number.Add(new ActionNetworkPhone("01482 112233"));
-
-            var formInfo = FindFormConfigInfo("test_form");
+            var formInfo = FindFormConfigInfo(formName);
             string endpoint = $"forms/{formInfo.FormGUID}/submissions";
 
-            var temp = await PutDataAPICall(endpoint, new ActionNetworkPersonSignupHelper(data));
+            var temp = await PutDataAPICall(endpoint, new ActionNetworkPersonSignupHelper(formData));
 
             return temp;
         }
@@ -103,7 +96,6 @@ namespace CooperationHullMainSite.Services
             //sort out date format serilization
             //sort out status field serializatoin (plain string rather than enum ?)
             // work out how to deal with custom form fields
-            // work out why mobile number wasn't pulled in
 
             var jsonString = JsonSerializer.Serialize(dataModel, options);
 

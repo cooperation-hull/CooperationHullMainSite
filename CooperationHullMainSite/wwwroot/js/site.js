@@ -17,4 +17,33 @@ function setNavItemActive() {
 }
 
 
+//form submission handling
+
+
+function form_submit(formName) {
+
+    let $form = $(`#${formName}`);
+
+    $.ajax({
+        type: "POST",
+        dataType: 'json',
+        url: $form.attr('action'),
+        data: $form.serialize(),
+        error: function (xhr, status, error) {
+            debugger;
+            $(`#${formName}_confirmation #form_result_text`).html('<p>Something has gone wrong<p>.  <p>Try again later<p>');
+            $(`#${formName}_confirmation`).show();
+
+        },
+        success: function (response) {
+            debugger;
+            $(`#${formName}_confirmation #form_result_text`).html(response.messageText);
+            $(`#${formName}_confirmation`).modal('show');
+            $(`#${formName} input`).val('');
+        }
+    });
+
+    return false;
+
+}
 

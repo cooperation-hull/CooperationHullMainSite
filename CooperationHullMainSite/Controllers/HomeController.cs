@@ -1,4 +1,5 @@
 using CooperationHullMainSite.Models;
+using CooperationHullMainSite.Models.ActionNetworkAPI;
 using CooperationHullMainSite.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -49,17 +50,32 @@ namespace CooperationHullMainSite.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> Index_post()
+        public async Task<JsonResult> Home_page_signup_form()
         {
             //Homepage form handling will go here.
 
-            //todo - give this a sensible name and handle return to update something on page (ajax?)
+            var data = new ActionNetworkPerson();
+            data.family_name = Request.Form["PledgeFormSurname"];
+            data.given_name = Request.Form["PledgeFormFirstName"];
+            data.email_addresses.Add(new ActionNetworkEmail(Request.Form["PledgeFormEmail"]));
+            data.phone_numbers.Add(new ActionNetworkPhone("07534111222"));
+
+
+            //todo 
             // VALIDATION!!!!!
             // general xxs etc protection
 
-          var result =  await _actionNetworkCalls.SubmitForm("", new object());
+            var result =  await _actionNetworkCalls.SubmitForm("test_form", data);
 
-            return Json(result);
+            string message = "";
+
+            if (result)
+                message = $"<p>{data.given_name}</p><p>Thank you for joining our mailing list.<p>";
+            else
+                message = "'<p>Something has gone wrong<p>.  <p>Try again later<p>";
+
+            return Json(new { result = result, messageText = message });
+
         }
 
 
