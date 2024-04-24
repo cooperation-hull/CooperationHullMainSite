@@ -1,26 +1,26 @@
 /* Default css*/
 
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
 
@@ -29,7 +29,7 @@ body {
 :root {
     --city-orange: #F5A117;
     --cooperation-orange: #D05000;
-    --cooperation-white: #E8D9D4;
+    --cooperation-white: #F4E9E6;
     --off-black: #23201E;
     --border-radius: 0.5rem;
 }
@@ -60,7 +60,7 @@ body {
 }
 
 body {
-   font-family: 'Basic Sans SF', 'Open Sans', sans-serif;
+    font-family: 'Basic Sans SF', 'Open Sans', sans-serif;
     font-size: 1.25rem;
     max-width: 1920px;
     margin: auto;
@@ -111,7 +111,7 @@ body {
 
 
 #topNavBar ul li.active {
-background-color:grey;
+    background-color: grey;
 }
 
 
@@ -125,7 +125,7 @@ background-color:grey;
 .navbar-brand h1 {
     font-size: 2em;
     font-weight: 700;
-    margin:auto;
+    margin: auto;
 }
 
 
@@ -155,7 +155,7 @@ background-color:grey;
 
 /* Home Page */
 
-    /*Hero*/
+/*Hero*/
 
 .hero {
     color: var(--off-black);
@@ -165,19 +165,19 @@ background-color:grey;
 
 
 .hero-image-container {
-    min-height:40rem;
+    min-height: 40rem;
 }
 
-    .hero img {
-        width: 100%;
-        opacity: 20%;
-        object-fit: contain;
-    }
+.hero img {
+    width: 100%;
+    opacity: 20%;
+    object-fit: contain;
+}
 
-    .hero button {
-        color: white;
-        background-color: var(--off-black);
-    }
+.hero button {
+    color: white;
+    background-color: var(--off-black);
+}
 
 .hero .hero-text {
     margin: 3rem 3rem 3rem 3rem;
@@ -186,19 +186,32 @@ background-color:grey;
 
 
 
-    /* Homepage block */
+/* Homepage block */
+
+.homepage-block > .row {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    padding-left:5rem;
+    padding-right: 5rem;
+}
+
+@media screen and (max-width: 600px) {
+    .homepage-block > .row {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+}
 
 .homepage-block > div {
-        min-height:10vh;
-        margin-left:0.1rem;
-        margin-right:0.1rem;
-    }
+    min-height: 10vh;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+}
 
 
 .homepage-block .white {
-    background-color:white;
+    background-color: var(--cooperation-white);
 }
-
 
 
 .homepage-block p {
@@ -230,14 +243,25 @@ background-color:grey;
         transform: translateY(-50%);
     }
 
-    .homepage-block.big-answer {
-        background-image: url("../assets/img/spot 3 1.png");
-        background-position-x: left;
-        background-position-y: bottom;
-        background-repeat: no-repeat;
-    }
+.homepage-block.sign-up {
+    background-color: var(--city-orange);
+    background-image: url("../assets/img/spot 3 1.png");
+    background-position-x: left;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+}
 
+.homepage-block .white a:link {
+    color: var(--city-orange)
+}
 
+.homepage-block .white a:visited {
+    color: var(--city-orange)
+}
+
+.homepage-block .white a:hover {
+    color: var(--off-black)
+}
 
 .homepage-block.how-we-work {
     background-color: black;
@@ -271,7 +295,7 @@ background-color:grey;
 /*Content Page*/
 
 .content-text {
-    margin:2rem;
+    margin: 2rem;
 }
 
 
@@ -282,15 +306,15 @@ background-color:grey;
     margin-bottom: auto;
 }
 
-.form-container label {
-    color:white;
-}
+    .form-container label {
+        color: white;
+    }
 
 
 .happening-next-item {
-    width:100%;
-    background-color:black;
-    color:white;
+    width: 100%;
+    background-color: black;
+    color: white;
 }
 
     .happening-next-item h3 {
@@ -305,8 +329,8 @@ background-color:grey;
     }
 
     .happening-next-item .descBlock {
-    padding:2rem;
-    display:flex;
+        padding: 2rem;
+        display: flex;
     }
 
     .happening-next-item .dateDisplay {
