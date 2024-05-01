@@ -1,12 +1,12 @@
 /* Default css*/
 
 html {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
@@ -40,43 +40,22 @@ a {
 }
 
 
-/* TODO work out what file formats we need to get the font working right across multiple browsers and on mobile.
-    Google open sans currently being used as a fallback
-*/
-@font-face {
-    font-family: 'Basic Sans SF';
-    src: url('./assets/fonts/basicsanssf.ttf') format('ttf');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Basic Sans SF Bold';
-    src: url('./assets/fonts/basicsanssfbold.ttf') format('ttf');
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Basic Sans SF Italic';
-    src: url('./assets/fonts/basicsanssfitalic.ttf') format('ttf');
-    font-weight: 400;
-    font-style: italic;
-}
-
 body {
-   font-family: 'Basic Sans SF', 'Open Sans', sans-serif;
-    font-size: 1.25rem;
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    line-height: 1.7;
     max-width: 1920px;
     margin: auto;
 }
 
 [class^='heading-'] {
-    font-weight: 700;
+    font-weight: 900;
+    letter-spacing: -1px;
 }
 
 .heading-xl {
-    font-size: clamp(4rem, .7vw + 3rem, 5rem);
+    font-size: clamp(5rem, .7vw + 3rem, 5rem);
 }
 
 .heading-lg {
@@ -92,6 +71,10 @@ body {
 }
 
 .heading-xs {
+    font-size: clamp(1rem, .2vw + 1rem, 1.5rem);
+}
+
+.text-lg {
     font-size: clamp(1rem, .2vw + 1rem, 1.5rem);
 }
 
@@ -247,7 +230,6 @@ body {
 
 
 .homepage-block p {
-    line-height: normal;
     margin-bottom: 0.3rem;
 }
 
