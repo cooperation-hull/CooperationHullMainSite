@@ -51,15 +51,16 @@ body {
 
 [class^='heading-'] {
     font-weight: 900;
+    line-height: 1;
     letter-spacing: -1px;
 }
 
 .heading-xl {
-    font-size: clamp(5rem, .7vw + 3rem, 5rem);
+    font-size: clamp(3.6rem, .7vw + 3rem, 5rem);
 }
 
 .heading-lg {
-    font-size: clamp(3.5rem, .7vw + 2.5rem, 4rem);
+    font-size: clamp(3.2rem, .7vw + 2.5rem, 4rem);
 }
 
 .heading-md {
