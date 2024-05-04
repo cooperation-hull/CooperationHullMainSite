@@ -1,12 +1,12 @@
 /* Default css*/
 
 html {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
@@ -23,6 +23,11 @@ body {
   margin-bottom: 60px;
 }
 
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
 
 /* Abby's CSS */
 
@@ -37,47 +42,27 @@ body {
 }
 
 
-/* TODO work out what file formats we need to get the font working right across multiple browsers and on mobile.
-    Google open sans currently being used as a fallback
-*/
-@font-face {
-    font-family: 'Basic Sans SF';
-    src: url('./assets/fonts/basicsanssf.ttf') format('ttf');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Basic Sans SF Bold';
-    src: url('./assets/fonts/basicsanssfbold.ttf') format('ttf');
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Basic Sans SF Italic';
-    src: url('./assets/fonts/basicsanssfitalic.ttf') format('ttf');
-    font-weight: 400;
-    font-style: italic;
-}
-
 body {
-   font-family: 'Basic Sans SF', 'Open Sans', sans-serif;
-    font-size: 1.25rem;
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    line-height: 1.7;
     max-width: 1920px;
     margin: auto;
 }
 
 [class^='heading-'] {
-    font-weight: 700;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -1px;
 }
 
 .heading-xl {
-    font-size: clamp(4rem, .7vw + 3rem, 5rem);
+    font-size: clamp(3.6rem, .7vw + 3rem, 5rem);
 }
 
 .heading-lg {
-    font-size: clamp(3.5rem, .7vw + 2.5rem, 4rem);
+    font-size: clamp(3.2rem, .7vw + 2.5rem, 4rem);
 }
 
 .heading-md {
@@ -89,6 +74,10 @@ body {
 }
 
 .heading-xs {
+    font-size: clamp(1rem, .2vw + 1rem, 1.5rem);
+}
+
+.text-lg {
     font-size: clamp(1rem, .2vw + 1rem, 1.5rem);
 }
 
@@ -136,7 +125,6 @@ body {
     /* (Lewis) This vertically aligns the donate button with the other links in the navbar */
     margin: auto 0 auto 0.5rem;
     width: 140px;
-}
 
     .navbar-nav .donate-button a {
         text-decoration: none;
@@ -214,17 +202,57 @@ body {
 /* footer */
 .footer {
     background-color: black;
-    background-image: url(/assets/img/footer-sketch.png);
-    height: 250px;
-    background-position: bottom;
-    background-repeat: no-repeat;
     color: white;
+    position: relative;
+    min-height: 200px;
+    overflow-y: hidden;
 }
 
-    .footer .footer-links {
-        display: inline-flex;
-        justify-content: space-evenly;
+    .footer .footer-content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
     }
+    
+    .footer .footer-content-left {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .footer .footer-links {
+        display: flex;
+        gap: 24px;
+    }
+    
+    .footer .footer-socials {
+        display: flex;
+        gap: 24px;
+    }
+    
+    .footer .footer-illustration {
+        position: absolute;
+        bottom: -6px;
+        right: 0;
+        width: clamp(500px, 100vw, 50%);
+        filter: invert(1);
+    }
+
+@media(min-width: 768px) {
+    .footer .footer-content {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 12px;
+    }
+}
+
+@media(min-width: 1280px) {
+    .footer .footer-content-left {
+        flex-direction: row;
+        gap: 48px;
+    }
+}
 
 /* standard page defaults */
 
@@ -284,7 +312,6 @@ body {
 
 
 .homepage-block p {
-    line-height: normal;
     margin-bottom: 0.3rem;
 }
 
