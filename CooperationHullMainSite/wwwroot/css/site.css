@@ -125,6 +125,7 @@ body {
     /* (Lewis) This vertically aligns the donate button with the other links in the navbar */
     margin: auto 0 auto 0.5rem;
     width: 140px;
+}
 
     .navbar-nav .donate-button a {
         text-decoration: none;
