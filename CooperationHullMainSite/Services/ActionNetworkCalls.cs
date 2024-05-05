@@ -31,9 +31,10 @@ namespace CooperationHullMainSite.Services
             // docs - https://actionnetwork.org/docs/v2/record_submission_helper
 
             var formInfo = FindFormConfigInfo(formName);
+
             string endpoint = $"forms/{formInfo.FormGUID}/submissions";
 
-            var temp = await PutDataAPICall(endpoint, new ActionNetworkPersonSignupHelper(formData));
+            var temp = await PostDataAPICall(endpoint, new ActionNetworkPersonSignupHelper(formData));
 
             return temp;
         }
@@ -51,6 +52,21 @@ namespace CooperationHullMainSite.Services
             string endpoint = $"forms/{formInfo.FormGUID}";
             var result = await GetDataAPICall(endpoint, new object());
             var item = JsonSerializer.Deserialize<ActionNetworkFormData>(result);
+            return item;
+        }
+
+
+
+        public async Task<ActionNetworkCustomFieldCollection> GetCustomFieldData()
+        {
+
+            string endpoint = $"metadata/custom_fields";
+            var result = await GetDataAPICall(endpoint, new object());
+
+            ActionNetworkCustomFieldCollection item = new ActionNetworkCustomFieldCollection();
+
+            item = JsonSerializer.Deserialize<ActionNetworkCustomFieldCollection>(result);
+
             return item;
         }
 
@@ -80,12 +96,11 @@ namespace CooperationHullMainSite.Services
         }
 
 
-        private async Task<bool> PutDataAPICall(string endpoint, object dataModel)
+        private async Task<bool> PostDataAPICall(string endpoint, object dataModel)
         {
             bool result = false;
 
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, endpoint);
-
 
             JsonSerializerOptions options = new()
             {
@@ -109,10 +124,10 @@ namespace CooperationHullMainSite.Services
                 client.DefaultRequestHeaders.Add("OSDI-API-Token", config.APIKey);
 
                 HttpResponseMessage response = await client.SendAsync(request);
+                var data = await response.Content.ReadAsStringAsync();
 
                 if (response.StatusCode == System.Net.HttpStatusCode.OK)
                 {
-                  var  data = await response.Content.ReadAsStringAsync();
                     result = true;
                 }
                 else
@@ -122,7 +137,7 @@ namespace CooperationHullMainSite.Services
 
             }
 
-            return result;
+             return result;
         }
 
 

@@ -1,4 +1,5 @@
 ﻿using CooperationHullMainSite.Models.Enums;
+using System.Dynamic;
 using System.Text.Json.Serialization;
 namespace CooperationHullMainSite.Models.ActionNetworkAPI
 {
@@ -29,16 +30,15 @@ namespace CooperationHullMainSite.Models.ActionNetworkAPI
         public List<ActionNetworkEmail> email_addresses;
         [JsonInclude] 
         public List<ActionNetworkPhone> phone_numbers;
+        [JsonInclude]
         public List<ActionNetworkAddress> postal_addresses;
-        public List<KeyValuePair<string, string>> custom_fields;
+        [JsonInclude]
+        public dynamic? custom_fields;
         public DateTime? created_date {  get; set; }
         public DateTime? modified_date { get; set; }
 
         public ActionNetworkPerson() {
-            email_addresses = new List<ActionNetworkEmail>();
-            phone_numbers = new List<ActionNetworkPhone>();
-            postal_addresses = new List<ActionNetworkAddress>();
-            custom_fields = new List<KeyValuePair<string, string>>();
+
         }
 
     }

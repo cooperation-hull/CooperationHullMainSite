@@ -3,6 +3,7 @@ using CooperationHullMainSite.Models.ActionNetworkAPI;
 using CooperationHullMainSite.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Dynamic;
 using System.Text.Json;
 
 namespace CooperationHullMainSite.Controllers
@@ -57,9 +58,13 @@ namespace CooperationHullMainSite.Controllers
             var data = new ActionNetworkPerson();
             data.family_name = Request.Form["PledgeFormSurname"];
             data.given_name = Request.Form["PledgeFormFirstName"];
-            data.email_addresses.Add(new ActionNetworkEmail(Request.Form["PledgeFormEmail"]));
-            data.phone_numbers.Add(new ActionNetworkPhone("07534111222"));
 
+            var phone = new ActionNetworkPhone(Request.Form["PledgeFormMobile"]);
+          //  phone.primary = true;
+          //  phone.number_type = "mobile";
+            phone.status = "subscribed";
+
+            data.phone_numbers = [phone];
 
             //todo 
             // VALIDATION!!!!!
@@ -67,14 +72,7 @@ namespace CooperationHullMainSite.Controllers
 
             var result =  await _actionNetworkCalls.SubmitForm("test_form", data);
 
-            string message = "";
-
-            if (result)
-                message = $"<p>{data.given_name}</p><p>Thank you for joining our mailing list.<p>";
-            else
-                message = "'<p>Something has gone wrong<p>.  <p>Try again later<p>";
-
-            return Json(new { result = result, messageText = message });
+            return Json(new { result = result, signedByName = data.given_name });
 
         }
 

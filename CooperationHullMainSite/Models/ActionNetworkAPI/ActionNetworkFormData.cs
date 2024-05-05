@@ -46,7 +46,6 @@ namespace CooperationHullMainSite.Models.ActionNetworkAPI
     public class CustomFields
     {
     //TODO work out how to deal with these
-    //Don't want to hve to make a code change every time somebody makes a change on the portal!
     }
 
     public class EmailAddress

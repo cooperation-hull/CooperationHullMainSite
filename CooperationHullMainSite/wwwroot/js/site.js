@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', () => { pageLoadActions(); });
 
 function pageLoadActions() {
     setNavItemActive();
+    $('#form-to-complete #formError').html();
+    $('#form-to-complete').show();
+    $('#form-completed').hide();
+
 }
 
 function setNavItemActive() {
@@ -18,7 +22,6 @@ function setNavItemActive() {
 
 
 //form submission handling
-
 
 function form_submit(formName) {
 
@@ -30,16 +33,18 @@ function form_submit(formName) {
         url: $form.attr('action'),
         data: $form.serialize(),
         error: function (xhr, status, error) {
-            debugger;
-            $(`#${formName}_confirmation #form_result_text`).html('<p>Something has gone wrong<p>.  <p>Try again later<p>');
-            $(`#${formName}_confirmation`).show();
-
+            $('#form-to-complete #formError').html("Something went wrong.  Please try again later");
         },
         success: function (response) {
-            debugger;
-            $(`#${formName}_confirmation #form_result_text`).html(response.messageText);
-            $(`#${formName}_confirmation`).modal('show');
-            $(`#${formName} input`).val('');
+
+            if (response.result) {
+                $('#form-completed #signedbyName').html(response.signedByName);
+                $('#form-to-complete').hide();
+                $('#form-completed').show();
+            }
+            else {
+                $('#form-to-complete #formError').html("Something went wrong.  Please try again later");
+            }
         }
     });
 
