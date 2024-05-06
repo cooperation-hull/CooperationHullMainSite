@@ -1,12 +1,12 @@
 /* Default css*/
 
 html {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 18px;
   }
 }
 
@@ -36,51 +36,33 @@ a {
     --cooperation-orange: #D05000;
     --cooperation-white: #E8D9D4;
     --off-black: #23201E;
+    --off-white: rgb(232, 217, 212, 0.35);
+    --off-white-solid: #f7f2f0;
     --border-radius: 0.5rem;
 }
 
 
-/* TODO work out what file formats we need to get the font working right across multiple browsers and on mobile.
-    Google open sans currently being used as a fallback
-*/
-@font-face {
-    font-family: 'Basic Sans SF';
-    src: url('./assets/fonts/basicsanssf.ttf') format('ttf');
-    font-weight: 400;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Basic Sans SF Bold';
-    src: url('./assets/fonts/basicsanssfbold.ttf') format('ttf');
-    font-weight: 700;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Basic Sans SF Italic';
-    src: url('./assets/fonts/basicsanssfitalic.ttf') format('ttf');
-    font-weight: 400;
-    font-style: italic;
-}
-
 body {
-   font-family: 'Basic Sans SF', 'Open Sans', sans-serif;
-    font-size: 1.25rem;
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    line-height: 1.7;
     max-width: 1920px;
     margin: auto;
 }
 
 [class^='heading-'] {
-    font-weight: 700;
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -1px;
 }
 
 .heading-xl {
-    font-size: clamp(4rem, .7vw + 3rem, 5rem);
+    font-size: clamp(3.6rem, .7vw + 3rem, 5rem);
 }
 
 .heading-lg {
-    font-size: clamp(3.5rem, .7vw + 2.5rem, 4rem);
+    font-size: clamp(3.2rem, .7vw + 2.5rem, 4rem);
 }
 
 .heading-md {
@@ -95,12 +77,34 @@ body {
     font-size: clamp(1rem, .2vw + 1rem, 1.5rem);
 }
 
+.text-lg {
+    font-size: clamp(1rem, .2vw + 1rem, 1.5rem);
+}
+
 
 /* Nav bar */
+/* (Lewis) made some changes here March 27th for design V8 */
 
 .navbar {
     color: var(--off-black);
-    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(189,224,235,1) 48%, rgba(178,228,238,1) 64%);
+    background: var(--off-white);
+    padding-left: 95px;
+    padding-right: 95px;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:focus {
+    border: 0px;
+    box-shadow: none;
+    border: none;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: end;
 }
 
 .navbar-brand a {
@@ -110,14 +114,29 @@ body {
 }
 
 .navbar .nav-link {
-    margin-right: 1rem;
-    font-weight: 600;
+    font-weight: 800;
 }
 
-
-#topNavBar ul li.active {
-    background-color:grey;
+.navbar .nav-link:hover {
+    text-decoration: underline;
 }
+
+.navbar-nav .donate-button {
+    /* (Lewis) This vertically aligns the donate button with the other links in the navbar */
+    margin: auto 0 auto 0.5rem;
+    width: 140px;
+
+    .navbar-nav .donate-button a {
+        text-decoration: none;
+        color: white;
+        font-weight: 900;
+        border-radius: var(--border-radius);
+        background: var(--cooperation-orange);
+        padding: 10px;
+        width: 140px;
+        text-align: center;
+        display: block;
+    }
 
 
 .navbar-brand img {
@@ -131,6 +150,52 @@ body {
     font-size: 2em;
     font-weight: 700;
     margin:auto;
+}
+
+.mobile-only {
+    display: none;
+}
+
+@media (max-width: 1024px) {
+    .mobile-only {
+        display: block;
+    }
+
+    .navbar {
+        padding-left: 20px;
+        padding-right: 20px;
+        z-index: 1;
+    }
+
+    .navbar .nav-link {
+        margin-right: 0;
+    }
+
+    .navbar-brand h1 {
+        font-size: 1em;
+    }
+
+    .navbar-collapse {
+        padding-left: 20px;
+    }
+
+    .navbar-nav {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 30px;
+        position: fixed;
+        top: 0px;
+        right: 0;
+        height: 100%;
+        background-color: var(--off-white-solid);
+        overflow-x: hidden;
+        transition: 0.5s;
+    }
+
+        .navbar-nav .donate-button {
+            margin: 0;
+        }
 }
 
 
@@ -247,7 +312,6 @@ body {
 
 
 .homepage-block p {
-    line-height: normal;
     margin-bottom: 0.3rem;
 }
 
