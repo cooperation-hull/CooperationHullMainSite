@@ -154,17 +154,66 @@
 
 <section class="homepage-block">
     <div class="row">
-        <div class="col-12">
-            <h1 class="heading-lg">What's happening next?</h1>
+        <div class="col-12 p-4">
+            <h1 class="heading-lg text-center py-4">What's happening next?</h1>
 
             <div class="row">
+                <div class="col-lg-4 col-md-6 col-sm-6 p-5">
+                    <div class="happening-next-item">
+                        <p class="date-tag heading-xs">16th Nov</p>
+                        <img class="header-image" src="~/assets/img/pattern 2.jpeg" />
 
+                        <div class="content">
+                            <h3 class="heading-sm">HU4 Neighbourhood Assembly</h3>
+                            <div class="description-block">
+                                <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget dui tortor. Fusce blandit elit sit amet.</p>
+                                <a href='link' target='_blank'>
+                                    <img src="~/assets/img/next arrow.svg" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 col-sm-6 p-5">
+                    <div class="happening-next-item">
+                        <p class="date-tag heading-xs">16th Nov</p>
+                        <img class="header-image" src="~/assets/img/pattern 2.jpeg" />
+
+                        <div class="content">
+                            <h3 class="heading-sm">HU4 Neighbourhood Assembly</h3>
+                            <div class="description-block">
+                                <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget dui tortor. Fusce blandit elit sit amet.</p>
+                                <a href='link' target='_blank'>
+                                    <img src="~/assets/img/next arrow.svg" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 col-sm-6 p-5">
+                    <div class="happening-next-item">
+                        <p class="date-tag heading-xs">16th Nov</p>
+                        <img class="header-image" src="~/assets/img/pattern 2.jpeg" />
+
+                        <div class="content">
+                            <h3 class="heading-sm">HU4 Neighbourhood Assembly</h3>
+                            <div class="description-block">
+                                <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget dui tortor. Fusce blandit elit sit amet.</p>
+                                <a href='link' target='_blank'>
+                                    <img src="~/assets/img/next arrow.svg" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                @* TODO: get data from eventList model *@
                 @foreach (HappenginNextEvent eventItem in Model.eventList)
                 {
                     @Html.Partial("_HappeningNext", eventItem)
-
                 }
-
             </div>
         </div>
     </div>
