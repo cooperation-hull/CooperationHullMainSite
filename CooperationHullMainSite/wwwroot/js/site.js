@@ -12,7 +12,6 @@ function pageLoadActions() {
     $('#form-to-complete #formError').html();
     $('#form-to-complete').show();
     $('#form-completed').hide();
-
 }
 
 function setNavItemActive() {
@@ -23,9 +22,9 @@ function setNavItemActive() {
 
 //form submission handling
 
-function form_submit(formName) {
+function home_page_signup_form_submit() {
 
-    let $form = $(`#${formName}`);
+    let $form = $(`#home_page_signup_form`);
 
     $.ajax({
         type: "POST",
@@ -33,17 +32,17 @@ function form_submit(formName) {
         url: $form.attr('action'),
         data: $form.serialize(),
         error: function (xhr, status, error) {
-            $('#form-to-complete #formError').html("Something went wrong.  Please try again later");
+            $('#homepage-form-to-complete #homepage-formError').html("Something went wrong.  Please try again later");
         },
         success: function (response) {
 
             if (response.result) {
-                $('#form-completed #signedbyName').html(response.signedByName);
-                $('#form-to-complete').hide();
+                $('#homepage-form-to-complete #signedbyName').html(response.signedByName);
+                $('#homepage-form-to-complete').hide();
                 $('#form-completed').show();
             }
             else {
-                $('#form-to-complete #formError').html("Something went wrong.  Please try again later");
+                $('#homepage-form-to-complete #homepage-formError').html(response.error);
             }
         }
     });

@@ -26,6 +26,15 @@ namespace CooperationHullMainSite.Services
             return data.total_submissions;
         }
 
+
+        public async Task<bool> SubmitNewPersonRecord(ActionNetworkPerson formData)
+        {
+            string endpoint = $"people/";
+            var temp = await PostDataAPICall(endpoint, new ActionNetworkPersonSignupHelper(formData));
+            return temp;
+        }
+
+
         public async Task<bool> SubmitForm(string formName, ActionNetworkPerson formData)
         {
             // docs - https://actionnetwork.org/docs/v2/record_submission_helper
@@ -54,8 +63,6 @@ namespace CooperationHullMainSite.Services
             var item = JsonSerializer.Deserialize<ActionNetworkFormData>(result);
             return item;
         }
-
-
 
         public async Task<ActionNetworkCustomFieldCollection> GetCustomFieldData()
         {
@@ -109,8 +116,6 @@ namespace CooperationHullMainSite.Services
 
             //TODO - object serialization - ignore empty lists (steal https://stackoverflow.com/questions/71409542/how-to-ignore-empty-list-when-serializing-to-json) bottom answer extension
             //sort out date format serilization
-            //sort out status field serializatoin (plain string rather than enum ?)
-            // work out how to deal with custom form fields
 
             var jsonString = JsonSerializer.Serialize(dataModel, options);
 

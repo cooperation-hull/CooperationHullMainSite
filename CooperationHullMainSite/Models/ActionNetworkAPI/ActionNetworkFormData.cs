@@ -43,11 +43,6 @@ namespace CooperationHullMainSite.Models.ActionNetworkAPI
         public bool templated { get; set; }
     }
 
-    public class CustomFields
-    {
-    //TODO work out how to deal with these
-    }
-
     public class EmailAddress
     {
         public bool primary { get; set; }
@@ -121,7 +116,7 @@ namespace CooperationHullMainSite.Models.ActionNetworkAPI
         public List<PhoneNumber> phone_numbers { get; set; }
         public List<PostalAddress> postal_addresses { get; set; }
         public Links _links { get; set; }
-        public CustomFields custom_fields { get; set; }
+        public dynamic custom_fields { get; set; }
         public DateTime created_date { get; set; }
         public DateTime modified_date { get; set; }
         public List<string> languages_spoken { get; set; }

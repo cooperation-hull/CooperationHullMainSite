@@ -67,7 +67,8 @@
 
         <div class="col-lg-6 col-md-12 form-container order-lg-0 order-md-1">
 
-            <div id="form-to-complete">
+            <div id="homepage-form-to-complete">
+                <p id="homepage-formError"></p>
                 <form method="post" id="home_page_signup_form" asp-action="Home_page_signup_form" asp-controller="Home">
                     <div class="row m-3">
                         <div class="col-xl-6 col-lg-12">
@@ -87,11 +88,10 @@
                         </div>
                         <div class="col-xl-3 col-lg-4 col-md-5 container align-self-end">
                             <div>
-                                <button type="button" class="btn btn-light btn-lg px-4 gap-3" onclick="form_submit('home_page_signup_form');">Sign</button>
+                                <button type="button" class="btn btn-light btn-lg px-4 gap-3" onclick="home_page_signup_form_submit();">Sign</button>
                             </div>
                         </div>
                     </div>
-                    <p id="formError"></p>
                 </form>
             </div>
             <div id="form-completed">
@@ -170,35 +170,10 @@
 
                 @foreach (HappenginNextEvent eventItem in Model.eventList)
                 {
-                    @Html.Partial("_HappeningNext", eventItem)
-
+                    @Html.PartialAsync("_HappeningNext", eventItem)
                 }
 
             </div>
         </div>
     </div>
 </section>
-
-@* 
-<section>
-
-    <div class="modal fade" tabindex="-1" role="dialog" id="home_page_signup_form_confirmation">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="home_page_signup_form_title">Thanks</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">X</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p id="form_result_text"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</section> *@

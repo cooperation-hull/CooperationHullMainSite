@@ -1,5 +1,4 @@
-﻿using CooperationHullMainSite.Models.Enums;
-using System.Dynamic;
+﻿using System.Dynamic;
 using System.Text.Json.Serialization;
 namespace CooperationHullMainSite.Models.ActionNetworkAPI
 {
