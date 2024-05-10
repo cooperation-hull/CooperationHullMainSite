@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', () => { pageLoadActions(); });
 
 function pageLoadActions() {
     setNavItemActive();
+    $('#form-to-complete #formError').html();
+    $('#form-to-complete').show();
+    $('#form-completed').hide();
 }
 
 function setNavItemActive() {
@@ -17,4 +20,34 @@ function setNavItemActive() {
 }
 
 
+//form submission handling
+
+function home_page_signup_form_submit() {
+
+    let $form = $(`#home_page_signup_form`);
+
+    $.ajax({
+        type: "POST",
+        dataType: 'json',
+        url: $form.attr('action'),
+        data: $form.serialize(),
+        error: function (xhr, status, error) {
+            $('#homepage-form-to-complete #homepage-formError').html("Something went wrong.  Please try again later");
+        },
+        success: function (response) {
+
+            if (response.result) {
+                $('#homepage-form-to-complete #signedbyName').html(response.signedByName);
+                $('#homepage-form-to-complete').hide();
+                $('#form-completed').show();
+            }
+            else {
+                $('#homepage-form-to-complete #homepage-formError').html(response.error);
+            }
+        }
+    });
+
+    return false;
+
+}
 

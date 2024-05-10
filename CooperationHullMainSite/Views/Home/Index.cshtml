@@ -18,15 +18,15 @@
 
         <div class="position-absolute">
 
-            <div class="col-12 col-md-11 col-lg-9 col-xl-7 col-xxl-6 text-left hero-text">
-                <h1 class="heading-xl">THE BIG QUESTION</h1>
-                <p class="heading-sm">Strong, caring communities.</p>
-                <p class="heading-sm">Enough food for everyone.</p>
-                <p class="heading-sm">A healthy planet.</p>
-                <p class="heading-sm">Lives filled with meaning</p>
-                <br />
-                <p class="heading-sm">This is the kind of society we all want.</p>
-                <p class="heading-sm">So why don't we build it?</p>
+                    <div class="col-12 col-md-11 col-lg-9 col-xl-7 col-xxl-6 text-left hero-text">
+                        <h1 class="heading-xl">THE BIG QUESTION</h1>
+                        <p class="text-lg">Strong, caring communities.</p>
+                        <p class="text-lg">Enough food for everyone.</p>
+                        <p class="text-lg">A healthy planet.</p>
+                        <p class="text-lg">Lives filled with meaning</p>
+                        <br />
+                        <p class="text-lg">This is the kind of society we all want.</p>
+                        <p class="text-lg">So why don't we build it?</p>
 
                 <button type="button" class="btn btn-light btn-lg px-4 gap-3">Sign the pledge</button>
             </div>
@@ -106,30 +106,43 @@
 
         <div class="col-lg-6 col-md-12 form-container order-lg-0 order-md-1">
 
-            <div class="row m-3">
-                <div class="col-xl-6 col-lg-12">
-                    <label for="PledgeFormFirstName" class="form-label">First Name</label>
-                    <input id="PledgeFormFirstName" class="form-control form-control-lg" type="text" placeholder="First Name" aria-label="First Name">
-                </div>
-                <div class="col-xl-6 col-lg-12">
-                    <label for="PledgeFormSurname" class="form-label">Surname</label>
-                    <input id="PledgeFormSurname" class="form-control form-control-lg" type="text" placeholder="Surname" aria-label="Surname">
-                </div>
-            </div>
-
-
-            <div class="row m-3">
-                <div class="col-xl-9 col-lg-8 col-md-7">
-                    <label for="PledgeFormEmail" class="form-label">Email</label>
-                    <input id="PledgeFormEmail" class="form-control form-control-lg" type="text" placeholder="Email" aria-label="Email">
-                </div>
-                <div class="col-xl-3 col-lg-4 col-md-5 container align-self-end">
-                    <div>
-                        <button type="button" class="btn btn-light btn-lg px-4 gap-3">Sign</button>
+            <div id="homepage-form-to-complete">
+                <p id="homepage-formError"></p>
+                <form method="post" id="home_page_signup_form" asp-action="Home_page_signup_form" asp-controller="Home">
+                    <div class="row m-3">
+                        <div class="col-xl-6 col-lg-12">
+                            <label for="PledgeFormFirstName" class="form-label">First Name</label>
+                            <input id="PledgeFormFirstName" name="PledgeFormFirstName" class="form-control form-control-lg" type="text" placeholder="First Name" aria-label="First Name">
+                        </div>
+                        <div class="col-xl-6 col-lg-12">
+                            <label for="PledgeFormSurname" class="form-label">Surname</label>
+                            <input id="PledgeFormSurname" name="PledgeFormSurname" class="form-control form-control-lg" type="text" placeholder="Surname" aria-label="Surname">
+                        </div>
                     </div>
-                </div>
+
+                    <div class="row m-3">
+                        <div class="col-xl-9 col-lg-8 col-md-7">
+                            <label for="PledgeFormMobile" class="form-label">Mobile Number</label>
+                            <input id="PledgeFormMobile" name="PledgeFormMobile" class="form-control form-control-lg" type="text" placeholder="Mobile Number" aria-label="Mobile Number">
+                        </div>
+                        <div class="col-xl-3 col-lg-4 col-md-5 container align-self-end">
+                            <div>
+                                <button type="button" class="btn btn-light btn-lg px-4 gap-3" onclick="home_page_signup_form_submit();">Sign</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
+            <div id="form-completed">
+                <p>Hello <span id="signedbyName"></span></p>
+                <p>Thank you for joining our mailing list.</p>
+            </div>
+
         </div>
+
+    </div>
+</section>
+
 
         <div class="col-lg-6 col-md-12 p-4 order-lg-1 order-md-0">
 
@@ -175,19 +188,16 @@
 <section class="homepage-block">
     <div class="row">
         <div class="col-12">
-            <h1>What's happening next?</h1>
+            <h1 class="heading-lg">What's happening next?</h1>
 
             <div class="row">
 
                 @foreach (HappenginNextEvent eventItem in Model.eventList)
                 {
                     @Html.Partial("_HappeningNext", eventItem)
-
                 }
 
             </div>
         </div>
     </div>
 </section>
-
-
