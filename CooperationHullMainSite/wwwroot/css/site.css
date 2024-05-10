@@ -57,7 +57,7 @@ body {
     letter-spacing: -1px;
 }
 
-h1, h2 {
+h1 {
     margin-bottom: 1.5rem;
 }
 
@@ -274,6 +274,12 @@ h1, h2 {
 }
 
 /* Home Page */
+
+.homepage-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
 
 /*Hero*/
 
