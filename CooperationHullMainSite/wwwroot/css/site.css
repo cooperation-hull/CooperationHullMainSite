@@ -70,6 +70,10 @@ body {
     font-weight: 700;
 }
 
+h1 {
+    margin-bottom: 1.5rem;
+}
+
 .heading-xl {
     font-size: clamp(4rem, .7vw + 3rem, 5rem);
 }
@@ -88,6 +92,11 @@ body {
 
 .heading-xs {
     font-size: clamp(1rem, .2vw + 1rem, 1.5rem);
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 
@@ -204,8 +213,6 @@ body {
 
 .homepage-block > div {
     min-height: 10vh;
-    margin-left: 0.1rem;
-    margin-right: 0.1rem;
 }
 
 
