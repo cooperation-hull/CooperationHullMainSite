@@ -288,6 +288,19 @@ h1 {
 
 .hero-image-container {
     padding: 0px;
+    background-image: url("../assets/img/hero-mobile.png");
+}
+
+@media screen and (min-width: 768px){
+    .hero-image-container {
+        background-image: url("../assets/img/hero-tablet.png");
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .hero-image-container {
+        background-image: url("../assets/img/hero-desktop.png");
+    }
 }
 
 .hero img {
