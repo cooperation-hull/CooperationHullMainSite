@@ -1,69 +1,97 @@
-﻿
-<!-- Hero -->
-<section class="hero" >
+﻿<!-- Hero -->
+<section class="hero">
 
-        <div class="row">
+    <div class="row">
 
-            <div class="hero-image-container">
+        <div class="hero-image-container">
 
             <div class="d-none d-lg-block">
-                    <img src="~/assets/img/blackandwhitehero.png" alt="" />
-                </div>
-                <div class="d-lg-none ">
-                    <img src="~/assets/img/pattern 1.jpeg" alt="" />
-                </div>
+                <img src="~/assets/img/blackandwhitehero.png" alt="" />
             </div>
-
-                <div class="position-absolute">
-
-                    <div class="col-12 col-md-11 col-lg-9 col-xl-7 col-xxl-6 text-left hero-text">
-                        <h1 class="heading-xl">THE BIG QUESTION</h1>
-                        <p class="text-lg">Strong, caring communities.</p>
-                        <p class="text-lg">Enough food for everyone.</p>
-                        <p class="text-lg">A healthy planet.</p>
-                        <p class="text-lg">Lives filled with meaning</p>
-                        <br />
-                        <p class="text-lg">This is the kind of society we all want.</p>
-                        <p class="text-lg">So why don't we build it?</p>
-
-                        <button type="button" class="btn btn-light btn-lg px-4 gap-3">Sign the pledge</button>
-                    </div>
-                </div>
-
+            <div class="d-lg-none ">
+                <img src="~/assets/img/pattern 1.jpeg" alt="" />
+            </div>
         </div>
+
+        <div class="position-absolute">
+
+            <div class="col-12 col-md-11 col-lg-9 col-xl-7 col-xxl-6 text-left hero-text">
+                <h1 class="heading-xl">THE BIG QUESTION</h1>
+                <p class="heading-sm">Strong, caring communities.</p>
+                <p class="heading-sm">Enough food for everyone.</p>
+                <p class="heading-sm">A healthy planet.</p>
+                <p class="heading-sm">Lives filled with meaning.</p>
+                <br />
+                <p class="heading-sm">This is the kind of society we all want.</p>
+                <p class="heading-sm">So why don't we build it?</p>
+
+                <button type="button" class="btn btn-light btn-lg px-4 gap-3">Sign up now</button>
+            </div>
+        </div>
+
+    </div>
 
 </section>
 
 
 
-<section class="homepage-block big-answer ">
+<section class="homepage-block the-plan ">
     <div class="row">
 
-         <div class="col-lg-6 col-md-12 p-4 order-lg-1 order-md-0">
-
-            @if (Model.formSignedCounter >= 0)
-            {
-                <p>@($"{Model.formSignedCounter} have signed so far")</p>
-            }
-            else
-            {
-                <p>Hundreds of people have signed already</p>
-            }
-
-
-            <h1 class="heading-lg">The big answer</h1>
-            <p>People's Assemblies are a simple tool that will change everything.</p>
-            <p>Public meetings, happening everywhere, replacing party politics with people power.</p>
-            <br>
-            <p>The Hull People's Assembly will be the first of its kind in the UK.</p>
-            <p>And we need your help to pull it off.</p>
-            <br>
-            <p>We'll only launch when we have 2,000 signatures from local people.</p>
-            <p>Pledge your support to the Hull People's Assembly by signing here, now</p>
-            <br>
-            <a class="" asp-area="" asp-controller="Home" asp-action="Donate">Find out more about People's Assemblies'</a>
+        <div class="col-lg-6 col-md-12 p-4 homepage-text-block">
+            <h2 class="heading-lg">What's the plan?</h2>
+            <p>
+                We have to view the world as it is - made up of complicated, connected systems:
+                A planet in crisis. A failing economy. A divided society. Broken party politics.
+            </p>
+            <p>
+                This is the story of the world today and nobody (apart from the 1% at the top) 
+                benefits from keeping it this way. No ordinary person wants corrupt leaders, crop failures 
+                or the culture war and, to put it simply, there are more of us than there are of them. So…
+            </p>
         </div>
 
+        <div class="col-lg-6 col-md-12 p-4">
+            <div class="feature-image">
+                <img src="~/assets/img/circles-diagram-transparent.png" alt="" />
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="homepage-block big-answer ">
+    <div class="row white">
+
+        <div class="col-lg-6 col-md-12 p-4">
+            <div class="feature-image">
+                <img src="~/assets/img/circles-diagram-transparent.png" alt="" />
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12 p-4 homepage-text-block">
+            <h2 class="heading-lg">The big answer</h2>
+            <p>
+                ...we propose a new story. In this version, the 99% works through our differences and chooses
+                to put all our wisdom, knowledge, love and technology to use. We choose to construct better systems,
+                ones that build us up rather than keep us down. 
+            </p>
+            <p>
+                A healthy earth. A Solidarity Economy. Strong communities.
+                Local democracy.
+            </p>
+            <p>
+                People’s Assemblies are a simple tool that will change everything. Public meetings,
+                happening everywhere, replacing party politics with people power. <a class="" asp-area="" asp-controller="Home" asp-action="TheBigIdea">Read more here &rarr;</a>
+            </p>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="homepage-block sign-up">
+    <div class="row">
 
         <div class="col-lg-6 col-md-12 form-container order-lg-0 order-md-1">
 
@@ -101,55 +129,36 @@
 
         </div>
 
-    </div>
-</section>
+        <div class="col-lg-6 col-md-12 p-4 order-lg-1 order-md-0">
 
+            @if (Model.formSignedCounter >= 0)
+            {
+                <p>@($"{Model.formSignedCounter} have signed so far")</p>
+            }
+            else
+            {
+                <p>Hundreds of people have signed already</p>
+            }
 
-
-<section class="homepage-block the-plan ">
-    <div class="row white">
-        <div class="col-lg-6 col-md-12 p-4">
-            <h1 class="heading-lg">What's the plan?</h1>
-            <p>What does a stratergy for changing the world look like? To help us approach this ridiculously huge task,
-                we've come to think about our current society as four overlapping circles.  These are the four big systems, or four crises, that govern out world.
-                Broken party politics. A failing economy. A planet in crisis. And a divided society.
-             </p>
-            <p>They shape everything about the way we live and the challenges we face as a society and, thgether, they tell the story of the old world. 
-                Nobody (apart from the private-jet-owning elite, a tiny fraction of the population) benefits from these four circles as they are.
-                No ordinary person in the pub wants corrupt leaders, crop failures or the culture war and, to put it simply, there are more of us than there are of them. So....
-            </p>
-            <p>...On the right is a new story.  In this story, human kind takes everything we've learnt since the dawn of time and chooses to put it ot user,
-                to construct better systems that support all of us and build us up rather than keep us down.
-                We choose to evolve.  To create a new form of human civilization, human kind with more kindness, more happiness, more safety, more health, more love
-                , more fairness, more justice, more connection, more joy, more to look forward to.</p>
-                <br />
-            <p> <a class="" asp-area="" asp-controller="Home" asp-action="Donate">OK, sounds nice. <span style="font-weight:bold;">But how?</span></a></p>
-
-        </div>
-        <div class="col-lg-6 col-md-12 p-4">
-            <div class="feature-image">
-                <img src="~/assets/img/circles diagram finished 1.png" alt="" />
-            </div>
         </div>
     </div>
 </section>
-
 
 
 <section class="homepage-block how-we-work">
     <div class="row">
         <div class="col-lg-4  p-4 ">
-                    <h1 class="heading-lg">How we work</h1>
+            <h2 class="heading-lg">How we work</h2>
 
-                    <p>These are complicated, global systems with complicated links between them all. How on earth do we think we're going to have an impact?</p>
-                    <p>Start local.  Work with what we've got already (which in Hull is A LOT). Experiment all the time.  And learn from each other.</p>
-                    <p>
-                        The good think is, we are not starting from scratch and we are not alone! We're one part of a global movement that is alive and kicking,
-                        which started before us and will continure long after we're gone.  We've borrowed ideas and tools all the way from Mississippi
-                        (Cooperation Jackson) to the Middle East (Rojava) and the East Riding.
-                    </p>
+            <p>These are complicated, global systems with complicated links between them all. How on earth do we think we're going to have an impact?</p>
+            <p>Start local.  Work with what we've got already (which in Hull is A LOT). Experiment all the time.  And learn from each other.</p>
+            <p>
+                The good thing is, we're not starting from scratch and we're not alone! We're one part of a global movement that is alive and kicking,
+                which started before us and will continue long after we're gone.  We've borrowed ideas and tools all the way from Mississippi
+                (Cooperation Jackson) to the Middle East (Rojava) and the East Riding.
+            </p>
 
-                    <p> <a class="" asp-area="" asp-controller="Home" asp-action="Donate">OK, sounds nice. <span style="font-weight:bold;">Find out more about our tools</span></a></p>
+            <p> <a class="" asp-area="" asp-controller="Home" asp-action="Donate">OK, sounds nice. <span style="font-weight:bold;">Find out more about our tools</span></a></p>
         </div>
 
         <div class="col-lg-8">
@@ -158,13 +167,13 @@
             </div>
         </div>
 
-    </div> 
+    </div>
 </section>
 
 <section class="homepage-block">
     <div class="row">
         <div class="col-12">
-            <h1 class="heading-lg">What's happening next?</h1>
+            <h2 class="heading-lg">What's happening next?</h2>
 
             <div class="row">
 
