@@ -57,6 +57,10 @@ body {
     letter-spacing: -1px;
 }
 
+h1 {
+    margin-bottom: 1.5rem;
+}
+
 .heading-xl {
     font-size: clamp(3.6rem, .7vw + 3rem, 5rem);
 }
@@ -75,6 +79,11 @@ body {
 
 .heading-xs {
     font-size: clamp(1rem, .2vw + 1rem, 1.5rem);
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 .text-lg {
@@ -266,6 +275,12 @@ body {
 
 /* Home Page */
 
+.homepage-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
 /*Hero*/
 
 .hero {
@@ -300,23 +315,17 @@ body {
 /* Homepage block */
 
 .homepage-block > .row {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-    padding-left:5rem;
-    padding-right: 5rem;
+    padding: 4rem
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (min-width: 600px) {
     .homepage-block > .row {
-        padding-left: 4rem;
-        padding-right: 4rem;
+        padding: 4rem 5rem
     }
 }
 
 .homepage-block > div {
     min-height: 10vh;
-    margin-left: 0.1rem;
-    margin-right: 0.1rem;
 }
 
 
@@ -367,6 +376,10 @@ body {
 
 .homepage-block .white a:visited {
     color: var(--city-orange)
+}
+
+.homepage-block .white a:hover {
+    color: var(--off-black)
 }
 
 .homepage-block .white a:hover {
