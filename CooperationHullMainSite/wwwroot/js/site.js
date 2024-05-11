@@ -37,7 +37,7 @@ function home_page_signup_form_submit() {
         success: function (response) {
 
             if (response.result) {
-                $('#homepage-form-to-complete #signedbyName').html(response.signedByName);
+                $('#form-completed #signedbyName').html(response.signedByName);
                 $('#homepage-form-to-complete').hide();
                 $('#form-completed').show();
             }
