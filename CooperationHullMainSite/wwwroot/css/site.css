@@ -58,7 +58,7 @@ body {
 }
 
 h1 {
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
 }
 
 .heading-xl {
@@ -280,17 +280,15 @@ h1 {
 .hero {
     color: var(--off-black);
     background: rgb(255,255,255);
-    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(189,224,235,1) 48%, rgba(178,228,238,1) 64%);
 }
 
 
 .hero-image-container {
-    min-height: 40rem;
+    padding: 0px;
 }
 
 .hero img {
     width: 100%;
-    opacity: 20%;
     object-fit: contain;
 }
 
