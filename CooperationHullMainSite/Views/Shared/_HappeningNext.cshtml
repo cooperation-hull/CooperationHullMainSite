@@ -6,7 +6,7 @@
         <div class="content">
             <h3 class="heading-sm">@(Html.Encode(Model.title))</h3>
             <div class="description-block">
-                <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget dui tortor. Fusce blandit elit sit amet.</p>
+                <p class="text-sm">@(Html.Encode(Model.description))</p>
                 <a href='@(Model.eventLink)' target='_blank'>
                     <img src="~/assets/img/next arrow.svg" />
                 </a>
