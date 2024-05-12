@@ -320,12 +320,6 @@ h1 {
     padding: 4rem
 }
 
-@media screen and (min-width: 600px) {
-    .homepage-block > .row {
-        padding: 4rem
-    }
-}
-
 .homepage-block > div {
     min-height: 10vh;
 }
