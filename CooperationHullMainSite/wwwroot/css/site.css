@@ -11,16 +11,16 @@ html {
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 
 a {
@@ -34,7 +34,7 @@ a {
 :root {
     --city-orange: #F5A117;
     --cooperation-orange: #D05000;
-    --cooperation-white: #E8D9D4;
+    --cooperation-white: #F4E9E6;
     --off-black: #23201E;
     --off-white: rgb(232, 217, 212, 0.35);
     --off-white-solid: #f7f2f0;
@@ -57,6 +57,10 @@ body {
     letter-spacing: -1px;
 }
 
+h1 {
+    margin-bottom: 1.5rem;
+}
+
 .heading-xl {
     font-size: clamp(3.6rem, .7vw + 3rem, 5rem);
 }
@@ -77,6 +81,11 @@ body {
 .heading-xs {
     font-size: clamp(1rem, .2vw + 1rem, 1.5rem);
     letter-spacing: 0;
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 .text-lg {
@@ -152,7 +161,7 @@ body {
 .navbar-brand h1 {
     font-size: 2em;
     font-weight: 700;
-    margin:auto;
+    margin: auto;
 }
 
 .mobile-only {
@@ -268,7 +277,13 @@ body {
 
 /* Home Page */
 
-    /*Hero*/
+.homepage-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/*Hero*/
 
 .hero {
     color: var(--off-black);
@@ -278,19 +293,19 @@ body {
 
 
 .hero-image-container {
-    min-height:40rem;
+    min-height: 40rem;
 }
 
-    .hero img {
-        width: 100%;
-        opacity: 20%;
-        object-fit: contain;
-    }
+.hero img {
+    width: 100%;
+    opacity: 20%;
+    object-fit: contain;
+}
 
-    .hero button {
-        color: white;
-        background-color: var(--off-black);
-    }
+.hero button {
+    color: white;
+    background-color: var(--off-black);
+}
 
 .hero .hero-text {
     margin: 3rem 3rem 3rem 3rem;
@@ -299,19 +314,26 @@ body {
 
 
 
-    /* Homepage block */
+/* Homepage block */
+
+.homepage-block > .row {
+    padding: 4rem
+}
+
+@media screen and (min-width: 600px) {
+    .homepage-block > .row {
+        padding: 4rem 5rem
+    }
+}
 
 .homepage-block > div {
-        min-height:10vh;
-        margin-left:0.1rem;
-        margin-right:0.1rem;
-    }
+    min-height: 10vh;
+}
 
 
 .homepage-block .white {
-    background-color:white;
+    background-color: var(--cooperation-white);
 }
-
 
 
 .homepage-block p {
@@ -342,14 +364,25 @@ body {
         transform: translateY(-50%);
     }
 
-    .homepage-block.big-answer {
-        background-image: url("../assets/img/spot 3 1.png");
-        background-position-x: left;
-        background-position-y: bottom;
-        background-repeat: no-repeat;
-    }
+.homepage-block.sign-up {
+    background-color: var(--city-orange);
+    background-image: url("../assets/img/spot 3 1.png");
+    background-position-x: left;
+    background-position-y: bottom;
+    background-repeat: no-repeat;
+}
 
+.homepage-block .white a:link {
+    color: var(--city-orange)
+}
 
+.homepage-block .white a:visited {
+    color: var(--city-orange)
+}
+
+.homepage-block .white a:hover {
+    color: var(--off-black)
+}
 
 .homepage-block.how-we-work {
     background-color: black;
@@ -383,7 +416,7 @@ body {
 /*Content Page*/
 
 .content-text {
-    margin:2rem;
+    margin: 2rem;
 }
 
 
@@ -394,9 +427,9 @@ body {
     margin-bottom: auto;
 }
 
-.form-container label {
-    color:white;
-}
+    .form-container label {
+        color: white;
+    }
 
 
 .happening-next-item {

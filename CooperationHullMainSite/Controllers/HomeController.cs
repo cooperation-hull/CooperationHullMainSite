@@ -1,8 +1,11 @@
 using CooperationHullMainSite.Models;
+using CooperationHullMainSite.Models.ActionNetworkAPI;
 using CooperationHullMainSite.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Dynamic;
 using System.Text.Json;
+using System.Web;
 
 namespace CooperationHullMainSite.Controllers
 {
@@ -49,30 +52,71 @@ namespace CooperationHullMainSite.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index_post()
+        public async Task<JsonResult> Home_page_signup_form()
         {
-            //Homepage form handling will go here.
-            throw new NotImplementedException();
+            var data = new ActionNetworkPerson();
+
+            var errorList = new List<string>();
+
+            //Note relying on actionnetworks api to handle sql injection checks etc.
+            //TODO - maybe write validation/ input sanitization service, overkill atm but may be useful later?
+            if(String.IsNullOrWhiteSpace(Request.Form["PledgeFormSurname"]))
+                errorList.Add("Surname");
+            else
+                data.family_name = HttpUtility.HtmlEncode(Request.Form["PledgeFormSurname"]);
+
+
+            if (String.IsNullOrWhiteSpace(Request.Form["PledgeFormFirstName"]))
+                errorList.Add("FirstName");
+            else
+                data.given_name = HttpUtility.HtmlEncode(Request.Form["PledgeFormFirstName"]);
+
+
+            if (String.IsNullOrEmpty(Request.Form["PledgeFormMobile"]))
+            { errorList.Add("Phone number"); }
+            else
+            {
+                var phone = new ActionNetworkPhone(HttpUtility.HtmlEncode(Request.Form["PledgeFormMobile"]));
+                    phone.primary = true;
+                    data.phone_numbers = [phone];
+            }
+
+            bool result = false;
+
+            if(errorList.Count > 0)
+            {
+                string errorMessage = $"Please complete the following fields {string.Join(", ", errorList)}";
+                return Json(new { result = result, error = errorMessage });
+            }
+            else
+            {
+                result = await _actionNetworkCalls.SubmitNewPersonRecord(data);
+
+                if (result)
+                    return Json(new { result = result, signedByName = data.given_name });
+                else
+                    return Json(new { result = result, error = "Something went wrong. Please try again later;" });
+            }
         }
 
 
         [HttpGet]
         [Route("PrivacyPolicy")]
-        public async Task<IActionResult> PrivacyPolicy()
+        public IActionResult PrivacyPolicy()
         {
             return View();
         }
 
         [HttpGet]
         [Route("CookiePolicy")]
-        public async Task<IActionResult> CookiePolicy()
+        public IActionResult CookiePolicy()
         {
             return View();
         }
 
         [HttpGet]
         [Route("ContactUs")]
-        public async Task<IActionResult> ContactUs()
+        public IActionResult ContactUs()
         {
             return View();
         }
@@ -80,14 +124,14 @@ namespace CooperationHullMainSite.Controllers
 
         [HttpGet]
         [Route("WhoWeAre")]
-        public async Task<IActionResult> WhoWeAre()
+        public IActionResult WhoWeAre()
         {
             return View();
         }
 
         [HttpGet]
         [Route("TheBigIdea")]
-        public async Task<IActionResult> TheBigIdea()
+        public IActionResult TheBigIdea()
         {
             return View();
         }
@@ -95,7 +139,7 @@ namespace CooperationHullMainSite.Controllers
 
         [HttpGet]
         [Route("ToolsOfTheTrade")]
-        public async Task<IActionResult> ToolsOfTheTrade()
+        public IActionResult ToolsOfTheTrade()
         {
             return View();
         }
@@ -103,7 +147,7 @@ namespace CooperationHullMainSite.Controllers
 
         [HttpGet]
         [Route("AroundTheWorld")]
-        public async Task<IActionResult> AroundTheWorld()
+        public IActionResult AroundTheWorld()
         {
             return View();
         }
@@ -111,13 +155,13 @@ namespace CooperationHullMainSite.Controllers
 
         [HttpGet]
         [Route("Membership")]
-        public async Task<IActionResult> Membership()
+        public IActionResult Membership()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Membership_Post()
+        public IActionResult Membership_Post()
         {
             //Memberships form submission handling will go here
             throw new NotImplementedException();
@@ -126,20 +170,20 @@ namespace CooperationHullMainSite.Controllers
 
         [HttpGet]
         [Route("FAQs")]
-        public async Task<IActionResult> FAQs()
+        public IActionResult FAQs()
         {
             return View();
         }
 
         [HttpGet]
         [Route("HelpToAttend")]
-        public async Task<IActionResult> HelpToAttend()
+        public IActionResult HelpToAttend()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> HelpToAttend_Post()
+        public IActionResult HelpToAttend_Post()
         {
             //Help To Attend form submission handling will go here
             throw new NotImplementedException();
