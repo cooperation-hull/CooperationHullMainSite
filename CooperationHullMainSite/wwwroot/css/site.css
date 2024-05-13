@@ -97,6 +97,10 @@ h1 {
     background: var(--off-white);
     padding-left: 95px;
     padding-right: 95px;
+    z-index: 101;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .navbar-toggler {
@@ -285,6 +289,10 @@ h1 {
     background: rgb(255,255,255);
 }
 
+.hero-container {
+    /*TODO: make the background off-white. Leaving it for now so I can see where the image ends*/
+    min-height: 100vh;
+}
 
 .hero-image-container {
     padding: 0px;

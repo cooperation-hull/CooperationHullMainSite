@@ -1,7 +1,7 @@
 ﻿<!-- Hero -->
 <section class="hero">
 
-    <div class="row">
+    <div class="row hero-container">
 
         <div class="hero-image-container">
 
@@ -11,7 +11,6 @@
                     Strong, caring communities. Enough food for everyone.
                     A healthy planet. Lives filled with meaning.
                 </p>
-                <br />
                 <p class="text-lg">This is the kind of world we all want.</p>
                 <p class="text-lg">So why don't we build it?</p>
 
@@ -25,7 +24,7 @@
 </section>
 
 
-
+<!-- The Plan -->
 <section class="homepage-block the-plan ">
     <div class="row">
 
@@ -51,6 +50,8 @@
     </div>
 </section>
 
+
+<!-- The Big Answer -->
 <section class="homepage-block big-answer ">
     <div class="row white">
 
@@ -81,6 +82,7 @@
 </section>
 
 
+<!-- Sign Up -->
 <section class="homepage-block sign-up">
     <div class="row">
 
@@ -120,23 +122,24 @@
 
         </div>
 
+        <div class="col-lg-6 col-md-12 p-4 order-lg-1 order-md-0">
 
-<div class="col-lg-6 col-md-12 p-4 order-lg-1 order-md-0">
+            @if (Model.formSignedCounter >= 0)
+            {
+                <p>@($"{Model.formSignedCounter} have signed so far")</p>
+            }
+            else
+            {
+                <p>Hundreds of people have signed already</p>
+            }
 
-    @if (Model.formSignedCounter >= 0)
-    {
-        <p>@($"{Model.formSignedCounter} have signed so far")</p>
-    }
-    else
-    {
-        <p>Hundreds of people have signed already</p>
-    }
+        </div>
 
-</div>
     </div>
 </section>
 
 
+<!-- How We Work -->
 <section class="homepage-block how-we-work">
     <div class="row">
         <div class="col-lg-4  p-4 ">
@@ -162,6 +165,8 @@
     </div>
 </section>
 
+
+<!-- What's Happening Next -->
 <section class="homepage-block">
     <div class="row">
         <div class="col-12">
