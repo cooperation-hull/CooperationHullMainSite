@@ -106,7 +106,6 @@ h1 {
 }
 
 .navbar-toggler:focus {
-    border: 0px;
     box-shadow: none;
     border: none;
 }
@@ -166,7 +165,7 @@ h1 {
     display: none;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 991px) {
     .mobile-only {
         display: block;
     }
@@ -195,7 +194,7 @@ h1 {
         align-items: center;
         padding: 30px;
         position: fixed;
-        top: 0px;
+        top: 0;
         right: 0;
         height: 100%;
         background-color: var(--off-white-solid);
