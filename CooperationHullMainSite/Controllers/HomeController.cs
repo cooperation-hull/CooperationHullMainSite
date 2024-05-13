@@ -30,7 +30,7 @@ namespace CooperationHullMainSite.Controllers
             HomePageModel model = new HomePageModel();
             try
             {
-                string temp = await _jsonFileReader.ReadFile("\\content\\homepageContent.json");
+                string temp = await _jsonFileReader.ReadFile("/content/homepageContent.json");
 
                 model = JsonSerializer.Deserialize<HomePageModel>(temp);
             }

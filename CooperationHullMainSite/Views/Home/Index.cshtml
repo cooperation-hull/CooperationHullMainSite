@@ -173,15 +173,13 @@
 <section class="homepage-block">
     <div class="row">
         <div class="col-12">
-            <h2 class="heading-lg">What's happening next?</h2>
+            <h2 class="heading-lg text-center py-4">What's happening next?</h2>
 
-            <div class="row">
-
+            <div class="row gx-5 gy-4">
                 @foreach (HappenginNextEvent eventItem in Model.eventList)
                 {
                     @Html.Partial("_HappeningNext", eventItem)
                 }
-
             </div>
         </div>
     </div>
