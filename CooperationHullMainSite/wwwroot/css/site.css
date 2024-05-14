@@ -409,7 +409,44 @@ h1 {
 /*Content Page*/
 
 .content-text {
-    margin: 2rem;
+    padding: 2rem;
+    max-width:100%;
+}
+
+
+    .content-text .top-image {
+        height:8rem;
+        width:100%;
+        background-image: url('../assets/img/contentpagetupimage1.png');
+    }
+
+.contet-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+    .content-text h1 {
+        margin-bottom: 4rem;
+        margin-top:2rem;
+    }
+
+    .content-text h2 {
+        margin-left: 1rem;
+    }
+
+    .content-text h3 {
+        margin-left: 2rem;
+    }
+
+    .content-text p {
+        margin-left:3rem;
+    }
+
+
+.content-text ul {
+    margin-left: 3rem;
 }
 
 
