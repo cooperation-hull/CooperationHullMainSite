@@ -481,3 +481,70 @@ h1 {
         filter: brightness(110%);
     }
 }
+
+/*Embedded form styling*/
+
+#can-form-area-get-help-to-attend-an-assembly {
+    max-width: 90%;
+    margin: auto;
+    color: var(--off-black);
+}
+
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form_inner > h2 {
+        font-size: clamp(3.2rem, .7vw + 2.5rem, 4rem);
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: -1px;
+        margin-top: 2rem;
+        border-bottom: none;
+    }
+
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form_inner > h4 {
+        font-size: clamp(2rem, .7vw + 1rem, 3rem);
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: -1px;
+        margin-top: 2rem;
+        border-bottom: none;
+    }
+
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form p {
+        font: inherit;
+        font-size: 1.2em;
+    }
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form span > label,
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form span,
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form li label
+    {
+        font: inherit;
+        font-size:16px;
+    }
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form input[type=submit] {
+        border-radius: var(--border-radius);
+        background: var(--cooperation-orange);
+        font-size: 2rem;
+        font: inherit;
+    }
+
+
+    #can-form-area-get-help-to-attend-an-assembly .floatlabel-input::placeholder {
+        color: var(--off-black);
+    }
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form input[type=text],
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form input[type=email] {
+        min-height: calc(1.5em + 1rem + 2px);
+        padding: .5rem 1rem;
+        font-size: 1.25rem;
+        border-radius: var(--border-radius);
+    }
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form input[type=checkbox]
+    {
+        transform:scale(1.5);
+    }
