@@ -138,8 +138,8 @@ namespace CooperationHullMainSite.Controllers
 
 
         [HttpGet]
-        [Route("ToolsOfTheTrade")]
-        public IActionResult ToolsOfTheTrade()
+        [Route("HowWeWork")]
+        public IActionResult HowWeWork()
         {
             return View();
         }

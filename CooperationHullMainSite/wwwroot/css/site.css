@@ -411,7 +411,44 @@ h1 {
 /*Content Page*/
 
 .content-text {
-    margin: 2rem;
+    padding: 2rem;
+    max-width:100%;
+}
+
+
+    .content-text .top-image {
+        height:8rem;
+        width:100%;
+        background-image: url('../assets/img/contentpagetupimage1.png');
+    }
+
+.contet-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+    .content-text h1 {
+        margin-bottom: 4rem;
+        margin-top:2rem;
+    }
+
+    .content-text h2 {
+        margin-left: 1rem;
+    }
+
+    .content-text h3 {
+        margin-left: 2rem;
+    }
+
+    .content-text p {
+        margin-left:3rem;
+    }
+
+
+.content-text ul {
+    margin-left: 3rem;
 }
 
 /* Safe zone within sibling sections that the call out block can "eat into". May need to be updated once responsivity is tweaked in other sections */
@@ -582,3 +619,70 @@ section:has(+ .call-out-block-wrapper) {
         filter: brightness(110%);
     }
 }
+
+/*Embedded form styling*/
+
+#can-form-area-get-help-to-attend-an-assembly {
+    max-width: 90%;
+    margin: auto;
+    color: var(--off-black);
+}
+
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form_inner > h2 {
+        font-size: clamp(3.2rem, .7vw + 2.5rem, 4rem);
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: -1px;
+        margin-top: 2rem;
+        border-bottom: none;
+    }
+
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form_inner > h4 {
+        font-size: clamp(2rem, .7vw + 1rem, 3rem);
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: -1px;
+        margin-top: 2rem;
+        border-bottom: none;
+    }
+
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form p {
+        font: inherit;
+        font-size: 1.2em;
+    }
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form span > label,
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form span,
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form li label
+    {
+        font: inherit;
+        font-size:16px;
+    }
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form input[type=submit] {
+        border-radius: var(--border-radius);
+        background: var(--cooperation-orange);
+        font-size: 2rem;
+        font: inherit;
+    }
+
+
+    #can-form-area-get-help-to-attend-an-assembly .floatlabel-input::placeholder {
+        color: var(--off-black);
+    }
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form input[type=text],
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form input[type=email] {
+        min-height: calc(1.5em + 1rem + 2px);
+        padding: .5rem 1rem;
+        font-size: 1.25rem;
+        border-radius: var(--border-radius);
+    }
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form input[type=checkbox]
+    {
+        transform:scale(1.5);
+    }

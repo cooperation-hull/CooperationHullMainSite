@@ -1,0 +1,389 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "sites_CooperationHullMainSitev1_name": {
+            "defaultValue": "CooperationHullMainSitev1",
+            "type": "String"
+        },
+        "serverfarms_CooperationHullMainSite20240214181842Pla_externalid": {
+            "defaultValue": "/subscriptions/39f2386e-758e-4334-809c-432691bbdfad/resourceGroups/coopHull/providers/Microsoft.Web/serverfarms/CooperationHullMainSite20240214181842Pla",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.Web/sites",
+            "apiVersion": "2023-01-01",
+            "name": "[parameters('sites_CooperationHullMainSitev1_name')]",
+            "location": "UK South",
+            "tags": {
+                "hidden-related:/subscriptions/39f2386e-758e-4334-809c-432691bbdfad/resourceGroups/coopHull/providers/Microsoft.Web/serverFarms/CooperationHullMainSite20240214181842Pla": "empty"
+            },
+            "kind": "app",
+            "identity": {
+                "type": "SystemAssigned"
+            },
+            "properties": {
+                "enabled": true,
+                "hostNameSslStates": [
+                    {
+                        "name": "cooperationhullmainsitev1.azurewebsites.net",
+                        "sslState": "Disabled",
+                        "hostType": "Standard"
+                    },
+                    {
+                        "name": "cooperationhullmainsitev1.scm.azurewebsites.net",
+                        "sslState": "Disabled",
+                        "hostType": "Repository"
+                    }
+                ],
+                "serverFarmId": "[parameters('serverfarms_CooperationHullMainSite20240214181842Pla_externalid')]",
+                "reserved": false,
+                "isXenon": false,
+                "hyperV": false,
+                "vnetRouteAllEnabled": false,
+                "vnetImagePullEnabled": false,
+                "vnetContentShareEnabled": false,
+                "siteConfig": {
+                    "numberOfWorkers": 1,
+                    "acrUseManagedIdentityCreds": false,
+                    "alwaysOn": false,
+                    "http20Enabled": false,
+                    "functionAppScaleLimit": 0,
+                    "minimumElasticInstanceCount": 0
+                },
+                "scmSiteAlsoStopped": false,
+                "clientAffinityEnabled": true,
+                "clientCertEnabled": false,
+                "clientCertMode": "Required",
+                "hostNamesDisabled": false,
+                "customDomainVerificationId": "4924E6B56EBC1EB4B4F58739CC7C4C713843ADB07FA80D2735E8282792266C6F",
+                "containerSize": 0,
+                "dailyMemoryTimeQuota": 0,
+                "httpsOnly": true,
+                "redundancyMode": "None",
+                "storageAccountRequired": false,
+                "keyVaultReferenceIdentity": "SystemAssigned"
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+            "apiVersion": "2023-01-01",
+            "name": "[concat(parameters('sites_CooperationHullMainSitev1_name'), '/ftp')]",
+            "location": "UK South",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_CooperationHullMainSitev1_name'))]"
+            ],
+            "tags": {
+                "hidden-related:/subscriptions/39f2386e-758e-4334-809c-432691bbdfad/resourceGroups/coopHull/providers/Microsoft.Web/serverFarms/CooperationHullMainSite20240214181842Pla": "empty"
+            },
+            "properties": {
+                "allow": true
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/basicPublishingCredentialsPolicies",
+            "apiVersion": "2023-01-01",
+            "name": "[concat(parameters('sites_CooperationHullMainSitev1_name'), '/scm')]",
+            "location": "UK South",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_CooperationHullMainSitev1_name'))]"
+            ],
+            "tags": {
+                "hidden-related:/subscriptions/39f2386e-758e-4334-809c-432691bbdfad/resourceGroups/coopHull/providers/Microsoft.Web/serverFarms/CooperationHullMainSite20240214181842Pla": "empty"
+            },
+            "properties": {
+                "allow": true
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/config",
+            "apiVersion": "2023-01-01",
+            "name": "[concat(parameters('sites_CooperationHullMainSitev1_name'), '/web')]",
+            "location": "UK South",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_CooperationHullMainSitev1_name'))]"
+            ],
+            "tags": {
+                "hidden-related:/subscriptions/39f2386e-758e-4334-809c-432691bbdfad/resourceGroups/coopHull/providers/Microsoft.Web/serverFarms/CooperationHullMainSite20240214181842Pla": "empty"
+            },
+            "properties": {
+                "numberOfWorkers": 1,
+                "defaultDocuments": [
+                    "Default.htm",
+                    "Default.html",
+                    "Default.asp",
+                    "index.htm",
+                    "index.html",
+                    "iisstart.htm",
+                    "default.aspx",
+                    "index.php",
+                    "hostingstart.html"
+                ],
+                "netFrameworkVersion": "v8.0",
+                "phpVersion": "5.6",
+                "requestTracingEnabled": false,
+                "remoteDebuggingEnabled": false,
+                "httpLoggingEnabled": false,
+                "acrUseManagedIdentityCreds": false,
+                "logsDirectorySizeLimit": 35,
+                "detailedErrorLoggingEnabled": true,
+                "publishingUsername": "$CooperationHullMainSitev1",
+                "scmType": "None",
+                "use32BitWorkerProcess": true,
+                "webSocketsEnabled": false,
+                "alwaysOn": false,
+                "managedPipelineMode": "Integrated",
+                "virtualApplications": [
+                    {
+                        "virtualPath": "/",
+                        "physicalPath": "site\\wwwroot",
+                        "preloadEnabled": false
+                    }
+                ],
+                "loadBalancing": "LeastRequests",
+                "experiments": {
+                    "rampUpRules": []
+                },
+                "autoHealEnabled": false,
+                "vnetRouteAllEnabled": false,
+                "vnetPrivatePortsCount": 0,
+                "localMySqlEnabled": false,
+                "managedServiceIdentityId": 84682,
+                "ipSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 2147483647,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictions": [
+                    {
+                        "ipAddress": "Any",
+                        "action": "Allow",
+                        "priority": 2147483647,
+                        "name": "Allow all",
+                        "description": "Allow all access"
+                    }
+                ],
+                "scmIpSecurityRestrictionsUseMain": false,
+                "http20Enabled": false,
+                "minTlsVersion": "1.2",
+                "scmMinTlsVersion": "1.2",
+                "ftpsState": "FtpsOnly",
+                "preWarmedInstanceCount": 0,
+                "elasticWebAppScaleLimit": 0,
+                "functionsRuntimeScaleMonitoringEnabled": false,
+                "minimumElasticInstanceCount": 0,
+                "azureStorageAccounts": {}
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/deployments",
+            "apiVersion": "2023-01-01",
+            "name": "[concat(parameters('sites_CooperationHullMainSitev1_name'), '/06f3379a86cf40618af04cdb0f27956f')]",
+            "location": "UK South",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_CooperationHullMainSitev1_name'))]"
+            ],
+            "properties": {
+                "status": 4,
+                "author_email": "N/A",
+                "author": "N/A",
+                "deployer": "GITHUB_ZIP_DEPLOY",
+                "message": "{\"type\":\"deployment\",\"sha\":\"61c2fde6c19e4fbeb790daf83dc84bda6cc2edee\",\"repoName\":\"Fireflower2012/CooperationHullMainSite\",\"actor\":\"Fireflower2012\",\"slotName\":\"production\",\"commitMessage\":\"Navbar works well on desktop, only thing missing from the mobile view is the transition slide-in from the right (#68)\"}",
+                "start_time": "2024-05-05T09:31:02.2878039Z",
+                "end_time": "2024-05-05T09:31:07.7992918Z",
+                "active": false
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/deployments",
+            "apiVersion": "2023-01-01",
+            "name": "[concat(parameters('sites_CooperationHullMainSitev1_name'), '/2017b30b828c43938959707e0862cb7f')]",
+            "location": "UK South",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_CooperationHullMainSitev1_name'))]"
+            ],
+            "properties": {
+                "status": 4,
+                "author_email": "N/A",
+                "author": "N/A",
+                "deployer": "GITHUB_ZIP_DEPLOY",
+                "message": "{\"type\":\"deployment\",\"sha\":\"bc98d4052b11d83062cce3572b70df176a2aab43\",\"repoName\":\"Fireflower2012/CooperationHullMainSite\",\"actor\":\"arthurHarding\",\"slotName\":\"production\",\"commitMessage\":\"Merge pull request #54 from Fireflower2012/45-api-call-for-on-form-signing-counter\\n\\n45 api call for on form signing counter\"}",
+                "start_time": "2024-04-01T13:40:57.1925018Z",
+                "end_time": "2024-04-01T13:41:03.5456068Z",
+                "active": false
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/deployments",
+            "apiVersion": "2023-01-01",
+            "name": "[concat(parameters('sites_CooperationHullMainSitev1_name'), '/380a24d80bc54235bf640afd414190cb')]",
+            "location": "UK South",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_CooperationHullMainSitev1_name'))]"
+            ],
+            "properties": {
+                "status": 4,
+                "author_email": "N/A",
+                "author": "N/A",
+                "deployer": "GITHUB_ZIP_DEPLOY",
+                "message": "{\"type\":\"deployment\",\"sha\":\"13cad0d889fe91dee7805d1ccab86de26a8e97db\",\"repoName\":\"Fireflower2012/CooperationHullMainSite\",\"actor\":\"arthurHarding\",\"slotName\":\"production\",\"commitMessage\":\"Merge pull request #63 from Fireflower2012/build-fix\\n\\nescaped @ in youtube url to fix build issue\"}",
+                "start_time": "2024-04-24T09:06:52.5830994Z",
+                "end_time": "2024-04-24T09:06:57.3863797Z",
+                "active": false
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/deployments",
+            "apiVersion": "2023-01-01",
+            "name": "[concat(parameters('sites_CooperationHullMainSitev1_name'), '/4e4f0e441b904b99a7194fe5a474c581')]",
+            "location": "UK South",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_CooperationHullMainSitev1_name'))]"
+            ],
+            "properties": {
+                "status": 4,
+                "author_email": "N/A",
+                "author": "N/A",
+                "deployer": "GITHUB_ZIP_DEPLOY",
+                "message": "{\"type\":\"deployment\",\"sha\":\"43911f1ffa69bd6f721d9b1f43c4e82b3c65fdfd\",\"repoName\":\"Fireflower2012/CooperationHullMainSite\",\"actor\":\"Fireflower2012\",\"slotName\":\"production\",\"commitMessage\":\"Styled the \\\"What's the plan?\\\" and \\\"The big answer\\\" sections (#65)\\n\\n* Moved a couple of sections round and started styling \\\"The Big Answer\\\"\\r\\nsection\\r\\n\\r\\n* Update CooperationHullMainSite/Views/Home/Index.cshtml\\r\\n\\r\\nCo-authored-by: Fireflower2012 <fireflower2012@gmail.com>\\r\\n\\r\\n* Made some minor style updates based on review comments\\r\\n\\r\\n* Added spacing around the paragraphs, using a css class 'homepage-text-block'\\r\\n\\r\\n---------\\r\\n\\r\\nCo-authored-by: Fireflower2012 <fireflower2012@gmail.com>\"}",
+                "start_time": "2024-05-11T10:29:36.8428443Z",
+                "end_time": "2024-05-11T10:29:43.0774447Z",
+                "active": true
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/deployments",
+            "apiVersion": "2023-01-01",
+            "name": "[concat(parameters('sites_CooperationHullMainSitev1_name'), '/5f452de7de7d4fb1a985004b9fb80a07')]",
+            "location": "UK South",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_CooperationHullMainSitev1_name'))]"
+            ],
+            "properties": {
+                "status": 4,
+                "author_email": "N/A",
+                "author": "N/A",
+                "deployer": "GITHUB_ZIP_DEPLOY",
+                "message": "{\"type\":\"deployment\",\"sha\":\"3f53f5d5d976c3a4d34978288f41e46fd95f6f69\",\"repoName\":\"Fireflower2012/CooperationHullMainSite\",\"actor\":\"Fireflower2012\",\"slotName\":\"production\",\"commitMessage\":\"Added back in missing } which was totally screwing up all the css (#69)\"}",
+                "start_time": "2024-05-06T20:35:12.6538272Z",
+                "end_time": "2024-05-06T20:35:18.6112731Z",
+                "active": false
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/deployments",
+            "apiVersion": "2023-01-01",
+            "name": "[concat(parameters('sites_CooperationHullMainSitev1_name'), '/63e7ea3b227c4889bcca72f452efa278')]",
+            "location": "UK South",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_CooperationHullMainSitev1_name'))]"
+            ],
+            "properties": {
+                "status": 4,
+                "author_email": "N/A",
+                "author": "N/A",
+                "deployer": "GITHUB_ZIP_DEPLOY",
+                "message": "{\"type\":\"deployment\",\"sha\":\"457f1a34ad7aa452302b696eecb94adefc0faaaa\",\"repoName\":\"Fireflower2012/CooperationHullMainSite\",\"actor\":\"Fireflower2012\",\"slotName\":\"production\",\"commitMessage\":\"reverted to old versions of actions (#59)\"}",
+                "start_time": "2024-04-06T11:52:16.4769338Z",
+                "end_time": "2024-04-06T11:52:21.7193494Z",
+                "active": false
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/deployments",
+            "apiVersion": "2023-01-01",
+            "name": "[concat(parameters('sites_CooperationHullMainSitev1_name'), '/71cbbcf9385941ef9530b6dbd20a1355')]",
+            "location": "UK South",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_CooperationHullMainSitev1_name'))]"
+            ],
+            "properties": {
+                "status": 4,
+                "author_email": "N/A",
+                "author": "N/A",
+                "deployer": "GITHUB_ZIP_DEPLOY",
+                "message": "{\"type\":\"deployment\",\"sha\":\"05a218c202c9fa6e966ae521fa3e168cf5c362f0\",\"repoName\":\"Fireflower2012/CooperationHullMainSite\",\"actor\":\"arthurHarding\",\"slotName\":\"production\",\"commitMessage\":\"Merge pull request #80 from Fireflower2012/8-form-functionality\\n\\nGot sign up form working\"}",
+                "start_time": "2024-05-10T12:58:30.207255Z",
+                "end_time": "2024-05-10T12:58:34.7312273Z",
+                "active": false
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/deployments",
+            "apiVersion": "2023-01-01",
+            "name": "[concat(parameters('sites_CooperationHullMainSitev1_name'), '/732a2d269cf44981a87a04e5c32cd935')]",
+            "location": "UK South",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_CooperationHullMainSitev1_name'))]"
+            ],
+            "properties": {
+                "status": 4,
+                "author_email": "N/A",
+                "author": "N/A",
+                "deployer": "GITHUB_ZIP_DEPLOY",
+                "message": "{\"type\":\"deployment\",\"sha\":\"978127f4b0e0174006fca963d32cb3070a30432d\",\"repoName\":\"Fireflower2012/CooperationHullMainSite\",\"actor\":\"Fireflower2012\",\"slotName\":\"production\",\"commitMessage\":\"Update font (#66)\"}",
+                "start_time": "2024-05-01T19:42:01.1493056Z",
+                "end_time": "2024-05-01T19:42:06.23556Z",
+                "active": false
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/deployments",
+            "apiVersion": "2023-01-01",
+            "name": "[concat(parameters('sites_CooperationHullMainSitev1_name'), '/b6797853cde84f73868f4879650ef6c8')]",
+            "location": "UK South",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_CooperationHullMainSitev1_name'))]"
+            ],
+            "properties": {
+                "status": 4,
+                "author_email": "N/A",
+                "author": "N/A",
+                "deployer": "GITHUB_ZIP_DEPLOY",
+                "message": "{\"type\":\"deployment\",\"sha\":\"b2d171aeb23368ac2520e19148a54ea1fafdc591\",\"repoName\":\"Fireflower2012/CooperationHullMainSite\",\"actor\":\"Fireflower2012\",\"slotName\":\"production\",\"commitMessage\":\"64 add opengraph meta tags (#70)\\n\\n* OpenGrpah initial implementation\\r\\n\\r\\n* Swapped url for current website rather than dev site\\r\\n\\r\\n* Remembered to check in description\"}",
+                "start_time": "2024-05-06T20:35:31.4684711Z",
+                "end_time": "2024-05-06T20:35:35.8016369Z",
+                "active": false
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/deployments",
+            "apiVersion": "2023-01-01",
+            "name": "[concat(parameters('sites_CooperationHullMainSitev1_name'), '/d9d59c21e3e7408a8dfaa1746f3d385c')]",
+            "location": "UK South",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_CooperationHullMainSitev1_name'))]"
+            ],
+            "properties": {
+                "status": 4,
+                "author_email": "N/A",
+                "author": "N/A",
+                "deployer": "GITHUB_ZIP_DEPLOY",
+                "message": "{\"type\":\"deployment\",\"sha\":\"c197998fc0456af5968be6bc479194484ded3965\",\"repoName\":\"Fireflower2012/CooperationHullMainSite\",\"actor\":\"Fireflower2012\",\"slotName\":\"production\",\"commitMessage\":\"Improve mobile heading styles (#67)\"}",
+                "start_time": "2024-05-01T20:14:59.5853809Z",
+                "end_time": "2024-05-01T20:15:03.8840258Z",
+                "active": false
+            }
+        },
+        {
+            "type": "Microsoft.Web/sites/hostNameBindings",
+            "apiVersion": "2023-01-01",
+            "name": "[concat(parameters('sites_CooperationHullMainSitev1_name'), '/', parameters('sites_CooperationHullMainSitev1_name'), '.azurewebsites.net')]",
+            "location": "UK South",
+            "dependsOn": [
+                "[resourceId('Microsoft.Web/sites', parameters('sites_CooperationHullMainSitev1_name'))]"
+            ],
+            "properties": {
+                "siteName": "CooperationHullMainSitev1",
+                "hostNameType": "Verified"
+            }
+        }
+    ]
+}
