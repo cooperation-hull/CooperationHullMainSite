@@ -526,16 +526,6 @@ section:has(+ .call-out-block-wrapper) {
     padding-right: calc(var(--bs-gutter-x) * 0.5);
 }
 
-/* .form-container {
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-    .form-container label {
-        color: white;
-    } */
-
-
 .happening-next-item {
     position: relative;
     width: 100%;
