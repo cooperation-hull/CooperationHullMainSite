@@ -465,10 +465,18 @@ section:has(+ .call-out-block-wrapper) {
 
 .call-out-block-illo {
     position: absolute;
-    bottom: -20%;
+    bottom: -8%;
     left: 36%;
     z-index: 0;
-    width: 230px;
+    width: 160px;
+}
+
+@media (min-width: 992px) {
+    .call-out-block-illo {
+        bottom: -20%;
+        left: 36%;
+        width: 230px;
+    }
 }
 
 .call-out-block-text {
