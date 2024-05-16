@@ -459,7 +459,7 @@ section:has(+ .call-out-block-wrapper) {
 
 @media (min-width: 1280px) {
     .call-out-block {
-        padding: 3rem;
+        padding: 3rem 3rem;
     }
 }
 
@@ -484,11 +484,15 @@ section:has(+ .call-out-block-wrapper) {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    > p {
+        margin-bottom: 0;
+    }
 }
 
 @media (min-width: 1280px) {
     .call-out-block-text > p {
-        width: 80%
+        width: 80%;
     }
 }
 
