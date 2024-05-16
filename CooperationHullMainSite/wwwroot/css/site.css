@@ -90,7 +90,6 @@ h1 {
 
 
 /* Nav bar */
-/* (Lewis) made some changes here March 27th for design V8 */
 
 .navbar {
     color: var(--off-black);
@@ -319,6 +318,11 @@ h1 {
 .hero button {
     color: white;
     background-color: var(--off-black);
+    margin-top: 2rem;
+}
+
+.hero p {
+    margin-left: .5rem;
 }
 
 .hero .hero-text {
