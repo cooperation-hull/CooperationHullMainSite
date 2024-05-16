@@ -414,25 +414,104 @@ h1 {
     margin: 2rem;
 }
 
+/* Safe zone within sibling sections that the call out block can "eat into". May need to be updated once responsivity is tweaked in other sections */
+
+body {
+    --call-out-block-safe-area-y: 250px
+}
+@media (min-width: 400px) {
+    body {
+        --call-out-block-safe-area-y: 200px
+    }
+}
+@media (min-width: 992px) {
+    body {
+        --call-out-block-safe-area-y: 160px
+    }
+}
 section:has(+ .call-out-block-wrapper) {
-    padding-bottom: 200px;
+    padding-bottom: var(--call-out-block-safe-area-y);
 }
 .call-out-block-wrapper + section {
-    padding-top: 200px;
+    padding-top: var(--call-out-block-safe-area-y);
 }
 
 .call-out-block-wrapper {
-    padding: 50px 0;
     position: absolute;
     transform: translateY(-50%);
 }
 
 .call-out-block {
+    position: relative;
     width: 90%;
     margin: 0 auto;
     background-color: var(--city-orange);
-    padding: 2rem;
+    padding: 2rem 1rem;
     border-radius: 8px;
+    overflow: hidden;
+}
+
+@media (min-width: 992px) {
+    .call-out-block {
+        padding: 2rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .call-out-block {
+        padding: 3rem;
+    }
+}
+
+.call-out-block-illo {
+    position: absolute;
+    bottom: -20%;
+    left: 36%;
+    z-index: 0;
+    width: 230px;
+}
+
+.call-out-block-text {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+@media (min-width: 1280px) {
+    .call-out-block-text > p {
+        width: 80%
+    }
+}
+
+.call-out-block-form {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0;
+}
+
+.call-out-block-form label {
+    color: white;
+    margin-bottom: 0;
+}
+
+.call-out-block-form input {
+    border: none;
+}
+
+.call-out-block-form button {
+    color: white;
+    background-color: var(--cooperation-orange);
+    border: none;
+    font-weight: 800;
+}
+
+.call-out-block-form .form-final-row > * {
+    /* Recreating bootstrap's `row` padding without any of its other baggage */
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
 }
 
 /* .form-container {
