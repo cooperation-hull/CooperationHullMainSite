@@ -114,6 +114,7 @@
             </div>
             <form class="col-lg-6 call-out-block-form" method="post" id="home_page_signup_form" asp-action="Home_page_signup_form" asp-controller="Home">
                 <div class="row">
+                   <p id="homepage-formError" class="errorMessage"></p>
                     <div class="col-6">
                         <label for="PledgeFormFirstName" class="form-label">First Name</label>
                         <input id="PledgeFormFirstName" name="PledgeFormFirstName" class="form-control form-control-lg" type="text">
@@ -126,7 +127,7 @@
 
                 <div class="form-final-row d-flex">
                     <div class="col-xl-9 col-lg-8 col-md-7">
-                        <label for="PledgeFormMobile" class="form-label">Mobile Number</label>
+                        <label for="PledgeFormMobile" class="form-label">Phone Number</label>
                         <input id="PledgeFormMobile" name="PledgeFormMobile" class="form-control form-control-lg" type="text">
                     </div>
                     <div class="align-self-end flex-grow-1">
@@ -134,6 +135,10 @@
                     </div>
                 </div>
             </form>
+            <div class="col-lg-6 call-out-block-form" id="form-completed">
+              <p class="heading-md" >Hello <span id="signedbyName"></span></p>
+              <p class="heading-sm">Thank you for joining our mailing list</p>
+            </div>
         </div>
     </div>
 </section>

@@ -273,6 +273,12 @@ h1 {
     color: var(--off-black);
 }
 
+
+    .main-content .content-page {
+        background-color: var(--city-orange);
+        min-height: 86vh;
+    }
+
 /* Home Page */
 
 .homepage-text-block {
@@ -476,6 +482,7 @@ section:has(+ .call-out-block-wrapper) {
 .call-out-block-wrapper {
     position: absolute;
     transform: translateY(-50%);
+    max-width:1920px;
 }
 
 .call-out-block {
@@ -557,10 +564,21 @@ section:has(+ .call-out-block-wrapper) {
     font-weight: 800;
 }
 
-.call-out-block-form .form-final-row > * {
+ .form-final-row > * {
     /* Recreating bootstrap's `row` padding without any of its other baggage */
     padding-left: calc(var(--bs-gutter-x) * 0.5);
     padding-right: calc(var(--bs-gutter-x) * 0.5);
+}
+
+
+.call-out-block-form .errorMessage {
+    color: green;
+    font-weight: bold;
+}
+
+
+.call-out-block-form #form-completed {
+    text-align: center;
 }
 
 .happening-next-item {
@@ -571,7 +589,6 @@ section:has(+ .call-out-block-wrapper) {
     border-radius: 8px;
     overflow: hidden;
     transition: transform 100ms;
-
     &:has(a:hover) {
         transform: translateY(-0.2rem);
     }
