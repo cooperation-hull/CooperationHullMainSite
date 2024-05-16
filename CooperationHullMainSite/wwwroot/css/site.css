@@ -14,6 +14,10 @@ html {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+.btn-lg {
+    font-size: clamp(1.5rem, 0.5vw + 1rem, 2rem);
+}
+
 html {
     position: relative;
     min-height: 100%;
@@ -62,7 +66,7 @@ h1 {
 }
 
 .heading-xl {
-    font-size: clamp(3.6rem, .7vw + 3rem, 5rem);
+    font-size: clamp(3.6rem, 5vw + 3rem, 8rem);
 }
 
 .heading-lg {
@@ -75,10 +79,12 @@ h1 {
 
 .heading-sm {
     font-size: clamp(1rem, .5vw + 1rem, 2rem);
+    letter-spacing: 0;
 }
 
 .heading-xs {
     font-size: clamp(1rem, .2vw + 1rem, 1.5rem);
+    letter-spacing: 0;
 }
 
 .row {
@@ -87,7 +93,7 @@ h1 {
 }
 
 .text-lg {
-    font-size: clamp(1rem, .2vw + 1rem, 1.5rem);
+    font-size: clamp(1rem, 0.4vw + 1rem, 1.5rem);
 }
 
 
@@ -110,7 +116,6 @@ h1 {
 }
 
 .navbar-toggler:focus {
-    border: 0px;
     box-shadow: none;
     border: none;
 }
@@ -170,7 +175,7 @@ h1 {
     display: none;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 991px) {
     .mobile-only {
         display: block;
     }
@@ -199,7 +204,7 @@ h1 {
         align-items: center;
         padding: 30px;
         position: fixed;
-        top: 0px;
+        top: 0;
         right: 0;
         height: 100%;
         background-color: var(--off-white-solid);
@@ -300,6 +305,7 @@ h1 {
 .hero-image-container {
     padding: 0px;
     background-image: url("../assets/img/hero-mobile.png");
+    background-position: left bottom
 }
 
 @media screen and (min-width: 768px){
@@ -322,10 +328,15 @@ h1 {
 .hero button {
     color: white;
     background-color: var(--off-black);
+    margin-top: 3rem;
+}
+
+.hero p {
+    margin-left: .5rem;
 }
 
 .hero .hero-text {
-    margin: 3rem 3rem 3rem 3rem;
+    margin: 10rem 3rem 3rem 3rem;
     max-width: 80%;
 }
 
@@ -401,6 +412,10 @@ h1 {
     color: var(--off-black)
 }
 
+.homepage-block .white a:hover {
+    color: var(--off-black)
+}
+
 .homepage-block.how-we-work {
     background-color: black;
     color: white;
@@ -450,35 +465,58 @@ h1 {
 
 
 .happening-next-item {
+    position: relative;
     width: 100%;
-    background-color: black;
-    color: white;
+    background-color: var(--off-black);
+    color: var(--cooperation-white);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 100ms;
+
+    &:has(a:hover) {
+        transform: translateY(-0.2rem);
+    }
 }
 
-    .happening-next-item h3 {
-        font-weight: bolder;
-        padding: 1rem;
-    }
+.happening-next-item .header-image {
+    width: 100%;
+    height: 200px;
+}
 
-    .happening-next-item img {
-        width: inherit;
-        position: relative;
-        top: -2rem;
-    }
+.happening-next-item .date-tag {
+    background-color: var(--cooperation-white);
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.2rem 1rem;
+    color: black;
+    z-index: 100;
+    text-align: center;
+    border-radius: 6px;
+}
 
-    .happening-next-item .descBlock {
-        padding: 2rem;
-        display: flex;
-    }
+.happening-next-item .content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
 
-    .happening-next-item .dateDisplay {
-        background-color: aqua;
-        position: relative;
-        bottom: -3rem;
-        width: 30%;
-        font-size: larger;
-        color: black;
-        z-index: 100;
-        text-align: center;
-        margin-left: 60%;
+.happening-next-item .content .description-block {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: end;
+}
+
+.happening-next-item .content .description-block .text-sm {
+    line-height: 1.4;
+}
+
+.happening-next-item .content .description-block a {
+    transition: filter 100ms;
+
+    &:hover {
+        filter: brightness(110%);
     }
+}

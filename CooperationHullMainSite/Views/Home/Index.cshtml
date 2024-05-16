@@ -5,7 +5,7 @@
 
         <div class="hero-image-container">
 
-            <div class="col-12 col-md-11 col-lg-7 col-xl-6 col-xxl-6 text-left hero-text">
+            <div class="col-12 col-md-11 col-lg-7 col-xl-6 col-xxl-5 text-left hero-text">
                 <h1 class="heading-xl">THE BIG QUESTION</h1>
                 <p class="text-lg">
                     Strong, caring communities. Enough food for everyone.
@@ -170,15 +170,13 @@
 <section class="homepage-block">
     <div class="row">
         <div class="col-12">
-            <h2 class="heading-lg">What's happening next?</h2>
+            <h2 class="heading-lg text-center py-4">What's happening next?</h2>
 
-            <div class="row">
-
+            <div class="row gx-5 gy-4">
                 @foreach (HappenginNextEvent eventItem in Model.eventList)
                 {
                     @Html.Partial("_HappeningNext", eventItem)
                 }
-
             </div>
         </div>
     </div>
