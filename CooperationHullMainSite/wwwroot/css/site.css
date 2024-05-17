@@ -96,20 +96,16 @@ h1 {
     background: var(--off-white);
     padding-left: 95px;
     padding-right: 95px;
-    z-index: 101;
-    position: absolute;
-    top: 0;
-    left: 0;
 }
 
 .navbar-toggler {
     border: none;
 }
 
-.navbar-toggler:focus {
-    box-shadow: none;
-    border: none;
-}
+    .navbar-toggler:focus {
+        box-shadow: none;
+        border: none;
+    }
 
 .navbar-nav {
     display: flex;
@@ -126,9 +122,9 @@ h1 {
     font-weight: 800;
 }
 
-.navbar .nav-link:hover {
-    text-decoration: underline;
-}
+    .navbar .nav-link:hover {
+        text-decoration: underline;
+    }
 
 .navbar-nav .donate-button {
     /* (Lewis) This vertically aligns the donate button with the other links in the navbar */
@@ -177,9 +173,9 @@ h1 {
         z-index: 1;
     }
 
-    .navbar .nav-link {
-        margin-right: 0;
-    }
+        .navbar .nav-link {
+            margin-right: 0;
+        }
 
     .navbar-brand h1 {
         font-size: 1em;
