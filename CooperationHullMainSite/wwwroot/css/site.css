@@ -96,6 +96,11 @@ h1 {
     background: var(--off-white);
     padding-left: 95px;
     padding-right: 95px;
+    z-index: 101;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%
 }
 
 .navbar-toggler {
@@ -313,8 +318,10 @@ h1 {
 
 .hero button {
     color: white;
-    background-color: var(--off-black);
+    background-color: var(--cooperation-orange);
     margin-top: 2rem;
+    font-weight: 800;
+    border-width: 0;
 }
 
 .hero p {
