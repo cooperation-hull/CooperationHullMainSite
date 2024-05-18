@@ -517,7 +517,6 @@ section:has(+ .call-out-block-wrapper) {
 
 @media (min-width: 992px) {
     .call-out-block-illo {
-        bottom: -20%;
         left: 36%;
         width: 230px;
     }
