@@ -67,7 +67,7 @@ namespace CooperationHullMainSite.Controllers
 
 
             if (String.IsNullOrWhiteSpace(Request.Form["PledgeFormFirstName"]))
-                errorList.Add("FirstName");
+                errorList.Add("First Name");
             else
                 data.given_name = HttpUtility.HtmlEncode(Request.Form["PledgeFormFirstName"]);
 

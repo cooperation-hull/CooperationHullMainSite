@@ -9,8 +9,8 @@ document.addEventListener('DOMContentLoaded', () => { pageLoadActions(); });
 
 function pageLoadActions() {
     setNavItemActive();
-    $('#form-to-complete #formError').html();
-    $('#form-to-complete').show();
+    $('#homepage-formError').html();
+    $('#home_page_signup_form').show();
     $('#form-completed').hide();
 }
 
@@ -37,12 +37,12 @@ function home_page_signup_form_submit() {
         success: function (response) {
 
             if (response.result) {
-                $('#form-completed #signedbyName').html(response.signedByName);
-                $('#homepage-form-to-complete').hide();
+                $('#signedbyName').html(response.signedByName);
+                $('#home_page_signup_form').hide();
                 $('#form-completed').show();
             }
             else {
-                $('#homepage-form-to-complete #homepage-formError').html(response.error);
+                $('#homepage-formError').html(response.error);
             }
         }
     });
