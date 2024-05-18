@@ -353,6 +353,7 @@ h1 {
     position: relative;
     padding-bottom: 50%;
     height: 100%;
+    width: 100%;
 }
 
     .homepage-block .video-container iframe {
@@ -360,7 +361,8 @@ h1 {
         top: 50%;
         left: 0;
         width: 100%;
-        height: 75%;
+        padding: 10%;
+        height: 97.5%;
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
     }
@@ -385,22 +387,131 @@ h1 {
     color: var(--off-black)
 }
 
+.homepage-block .white a:hover {
+    color: var(--off-black)
+}
+
 .homepage-block.how-we-work {
     background-color: black;
     color: white;
+    display: flex;
+    flex-wrap: wrap;
 }
+
+
+.hww {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+    flex-wrap: wrap-reverse;
+
+    background-color: #23201E;
+
+    position: relative;
+    overflow: hidden;
+
+    color: white;
+    padding: 2% 12%;
+    padding-top: 200px;
+  }
+
+  .hww::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    
+    width: 100%;
+    height: 33%;
+    bottom: 0;
+
+    z-index: -1;
+
+    background-image: url("../assets/img/trees-pattern-grey.png");
+    background-repeat: no-repeat;
+  }
+
+  .hww .spot {
+    position: absolute;
+    right: 12%;
+    bottom: 0;
+    z-index: 0;
+  }
+
+  .hww .video {
+    width: 80%;
+    z-index: 10;
+    min-width: 50%;
+    height: auto;
+    padding: 15% 0% 0 0;
+}
+
+.video > iframe {
+    aspect-ratio: 16 / 9;
+    width: 100% !important;
+}
+
+  .blurb {
+    text-align: justify;
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .blurb h1 {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .blurb a {
+    text-decoration: underline;
+  }
+
+  .blurb a:hover {
+    cursor: pointer;
+  }
 
 @media(min-width:1000px) {
-    .homepage-block.how-we-work {
-        background-image: url("../assets/img/pattern 1 1 inverted.png");
-        background-position-x: right;
-        background-position-y: bottom;
+    .hww {
+        background-image: url("../assets/img/pattern\ 1\ 1\ grey.png");
+        background-position-y: left;
         background-repeat: no-repeat;
-        background-color: black;
+        background-color: #23201E;
         color: white;
+        display: flex;
+        align-items: center;
+        
+        flex-wrap: nowrap;
+        
+    }
+
+    .hww::before {
+        visibility: hidden;
+    }
+
+    .hww .spot {
+        position: absolute;
+        bottom: 0;
+        right: 33%;
+      }
+
+    .hww h1 {
+        text-align: left;
+    }
+
+    .hww .video {
+        width: 75%;
+        min-width: 50%;
+        height: auto;
+        padding: 0% 0% 0 0;
+    }
+
+    .video > iframe {
+        aspect-ratio: 16 / 9;
+        width: 100% !important;
     }
 }
-
 
 .homepage-block .feature-image {
     display: flex;
