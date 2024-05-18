@@ -27,8 +27,8 @@
 </section>
 
 
-<!-- The Plan -->
-<section class="homepage-block the-plan ">
+
+<section class="homepage-block the-plan orange">
     <div class="row">
 
         <div class="col-lg-6 col-md-12 p-4 homepage-text-block">
@@ -53,10 +53,8 @@
     </div>
 </section>
 
-
-<!-- The Big Answer -->
-<section class="homepage-block big-answer ">
-    <div class="row white">
+<section class="homepage-block big-answer white">
+    <div class="row">
 
         <div class="col-lg-6 col-md-12 p-4">
             <div class="feature-image">
@@ -85,57 +83,44 @@
 </section>
 
 
-<!-- Sign Up -->
-<section class="homepage-block sign-up" id="sign-up">
-    <div class="row">
-
-        <div class="col-lg-6 col-md-12 form-container order-lg-0 order-md-1">
-
-            <div id="homepage-form-to-complete">
-                <p id="homepage-formError"></p>
-                <form method="post" id="home_page_signup_form" asp-action="Home_page_signup_form" asp-controller="Home">
-                    <div class="row m-3">
-                        <div class="col-xl-6 col-lg-12">
-                            <label for="PledgeFormFirstName" class="form-label">First Name</label>
-                            <input id="PledgeFormFirstName" name="PledgeFormFirstName" class="form-control form-control-lg" type="text" placeholder="First Name" aria-label="First Name">
-                        </div>
-                        <div class="col-xl-6 col-lg-12">
-                            <label for="PledgeFormSurname" class="form-label">Surname</label>
-                            <input id="PledgeFormSurname" name="PledgeFormSurname" class="form-control form-control-lg" type="text" placeholder="Surname" aria-label="Surname">
-                        </div>
-                    </div>
-
-                    <div class="row m-3">
-                        <div class="col-xl-9 col-lg-8 col-md-7">
-                            <label for="PledgeFormMobile" class="form-label">Mobile Number</label>
-                            <input id="PledgeFormMobile" name="PledgeFormMobile" class="form-control form-control-lg" type="text" placeholder="Mobile Number" aria-label="Mobile Number">
-                        </div>
-                        <div class="col-xl-3 col-lg-4 col-md-5 container align-self-end">
-                            <div>
-                                <button type="button" class="btn btn-light btn-lg px-4 gap-3" onclick="home_page_signup_form_submit();">Sign</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+<section class="call-out-block-wrapper">
+    <div class="call-out-block">
+        <img class="call-out-block-illo" src="~/assets/img/hedgehog-spot.png" alt="" />
+        <div class="row align-items-center">
+            <div class="col-lg-6 class call-out-block-text">
+                <h2 class="heading-md">Want to be part of something bigger?</h2>
+                <p>
+                    If you want to make the world a better place, leaving us your phone number is the easiest way to make a difference. 
+                    In a short call we’ll answer your questions and find your place in the movement. Join hundreds of local people, working together, today.
+                </p>
             </div>
-            <div id="form-completed">
-                <p>Hello <span id="signedbyName"></span></p>
-                <p>Thank you for joining our mailing list.</p>
+            <form class="col-lg-6 call-out-block-form" method="post" id="home_page_signup_form" asp-action="Home_page_signup_form" asp-controller="Home">
+                <div class="row">
+                   <p id="homepage-formError" class="errorMessage"></p>
+                    <div class="col-6">
+                        <label for="PledgeFormFirstName" class="form-label">First Name</label>
+                        <input id="PledgeFormFirstName" name="PledgeFormFirstName" class="form-control form-control-lg" type="text">
+                    </div>
+                    <div class="col-6">
+                        <label for="PledgeFormSurname" class="form-label">Surname</label>
+                        <input id="PledgeFormSurname" name="PledgeFormSurname" class="form-control form-control-lg" type="text">
+                    </div>
+                </div>
+
+                <div class="form-final-row d-flex">
+                    <div class="col-xl-9 col-lg-8 col-md-7">
+                        <label for="PledgeFormMobile" class="form-label">Phone Number</label>
+                        <input id="PledgeFormMobile" name="PledgeFormMobile" class="form-control form-control-lg" type="text">
+                    </div>
+                    <div class="align-self-end flex-grow-1">
+                        <button type="button" class="w-100 btn btn-lg px-4 heading-sm" onclick="home_page_signup_form_submit();">Sign</button>
+                    </div>
+                </div>
+            </form>
+            <div class="col-lg-6 call-out-block-form" id="form-completed">
+              <p class="heading-md" >Hello <span id="signedbyName"></span></p>
+              <p class="heading-sm">Thank you for joining our mailing list</p>
             </div>
-
-        </div>
-
-        <div class="col-lg-6 col-md-12 p-4 order-lg-1 order-md-0">
-
-            @if (Model.formSignedCounter >= 0)
-            {
-                <p>@($"{Model.formSignedCounter} have signed so far")</p>
-            }
-            else
-            {
-                <p>Hundreds of people have signed already</p>
-            }
-
         </div>
 
     </div>
@@ -168,9 +153,7 @@
     </div>
 </section>
 
-
-<!-- What's Happening Next -->
-<section class="homepage-block">
+<section class="homepage-block orange">
     <div class="row">
         <div class="col-12">
             <h2>What's happening next?</h2>
