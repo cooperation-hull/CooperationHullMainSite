@@ -67,7 +67,7 @@ namespace CooperationHullMainSite.Controllers
 
 
             if (String.IsNullOrWhiteSpace(Request.Form["PledgeFormFirstName"]))
-                errorList.Add("FirstName");
+                errorList.Add("First Name");
             else
                 data.given_name = HttpUtility.HtmlEncode(Request.Form["PledgeFormFirstName"]);
 
@@ -101,21 +101,21 @@ namespace CooperationHullMainSite.Controllers
 
 
         [HttpGet]
-        [Route("PrivacyPolicy")]
+        [Route("privacy-policy")]
         public IActionResult PrivacyPolicy()
         {
             return View();
         }
 
         [HttpGet]
-        [Route("CookiePolicy")]
+        [Route("cookie-policy")]
         public IActionResult CookiePolicy()
         {
             return View();
         }
 
         [HttpGet]
-        [Route("ContactUs")]
+        [Route("contact-us")]
         public IActionResult ContactUs()
         {
             return View();
@@ -123,14 +123,14 @@ namespace CooperationHullMainSite.Controllers
 
 
         [HttpGet]
-        [Route("WhoWeAre")]
+        [Route("who-we-are")]
         public IActionResult WhoWeAre()
         {
             return View();
         }
 
         [HttpGet]
-        [Route("TheBigIdea")]
+        [Route("the-big-idea")]
         public IActionResult TheBigIdea()
         {
             return View();
@@ -138,15 +138,15 @@ namespace CooperationHullMainSite.Controllers
 
 
         [HttpGet]
-        [Route("ToolsOfTheTrade")]
-        public IActionResult ToolsOfTheTrade()
+        [Route("how-we-work")]
+        public IActionResult HowWeWork()
         {
             return View();
         }
 
 
         [HttpGet]
-        [Route("AroundTheWorld")]
+        [Route("around-the-world")]
         public IActionResult AroundTheWorld()
         {
             return View();
@@ -154,7 +154,7 @@ namespace CooperationHullMainSite.Controllers
 
 
         [HttpGet]
-        [Route("Membership")]
+        [Route("membership")]
         public IActionResult Membership()
         {
             return View();
@@ -169,14 +169,14 @@ namespace CooperationHullMainSite.Controllers
 
 
         [HttpGet]
-        [Route("FAQs")]
+        [Route("faqs")]
         public IActionResult FAQs()
         {
             return View();
         }
 
         [HttpGet]
-        [Route("HelpToAttend")]
+        [Route("help-to-attend")]
         public IActionResult HelpToAttend()
         {
             return View();

@@ -277,10 +277,15 @@ h1 {
 
 
 .main-content {
-    background-color: var(--city-orange);
     min-height: 86vh;
     color: var(--off-black);
 }
+
+
+    .main-content .content-page {
+        background-color: var(--city-orange);
+        min-height: 86vh;
+    }
 
 /* Home Page */
 
@@ -361,8 +366,11 @@ h1 {
 }
 
 
-.homepage-block .white {
+.homepage-block.white {
     background-color: var(--cooperation-white);
+}
+.homepage-block.orange {
+    background-color: var(--city-orange);
 }
 
 
@@ -382,6 +390,7 @@ h1 {
     position: relative;
     padding-bottom: 50%;
     height: 100%;
+    width: 100%;
 }
 
     .homepage-block .video-container iframe {
@@ -389,7 +398,8 @@ h1 {
         top: 50%;
         left: 0;
         width: 100%;
-        height: 75%;
+        padding: 10%;
+        height: 97.5%;
         -ms-transform: translateY(-50%);
         transform: translateY(-50%);
     }
@@ -421,19 +431,124 @@ h1 {
 .homepage-block.how-we-work {
     background-color: black;
     color: white;
+    display: flex;
+    flex-wrap: wrap;
 }
+
+
+.hww {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2%;
+    flex-wrap: wrap-reverse;
+
+    background-color: #23201E;
+
+    position: relative;
+    overflow: hidden;
+
+    color: white;
+    padding: 2% 12%;
+    padding-top: 200px;
+  }
+
+  .hww::before {
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    
+    width: 100%;
+    height: 33%;
+    bottom: 0;
+
+    z-index: -1;
+
+    background-image: url("../assets/img/trees-pattern-grey.png");
+    background-repeat: no-repeat;
+  }
+
+  .hww .spot {
+    position: absolute;
+    right: 12%;
+    bottom: 0;
+    z-index: 0;
+  }
+
+  .hww .video {
+    width: 80%;
+    z-index: 10;
+    min-width: 50%;
+    height: auto;
+    padding: 15% 0% 0 0;
+}
+
+.video > iframe {
+    aspect-ratio: 16 / 9;
+    width: 100% !important;
+}
+
+  .blurb {
+    text-align: justify;
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .blurb h1 {
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .blurb a {
+    text-decoration: underline;
+  }
+
+  .blurb a:hover {
+    cursor: pointer;
+  }
 
 @media(min-width:1000px) {
-    .homepage-block.how-we-work {
-        background-image: url("../assets/img/pattern 1 1 inverted.png");
-        background-position-x: right;
-        background-position-y: bottom;
+    .hww {
+        background-image: url("../assets/img/pattern\ 1\ 1\ grey.png");
+        background-position-y: left;
         background-repeat: no-repeat;
-        background-color: black;
+        background-color: #23201E;
         color: white;
+        display: flex;
+        align-items: center;
+        
+        flex-wrap: nowrap;
+        
+    }
+
+    .hww::before {
+        visibility: hidden;
+    }
+
+    .hww .spot {
+        position: absolute;
+        bottom: 0;
+        right: 33%;
+      }
+
+    .hww h1 {
+        text-align: left;
+    }
+
+    .hww .video {
+        width: 75%;
+        min-width: 50%;
+        height: auto;
+        padding: 0% 0% 0 0;
+    }
+
+    .video > iframe {
+        aspect-ratio: 16 / 9;
+        width: 100% !important;
     }
 }
-
 
 .homepage-block .feature-image {
     display: flex;
@@ -450,21 +565,168 @@ h1 {
 /*Content Page*/
 
 .content-text {
-    margin: 2rem;
+    padding: 2rem;
+    max-width:100%;
 }
 
 
-/* Forms*/
-
-.form-container {
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
-    .form-container label {
-        color: white;
+    .content-text .top-image {
+        height:8rem;
+        width:100%;
+        background-image: url('../assets/img/contentpagetupimage1.png');
     }
 
+.contet-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+    .content-text h1 {
+        margin-bottom: 4rem;
+        margin-top:2rem;
+    }
+
+    .content-text h2 {
+        margin-left: 1rem;
+    }
+
+    .content-text h3 {
+        margin-left: 2rem;
+    }
+
+    .content-text p {
+        margin-left:3rem;
+    }
+
+
+.content-text ul {
+    margin-left: 3rem;
+}
+
+/* Safe zone within sibling sections that the call out block can "eat into". May need to be updated once responsivity is tweaked in other sections */
+
+body {
+    --call-out-block-safe-area-y: 250px
+}
+@media (min-width: 400px) {
+    body {
+        --call-out-block-safe-area-y: 200px
+    }
+}
+@media (min-width: 992px) {
+    body {
+        --call-out-block-safe-area-y: 160px
+    }
+}
+section:has(+ .call-out-block-wrapper) {
+    padding-bottom: var(--call-out-block-safe-area-y);
+}
+.call-out-block-wrapper + section {
+    padding-top: var(--call-out-block-safe-area-y);
+}
+
+.call-out-block-wrapper {
+    position: absolute;
+    transform: translateY(-50%);
+    max-width:1920px;
+}
+
+.call-out-block {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    background-color: var(--city-orange);
+    padding: 2rem 1rem;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+@media (min-width: 992px) {
+    .call-out-block {
+        padding: 2rem;
+    }
+}
+
+@media (min-width: 1280px) {
+    .call-out-block {
+        padding: 3rem 3rem;
+    }
+}
+
+.call-out-block-illo {
+    position: absolute;
+    bottom: -8%;
+    left: 36%;
+    z-index: 0;
+    width: 160px;
+}
+
+@media (min-width: 992px) {
+    .call-out-block-illo {
+        left: 36%;
+        width: 230px;
+    }
+}
+
+.call-out-block-text {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    > p {
+        margin-bottom: 0;
+    }
+}
+
+@media (min-width: 1280px) {
+    .call-out-block-text > p {
+        width: 80%;
+    }
+}
+
+.call-out-block-form {
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0;
+}
+
+.call-out-block-form label {
+    color: white;
+    margin-bottom: 0;
+}
+
+.call-out-block-form input {
+    border: none;
+}
+
+.call-out-block-form button {
+    color: white;
+    background-color: var(--cooperation-orange);
+    border: none;
+    font-weight: 800;
+}
+
+ .form-final-row > * {
+    /* Recreating bootstrap's `row` padding without any of its other baggage */
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+}
+
+
+.call-out-block-form .errorMessage {
+    color: green;
+    font-weight: bold;
+}
+
+
+.call-out-block-form #form-completed {
+    text-align: center;
+}
 
 .happening-next-item {
     position: relative;
@@ -474,7 +736,6 @@ h1 {
     border-radius: 8px;
     overflow: hidden;
     transition: transform 100ms;
-
     &:has(a:hover) {
         transform: translateY(-0.2rem);
     }
@@ -522,3 +783,70 @@ h1 {
         filter: brightness(110%);
     }
 }
+
+/*Embedded form styling*/
+
+#can-form-area-get-help-to-attend-an-assembly {
+    max-width: 90%;
+    margin: auto;
+    color: var(--off-black);
+}
+
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form_inner > h2 {
+        font-size: clamp(3.2rem, .7vw + 2.5rem, 4rem);
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: -1px;
+        margin-top: 2rem;
+        border-bottom: none;
+    }
+
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form_inner > h4 {
+        font-size: clamp(2rem, .7vw + 1rem, 3rem);
+        font-weight: 900;
+        line-height: 1;
+        letter-spacing: -1px;
+        margin-top: 2rem;
+        border-bottom: none;
+    }
+
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form p {
+        font: inherit;
+        font-size: 1.2em;
+    }
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form span > label,
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form span,
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form li label
+    {
+        font: inherit;
+        font-size:16px;
+    }
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form input[type=submit] {
+        border-radius: var(--border-radius);
+        background: var(--cooperation-orange);
+        font-size: 2rem;
+        font: inherit;
+    }
+
+
+    #can-form-area-get-help-to-attend-an-assembly .floatlabel-input::placeholder {
+        color: var(--off-black);
+    }
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form input[type=text],
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form input[type=email] {
+        min-height: calc(1.5em + 1rem + 2px);
+        padding: .5rem 1rem;
+        font-size: 1.25rem;
+        border-radius: var(--border-radius);
+    }
+
+    #can-form-area-get-help-to-attend-an-assembly #can_embed_form input[type=checkbox]
+    {
+        transform:scale(1.5);
+    }
