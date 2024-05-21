@@ -115,14 +115,6 @@ namespace CooperationHullMainSite.Controllers
         }
 
         [HttpGet]
-        [Route("contact-us")]
-        public IActionResult ContactUs()
-        {
-            return View();
-        }
-
-
-        [HttpGet]
         [Route("who-we-are")]
         public IActionResult WhoWeAre()
         {
@@ -132,22 +124,6 @@ namespace CooperationHullMainSite.Controllers
         [HttpGet]
         [Route("the-big-idea")]
         public IActionResult TheBigIdea()
-        {
-            return View();
-        }
-
-
-        [HttpGet]
-        [Route("how-we-work")]
-        public IActionResult HowWeWork()
-        {
-            return View();
-        }
-
-
-        [HttpGet]
-        [Route("around-the-world")]
-        public IActionResult AroundTheWorld()
         {
             return View();
         }
@@ -187,6 +163,14 @@ namespace CooperationHullMainSite.Controllers
         {
             //Help To Attend form submission handling will go here
             throw new NotImplementedException();
+        }
+
+
+        [HttpGet]
+        [Route("the-pledge")]
+        public IActionResult ThePledge()
+        {
+            return View();
         }
 
 
