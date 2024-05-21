@@ -444,7 +444,6 @@ h1 {
         z-index: 10;
         min-width: 50%;
         height: auto;
-/*        padding: 15% 0% 0 0;
 */        padding-top: calc(15% + 4rem);
     }
 
