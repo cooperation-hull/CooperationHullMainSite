@@ -594,7 +594,6 @@ section:has(+ .call-out-block-wrapper) {
 }
 /*.call-out-block-wrapper + section {
     padding-top: var(--call-out-block-safe-area-y);
-}*/
 
 .call-out-block-wrapper {
     position: absolute;
