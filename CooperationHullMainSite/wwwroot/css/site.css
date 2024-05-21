@@ -568,9 +568,20 @@ h1 {
     margin-left: 3rem;
 }
 
-/* Safe zone within sibling sections that the call out block can "eat into". May need to be updated once responsivity is tweaked in other sections */
 
-body {
+.content-text .assemblies-image-container {
+    margin: auto;
+    background-color: white;
+    border-radius: var(--border-radius);
+}
+
+
+.content-text .assemblies-image-container img {
+    max-width:100%;
+}
+
+    /* Safe zone within sibling sections that the call out block can "eat into". May need to be updated once responsivity is tweaked in other sections */
+    body {
     --call-out-block-safe-area-y: 250px
 }
 @media (min-width: 400px) {
