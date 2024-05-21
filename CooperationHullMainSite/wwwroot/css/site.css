@@ -444,7 +444,7 @@ h1 {
         z-index: 10;
         min-width: 50%;
         height: auto;
-*/        padding-top: calc(15% + 4rem);
+        padding-top: calc(15% + 4rem);
     }
 
 .video > iframe {
