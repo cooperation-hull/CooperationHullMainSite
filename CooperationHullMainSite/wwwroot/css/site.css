@@ -592,7 +592,6 @@ body {
 section:has(+ .call-out-block-wrapper) {
     padding-bottom: var(--call-out-block-safe-area-y);
 }
-    padding-top: var(--call-out-block-safe-area-y);
 
 .call-out-block-wrapper {
     position: absolute;
