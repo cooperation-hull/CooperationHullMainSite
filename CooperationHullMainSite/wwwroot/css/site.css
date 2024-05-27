@@ -539,7 +539,7 @@ h1 {
         background-image: url('../assets/img/contentpagetupimage1.png');
     }
 
-.contet-text-block {
+.content-text-block {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
