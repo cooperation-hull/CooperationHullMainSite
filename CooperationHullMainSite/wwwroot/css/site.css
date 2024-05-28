@@ -519,17 +519,21 @@ h1 {
     }
 }
 
-.homepage-block .feature-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
+.homepage-block .feature-image-container {
+    padding: 0 80px;
 
-    .homepage-block .feature-image img {
-        max-width: 100%;
+    &.white {
+        width: 66%;
+        margin: 0 auto;
+        background-color: white;
+        border-radius: 12px;
+        padding: 30px;
     }
 
+    & > img {
+        width: 100%;
+    }
+}
 
 /*Content Page*/
 
