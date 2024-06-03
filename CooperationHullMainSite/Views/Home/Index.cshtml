@@ -59,19 +59,13 @@
 </section>
 
 <section class="homepage-block big-answer white">
-    <div class="row">
-        <div class="col-lg-6 col-md-12 p-4">
-            <div class="feature-image-container">
-                <img src="~/assets/img/good_circles.png" alt="" />
-            </div>
-        </div>
-
-        <div class="col-lg-6 col-md-12 p-4 homepage-text-block">
+    <div class="row flex-md-row-reverse">
+        <div class="col-lg-7 col-md-12 p-4 homepage-text-block">
             <h2 class="heading-lg">The big answer</h2>
             <p>
                 ...we propose a new story. In this version, the 99% works through our differences and chooses
                 to put all our wisdom, knowledge, love and technology to use. We choose to construct better systems,
-                ones that build us up rather than keep us down. 
+                ones that build us up rather than keep us down.
             </p>
             <p>
                 A healthy earth. A Solidarity Economy. Strong communities.
@@ -82,6 +76,12 @@
                 happening everywhere, replacing party politics with people power. <a class="" asp-area="" asp-controller="Home" asp-action="TheBigIdea">Read more here &rarr;</a>
             </p>
         </div>
+
+        <div class="col-lg-5 col-md-12 p-4">
+            <div class="feature-image-container">
+                <img src="~/assets/img/good_circles.png" alt="" />
+            </div>
+        </div>
     </div>
 </section>
 
@@ -90,14 +90,14 @@
     <div class="call-out-block">
         <img class="call-out-block-illo" src="~/assets/img/hedgehog-spot.png" alt="" />
         <div class="row align-items-center">
-            <div class="col-lg-6 class call-out-block-text">
+            <div class="col-lg-7 class call-out-block-text">
                 <h2 class="heading-md">Want to be part of something bigger?</h2>
                 <p>
                     If you want to make the world a better place, leaving us your phone number is the easiest way to make a difference. 
                     In a short call we’ll answer your questions and find your place in the movement. Join hundreds of local people, working together, today.
                 </p>
             </div>
-            <form class="col-lg-6 call-out-block-form" method="post" id="home_page_signup_form" asp-action="Home_page_signup_form" asp-controller="Home">
+            <form class="col-lg-5 call-out-block-form" method="post" id="home_page_signup_form" asp-action="Home_page_signup_form" asp-controller="Home">
                 <div class="row">
                    <p id="homepage-formError" class="errorMessage"></p>
                     <div class="col-6">
