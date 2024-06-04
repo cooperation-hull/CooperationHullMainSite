@@ -131,10 +131,11 @@
 
 
 <section class="homepage-block hww">
-        <div class="video">
+    <div class="row align-items-center">
+        <div class="col-lg-6 col-md-12 p-4 video">
             <iframe src="https://www.youtube.com/embed/O7iHDDg2skU?si=RBYJHIqmoN_PR37h" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
-        <div class="blurb">
+        <div class="col-lg-6 col-md-12 p-4 blurb">
             <h1>How We Work</h1>
             <p>We start local, work with what we've got already (which in Hull, is a LOT), experiment all the time, and learn from each other. </p>
             <br/>
@@ -145,14 +146,13 @@
         <div class="spot">
             <img src="./assets/img/spot 1 1 2.png">
         </div>
-    
-
+    </div>
 </section>
 
 <section class="homepage-block orange">
     <div class="row">
         <div class="col-12">
-            <h2 class="heading-lg text-center py-4">What's happening next?</h2>
+            <h2 class="heading-lg text-center pt-3 pb-5">What's happening next?</h2>
 
             <div class="row gx-5 gy-4">
                 @foreach (HappenginNextEvent eventItem in Model.eventList)
