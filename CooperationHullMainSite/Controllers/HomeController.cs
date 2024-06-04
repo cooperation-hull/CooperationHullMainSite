@@ -115,8 +115,8 @@ namespace CooperationHullMainSite.Controllers
         }
 
         [HttpGet]
-        [Route("who-we-are")]
-        public IActionResult WhoWeAre()
+        [Route("how-we-work")]
+        public IActionResult HowWeWork()
         {
             return View();
         }
