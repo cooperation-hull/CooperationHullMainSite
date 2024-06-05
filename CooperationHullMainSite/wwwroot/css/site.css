@@ -490,7 +490,7 @@ h1 {
         z-index: 10;
         min-width: 50%;
         height: auto;
-        padding: 15% 0% 0 0;
+        padding-top: calc(15% + 4rem);
     }
 
 .video > iframe {
@@ -503,6 +503,7 @@ h1 {
     height: 100%;
     padding-left: 10px;
     padding-right: 10px;
+    transform: translateY(4rem);
 }
 
     .blurb h1 {
@@ -555,19 +556,32 @@ h1 {
         aspect-ratio: 16 / 9;
         width: 100% !important;
     }
+
+    .hww .blurb {
+        margin-top: 0;
+        transform: none;
+    }
 }
 
-.homepage-block .feature-image {
+.homepage-block .feature-image-container {
+    padding: 0 clamp(10px, 4vw, 40px);
+    margin: 0 auto;
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 100%;
-}
+    justify-content: center;
 
-    .homepage-block .feature-image img {
-        max-width: 100%;
+    &.white {
+        width: 66%;
+        background-color: white;
+        border-radius: 12px;
+        padding: 30px;
     }
 
+    & > img {
+        width: 100%;
+        max-width: 500px;
+    }
+}
 
 /*Content Page*/
 
@@ -583,7 +597,7 @@ h1 {
         background-image: url('../assets/img/contentpagetupimage1.png');
     }
 
-.contet-text-block {
+.content-text-block {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -612,9 +626,20 @@ h1 {
     margin-left: 3rem;
 }
 
-/* Safe zone within sibling sections that the call out block can "eat into". May need to be updated once responsivity is tweaked in other sections */
 
-body {
+.content-text .assemblies-image-container {
+    margin: auto;
+    background-color: white;
+    border-radius: var(--border-radius);
+}
+
+
+.content-text .assemblies-image-container img {
+    max-width:100%;
+}
+
+    /* Safe zone within sibling sections that the call out block can "eat into". May need to be updated once responsivity is tweaked in other sections */
+    body {
     --call-out-block-safe-area-y: 250px
 }
 
@@ -634,14 +659,11 @@ section:has(+ .call-out-block-wrapper) {
     padding-bottom: var(--call-out-block-safe-area-y);
 }
 
-.call-out-block-wrapper + section {
-    padding-top: var(--call-out-block-safe-area-y);
-}
-
 .call-out-block-wrapper {
     position: absolute;
     transform: translateY(-50%);
-    max-width: 1920px;
+    max-width:1920px;
+    z-index:10;]
 }
 
 .call-out-block {
@@ -744,6 +766,9 @@ section:has(+ .call-out-block-wrapper) {
 .happening-next-item {
     position: relative;
     width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
     background-color: var(--off-black);
     color: var(--cooperation-white);
     border-radius: 8px;
@@ -778,6 +803,8 @@ section:has(+ .call-out-block-wrapper) {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
     gap: 1rem;
 }
 
