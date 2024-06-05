@@ -14,6 +14,10 @@ html {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
+.btn-lg {
+    font-size: clamp(1.5rem, 0.5vw + 1rem, 2rem);
+}
+
 html {
     position: relative;
     min-height: 100%;
@@ -58,7 +62,7 @@ body {
 }
 
 h1 {
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .heading-xl {
@@ -88,6 +92,9 @@ h1 {
     margin-right: 0px;
 }
 
+.text-lg {
+    font-size: clamp(1rem, 0.4vw + 1rem, 1.5rem);
+}
 
 /* Nav bar */
 
