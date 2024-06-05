@@ -296,7 +296,6 @@ h1 {
 
 .hero-container {
     min-height: 100vh;
-    height: auto;
     display: grid;
 }
 
@@ -339,7 +338,7 @@ h1 {
 }
 
 .hero-text {
-    margin: 50% 3rem 5rem 3rem;
+    margin: 10rem 3rem 5rem 3rem;
     max-width: 80%;
     display: flex;
     flex-direction: column;
