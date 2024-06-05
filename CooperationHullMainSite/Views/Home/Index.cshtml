@@ -5,21 +5,21 @@
 
         <div class="hero-image-container">
 
-            <div class="col-10 col-md-8 col-lg-7 col-xl-6 col-xxl-5 text-left hero-text">
-                <h1 class="heading-xl">THE BIG QUESTION</h1>
-                <p class="text-lg">
-                    Strong, caring communities. Enough food for everyone.
-                    A healthy planet. Lives filled with meaning.
-                </p>
-                <p class="text-lg">This is the kind of world we all want.</p>
-                <p class="text-lg">So why don't we build it?</p>
+        </div>
 
-                @* This puts the sign up section at the bottom of the view. 
-                   I don't want to put it at the top because the nav will be sticky on desktop. 
-                   If we want to put it somewhere else we'll have to do some maths and use .scroll()*@
-                <button type="button" onClick="document.getElementById('sign-up').scrollIntoView(false);" class="btn btn-light btn-lg px-4 gap-3">Sign up now</button>
-            </div>
+        <div class="col-10 col-md-8 col-lg-8 col-xl-6 col-xxl-5 text-left hero-text">
+            <h1 class="heading-xl">THE BIG QUESTION</h1>
+            <p class="text-lg">
+                Strong, caring communities. Enough food for everyone.
+                A healthy planet. Lives filled with meaning.
+            </p>
+            <p class="text-lg this-is">This is the kind of world we all want.</p>
+            <p class="text-lg">So why don't we build it?</p>
 
+            @* This scrolls the sign up section to the bottom of the view.
+            I don't want to put it at the top because the nav will be sticky on desktop.
+            If we want to put it somewhere else we'll have to do some maths and use .scroll()*@
+            <button type="button" onClick="document.getElementById('sign-up').scrollIntoView(false);" class="btn btn-light btn-lg px-4 gap-3">Sign up now</button>
         </div>
 
     </div>
