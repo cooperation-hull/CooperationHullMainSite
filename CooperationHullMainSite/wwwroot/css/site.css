@@ -51,8 +51,8 @@ body {
     font-optical-sizing: auto;
     font-weight: 600;
     line-height: 1.7;
-    max-width: 1920px;
-    margin: auto;
+/*    max-width: 1920px;
+*/   
 }
 
 [class^='heading-'] {
@@ -98,16 +98,21 @@ h1 {
 
 /* Nav bar */
 
-.navbar {
-    color: var(--off-black);
-    background: var(--off-white);
-    padding-left: 95px;
-    padding-right: 95px;
+.navbarContainer {
     z-index: 101;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%
+}
+
+
+.navbar {
+    color: var(--off-black);
+    background: var(--off-white);
+    padding-left: 95px;
+    padding-right: 95px;
+
 }
 
 .navbar-toggler {
@@ -224,6 +229,8 @@ h1 {
     position: relative;
     min-height: 200px;
     overflow-y: hidden;
+    max-width: 1920px;
+    margin: auto;
 }
 
     .footer .footer-content {
@@ -278,12 +285,15 @@ h1 {
 .main-content {
     min-height: 86vh;
     color: var(--off-black);
+    max-width: 1920px;
+    margin: auto;
 }
 
 
     .main-content .content-page {
         background-color: var(--city-orange);
         min-height: 86vh;
+        padding-top:10vh;
     }
 
 /* Home Page */
@@ -302,7 +312,7 @@ h1 {
 }
 
 .hero-container {
-    min-height: 100vh;
+    min-height: 96vh;
     display: grid;
 }
 
