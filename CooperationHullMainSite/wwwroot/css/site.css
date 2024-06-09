@@ -418,6 +418,7 @@ h1 {
 
     color: white;
     padding: 2rem;
+    padding-bottom: 0;
   }
 
   .hww::before {
@@ -431,6 +432,10 @@ h1 {
 
     background-image: url("../assets/img/trees-pattern-grey.png");
     background-repeat: no-repeat;
+  }
+
+  .hww > .p-0 {
+    padding-bottom: 0;
   }
 
   .hww .spot {
