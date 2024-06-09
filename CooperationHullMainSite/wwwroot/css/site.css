@@ -434,10 +434,6 @@ h1 {
     background-repeat: no-repeat;
   }
 
-  .hww > .p-0 {
-    padding-bottom: 0;
-  }
-
   .hww .spot {
     position: absolute;
     right: 12%;
@@ -489,6 +485,10 @@ h1 {
         flex-wrap: nowrap;
         
     }
+
+    .hww > .p-0 {
+        padding-bottom: 0;
+      }
 
     .hww::before {
         visibility: hidden;
