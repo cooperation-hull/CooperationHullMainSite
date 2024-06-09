@@ -94,7 +94,7 @@ h1 {
 
 
 /* Nav bar */
-/* (Lewis) made some changes here March 27th for design V8 */
+/* (Lewis) made some changes here June 9th for design V8 */
 
 .navbar {
     color: var(--off-black);
@@ -113,6 +113,7 @@ h1 {
 .nav-logo > h1, ul {
     margin: 0;
     list-style-type: none;
+    font-weight: bold;
 }
 
 .nav-buttons {
@@ -124,11 +125,21 @@ h1 {
     font-size: larger;
 }
 
+.nav-buttons > li > a:hover,
+.sidenav-buttons > li > a:hover {
+    text-decoration: underline;
+    color: #23201E;
+}
+
 #donate-button {
     background-color: #D05000;
     border-radius: 10px;
     padding: 0.5rem 1.2rem 0.5rem 1.2rem;
     color: #fff;
+}
+
+#donate-button > a:hover {
+    color:#fff;
 }
 
 #nav-hamburger {
@@ -138,57 +149,36 @@ h1 {
     background-color: white;
 }
 
-.navbar-nav {
-    display: flex;
-    justify-content: end;
-}
-
-.navbar-brand a {
-    vertical-align: top;
-    color: var(--off-black);
-    text-decoration: none;
-}
-
-.navbar .nav-link {
-    font-weight: 800;
-}
-
-.navbar .nav-link:hover {
-    text-decoration: underline;
-}
-
-
-
-.navbar-nav .donate-button {
-    /* (Lewis) This vertically aligns the donate button with the other links in the navbar */
-    margin: auto 0 auto 0.5rem;
-    width: 140px;
-}
-
-    .navbar-nav .donate-button a {
-        text-decoration: none;
-        color: white;
-        font-weight: 900;
-        border-radius: var(--border-radius);
-        background: var(--cooperation-orange);
-        padding: 10px;
-        width: 140px;
-        text-align: center;
-        display: block;
-    }
-
-
-.navbar-brand img {
+.nav-logo > img {
     height: 4rem;
     vertical-align: middle;
     margin: 0.4rem;
 }
 
-
-.navbar-brand h1 {
+.nav-logo > h1 {
     font-size: 2em;
     font-weight: 700;
     margin: auto;
+}
+
+.sidenav {
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    z-index: 10;
+    right: 0;
+    padding: 0;
+    position: absolute;
+    border-radius: 0% 0% 10% 10%;
+    margin-right: 2rem;
+}
+
+.sidenav-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 2rem;
 }
 
 .mobile-only {
@@ -200,41 +190,30 @@ h1 {
         display: block;
     }
 
+    .nav-logo {
+        width: 75%;
+        padding: 0.5rem;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+
     .navbar {
         padding-left: 20px;
         padding-right: 20px;
         z-index: 1;
     }
 
-    .navbar .nav-link {
+
+    .nav-logo > h1 {
+        font-size: 1.2rem;
+    }
+
+    .sidenav {
         margin-right: 0;
+        border-radius: 0% 0% 0% 15%;
     }
-
-    .navbar-brand h1 {
-        font-size: 1em;
-    }
-
-    .navbar-collapse {
-        padding-left: 20px;
-    }
-
-    .navbar-nav {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        padding: 30px;
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100%;
-        background-color: var(--off-white-solid);
-        overflow-x: hidden;
-        transition: 0.5s;
-    }
-
-        .navbar-nav .donate-button {
-            margin: 0;
-        }
 }
 
 
