@@ -116,6 +116,11 @@ h1 {
     font-weight: bold;
 }
 
+.nav-logo:hover {
+    color:#23201E;
+    text-decoration: none;
+}
+
 .nav-buttons {
     display: flex;
     height: 100%;
