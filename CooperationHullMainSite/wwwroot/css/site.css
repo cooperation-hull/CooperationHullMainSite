@@ -104,7 +104,8 @@ h1 {
 
 .nav-logo {
     display: flex;
-    justify-content: center;
+    text-align: left;
+    justify-content: left;
     gap: 1rem;
     align-items: center;
     height: 100%;
@@ -190,13 +191,32 @@ h1 {
     display: none;
 }
 
+@media (max-width: 1240px) {
+    .nav-buttons {
+        font-size: large;
+    }
+
+    .nav-logo > h1 {
+        font-size: larger;
+    }
+}
+
+@media (max-width: 1120px) {
+    .nav-buttons {
+        font-size: medium
+    }
+
+    .nav-logo > h1 {
+        font-size: large;
+    }
+}
+
 @media (max-width: 991px) {
     .mobile-only {
         display: block;
     }
 
     .nav-logo {
-        width: 75%;
         padding: 0.5rem;
     }
 
