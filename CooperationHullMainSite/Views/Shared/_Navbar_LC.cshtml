@@ -1,0 +1,47 @@
+
+
+<nav class="navbar">
+    <a href='/' class="nav-logo">
+        <img src="..\assets\img\Cooperation Hull Circle Logo 2.png" alt="Hull Coop Logo (a yellow ring)" />
+        <h1> Cooperation Hull</h1>
+    </a>
+    <ul class="nav-buttons text-lg">
+        <li class="desktop-only"><a href="the-big-idea">The Big Idea</a></li>
+        <li class="desktop-only"><a href="how-we-work">How We Work</a></li>
+        <li class="desktop-only"><a href="faqs">FAQs</a></li>
+        <li class="desktop-only" id="donate-button"><a target="_blank" href="https://www.gofundme.com/f/hull-assembly">Donate</a></li>
+        <button onclick="toggleSidenav()" id="nav-hamburger">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M2.75 12.25h10.5m-10.5-4h10.5m-10.5-4h10.5"/></svg>
+        </button>
+    </ul>
+</nav>
+<nav id="sidenav" class="sidenav" style="display:none;">
+    <ul class="sidenav-buttons">
+        <li class="mobile-only"><a href="the-big-idea">The Big Idea</a></li>
+        <li class="mobile-only"><a href="how-we-work">How We Work</a></li>
+        <li class="mobile-only"><a href="faqs">FAQs</a></li>
+        <li class="mobile-only" id="donate-button"><a target="_blank" href="https://www.gofundme.com/f/hull-assembly">Donate</a></li>
+        <li><a href="membership">Membership</a></li>
+        <li><a href="the-pledge">The Pledge</a></li>
+        <li><a href="help-to-attend">Help to Attend</a></li>
+        <li><a href="mailto:hello@cooperationhull.co.uk">hello@cooperationhull.co.uk</a></li>
+    </ul>
+</nav>
+
+<script>
+    const toggleSidenav = () => {
+        const toggle = () => {
+            let sidenav = document.getElementById('sidenav');
+            if (sidenav.style.display === 'none') {
+                sidenav.style.display = 'flex';
+            }
+            else {
+                sidenav.style.display = 'none';
+            }
+        };
+        
+        setTimeout(toggle, 0.3);  // improves behaviour
+        
+    };
+</script>
+
