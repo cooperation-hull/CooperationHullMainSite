@@ -453,7 +453,7 @@ h1 {
     color: white;
     padding: 2rem;
     padding-bottom: 0;
-}
+  }
 
 .hww::before {
     content: "";
