@@ -25,6 +25,9 @@
 <body>
 
     <header>
+        <div class="cookieConsentContainer">
+            <partial name="_CookieConsentPartial" />
+        </div>
         <div class="navbarContainer">
         @{
             await Html.RenderPartialAsync("_MainNavBar");
@@ -34,7 +37,6 @@
 
 
     <div class="main-content">
-        <partial name="_CookieConsentPartial" />
         <main role="main" class="">
             @RenderBody()
         </main>
