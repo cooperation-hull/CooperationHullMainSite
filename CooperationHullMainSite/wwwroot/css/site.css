@@ -218,6 +218,7 @@ h1 {
 
     .nav-logo {
         padding: 0.5rem;
+        gap: 0.2rem;
     }
 
     .desktop-only {
@@ -225,14 +226,14 @@ h1 {
     }
 
     .navbar {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
         z-index: 1;
     }
 
 
     .nav-logo > h1 {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .sidenav {
