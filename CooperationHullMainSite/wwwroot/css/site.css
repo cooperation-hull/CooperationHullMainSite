@@ -486,10 +486,6 @@ h1 {
         
     }
 
-    .hww > .p-0 {
-        padding-bottom: 0;
-      }
-
     .hww::before {
         visibility: hidden;
     }
