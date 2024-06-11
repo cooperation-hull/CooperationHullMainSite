@@ -218,29 +218,6 @@ h1 {
 
     .nav-logo {
         padding: 0.5rem;
-<<<<<<< HEAD
-    }
-
-    .desktop-only {
-        display: none;
-    }
-
-    .navbar {
-        padding-left: 20px;
-        padding-right: 20px;
-        z-index: 1;
-    }
-
-
-    .nav-logo > h1 {
-        font-size: 1.2rem;
-    }
-
-    .sidenav {
-        margin-right: 0;
-        border-radius: 0% 0% 0% 15%;
-    }
-=======
         gap: 0.2rem;
     }
 
@@ -263,7 +240,6 @@ h1 {
         margin-right: 0;
         border-radius: 0% 0% 0% 15%;
     }
->>>>>>> db9db28a415f6aace94318449c09dbe2c26c2686
 }
 
 
@@ -281,7 +257,6 @@ h1 {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
-        max-width: 100%;
     }
     
     .footer .footer-content-left {
@@ -298,7 +273,6 @@ h1 {
     .footer .footer-socials {
         display: flex;
         gap: 24px;
-        z-index: 10;
     }
     
     .footer .footer-illustration {
@@ -478,7 +452,7 @@ h1 {
     color: white;
     padding: 2rem;
     padding-bottom: 0;
-  }
+}
 
 .hww::before {
     content: "";
