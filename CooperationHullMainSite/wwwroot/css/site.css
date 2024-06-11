@@ -365,7 +365,7 @@ h1 {
 }
 
 .hero-container {
-    min-height: 96vh;
+    min-height: 100vh;
     display: grid;
 }
 
