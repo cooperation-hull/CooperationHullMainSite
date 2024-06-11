@@ -1,13 +1,13 @@
 /* Default css*/
 
 html {
-  font-size: 16px;
+font-size: 16px;
 }
 
 @media (min-width: 768px) {
-  html {
+html {
     font-size: 18px;
-  }
+}
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
@@ -24,8 +24,8 @@ body {
 }
 
 a {
-  color: currentColor;
-  text-decoration: none;
+color: currentColor;
+text-decoration: none;
 }
 
 
@@ -452,9 +452,9 @@ h1 {
     color: white;
     padding: 2rem;
     padding-bottom: 0;
-  }
+}
 
-  .hww::before {
+.hww::before {
     content: "";
     position: absolute;
     width: 100%;
@@ -465,14 +465,14 @@ h1 {
 
     background-image: url("../assets/img/trees-pattern-grey.png");
     background-repeat: no-repeat;
-  }
+}
 
-  .hww .spot {
+.hww .spot {
     position: absolute;
     right: 12%;
     bottom: 0;
     z-index: 0;
-  }
+}
 
     .hww .video {
         z-index: 10;
@@ -492,18 +492,18 @@ h1 {
     padding-right: 10px;
 }
 
-  .blurb h1 {
+.blurb h1 {
     text-align: center;
     font-weight: bold;
-  }
+}
 
-  .blurb a {
+.blurb a {
     text-decoration: underline;
-  }
+}
 
-  .blurb a:hover {
+.blurb a:hover {
     cursor: pointer;
-  }
+}
 
 @media(min-width:1000px) {
     .hww {
@@ -519,6 +519,10 @@ h1 {
         
     }
 
+    .hww > .p-0 {
+        padding-bottom: 0;
+    }
+
     .hww::before {
         visibility: hidden;
     }
@@ -527,7 +531,7 @@ h1 {
         position: absolute;
         bottom: 0;
         right: 33%;
-      }
+    }
 
     .hww h1 {
         text-align: left;
@@ -731,7 +735,7 @@ section:has(+ .call-out-block-wrapper) {
     font-weight: 800;
 }
 
- .form-final-row > * {
+.form-final-row > * {
     /* Recreating bootstrap's `row` padding without any of its other baggage */
     padding-left: calc(var(--bs-gutter-x) * 0.5);
     padding-right: calc(var(--bs-gutter-x) * 0.5);
