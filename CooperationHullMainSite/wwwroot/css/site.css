@@ -51,8 +51,8 @@ body {
     font-optical-sizing: auto;
     font-weight: 600;
     line-height: 1.7;
-/*    max-width: 1920px;
-*/   
+    /*    max-width: 1920px;
+*/
 }
 
 [class^='heading-'] {
@@ -106,6 +106,11 @@ h1 {
     z-index: 101;
     text-align: center;
 }
+
+    .cookieConsentContainer .alert {
+        margin-bottom: 0px !important;
+    }
+
 /* Nav bar */
 .navbarContainer {
     z-index: 101;
@@ -122,7 +127,6 @@ h1 {
     padding-left: 4rem;
     padding-right: 4rem;
     background: var(--off-white);
-
 }
 
 .nav-logo {
@@ -134,18 +138,19 @@ h1 {
     height: 100%;
 }
 
-.nav-logo > h1, ul {
-    margin: 0;
-    list-style-type: none;
-    font-weight: bold;
-}
-    .navbar-toggler:focus {
-        box-shadow: none;
-        border: none;
+    .nav-logo > h1, ul {
+        margin: 0;
+        list-style-type: none;
+        font-weight: bold;
     }
 
+.navbar-toggler:focus {
+    box-shadow: none;
+    border: none;
+}
+
 .nav-logo:hover {
-    color:#23201E;
+    color: #23201E;
     text-decoration: none;
 }
 
@@ -158,11 +163,11 @@ h1 {
     font-size: larger;
 }
 
-.nav-buttons > li > a:hover,
-.sidenav-buttons > li > a:hover {
-    text-decoration: underline;
-    color: #23201E;
-}
+    .nav-buttons > li > a:hover,
+    .sidenav-buttons > li > a:hover {
+        text-decoration: underline;
+        color: #23201E;
+    }
 
 #donate-button {
     background-color: #D05000;
@@ -171,9 +176,9 @@ h1 {
     color: #fff;
 }
 
-#donate-button > a:hover {
-    color:#fff;
-}
+    #donate-button > a:hover {
+        color: #fff;
+    }
 
 #nav-hamburger {
     color: #23201E;
@@ -341,7 +346,7 @@ h1 {
     .main-content .content-page {
         background-color: var(--city-orange);
         min-height: 86vh;
-        padding-top:10vh;
+        padding-top: 10vh;
     }
 
 /* Home Page */
@@ -426,6 +431,7 @@ h1 {
 .homepage-block > .row {
     padding: 3rem 2rem;
 }
+
 @media (min-width: 992px) {
     .homepage-block > .row {
         padding: 4rem;
@@ -526,20 +532,18 @@ h1 {
     color: white;
     padding: 2rem;
     padding-bottom: 0;
-  }
+}
 
-  .hww::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 33%;
-    bottom: 0;
-
-    z-index: -1;
-
-    background-image: url("../assets/img/trees-pattern-grey.png");
-    background-repeat: no-repeat;
-  }
+    .hww::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 33%;
+        bottom: 0;
+        z-index: -1;
+        background-image: url("../assets/img/trees-pattern-grey.png");
+        background-repeat: no-repeat;
+    }
 
     .hww .spot {
         position: absolute;
@@ -640,6 +644,7 @@ h1 {
         width: 100%;
         max-width: 500px;
     }
+
 }
 
 /*Content Page*/
@@ -693,9 +698,9 @@ h1 {
 }
 
 
-.content-text .assemblies-image-container img {
-    max-width:100%;
-}
+    .content-text .assemblies-image-container img {
+        max-width: 100%;
+    }
 
 /* Safe zone within sibling sections that the call out block can "eat into". May need to be updated once responsivity is tweaked in other sections */
 body {
@@ -717,6 +722,7 @@ body {
 section:has(+ .call-out-block-wrapper) {
     padding-bottom: var(--call-out-block-safe-area-y);
 }
+
 .call-out-block-wrapper + section {
     padding-top: calc(var(--call-out-block-safe-area-y));
 }
@@ -724,8 +730,8 @@ section:has(+ .call-out-block-wrapper) {
 .call-out-block-wrapper {
     position: absolute;
     transform: translateY(-50%);
-    max-width:1920px;
-    z-index:10;
+    max-width: 1920px;
+    z-index: 10;
 }
 
 .call-out-block {
