@@ -218,6 +218,7 @@ h1 {
 
     .nav-logo {
         padding: 0.5rem;
+<<<<<<< HEAD
     }
 
     .desktop-only {
@@ -239,6 +240,30 @@ h1 {
         margin-right: 0;
         border-radius: 0% 0% 0% 15%;
     }
+=======
+        gap: 0.2rem;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+
+    .navbar {
+        padding-left: 15px;
+        padding-right: 15px;
+        z-index: 1;
+    }
+
+
+    .nav-logo > h1 {
+        font-size: 1rem;
+    }
+
+    .sidenav {
+        margin-right: 0;
+        border-radius: 0% 0% 0% 15%;
+    }
+>>>>>>> db9db28a415f6aace94318449c09dbe2c26c2686
 }
 
 
@@ -453,7 +478,7 @@ h1 {
     color: white;
     padding: 2rem;
     padding-bottom: 0;
-}
+  }
 
 .hww::before {
     content: "";
