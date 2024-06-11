@@ -51,8 +51,8 @@ body {
     font-optical-sizing: auto;
     font-weight: 600;
     line-height: 1.7;
-    max-width: 1920px;
-    margin: auto;
+    /*    max-width: 1920px;
+*/
 }
 
 [class^='heading-'] {
@@ -96,82 +96,151 @@ h1 {
     font-size: clamp(1rem, 0.4vw + 1rem, 1.5rem);
 }
 
-/* Nav bar */
 
-.navbar {
-    color: var(--off-black);
-    background: var(--off-white);
-    padding-left: 95px;
-    padding-right: 95px;
+/*Cookie Consent Banner*/
+
+.cookieConsentContainer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 101;
+    text-align: center;
+}
+
+    .cookieConsentContainer .alert {
+        margin-bottom: 0px !important;
+    }
+
+/* Nav bar */
+.navbarContainer {
     z-index: 101;
     position: absolute;
     top: 0;
     left: 0;
     width: 100%
 }
+/* (Lewis) made some changes here June 9th for design V8 */
 
-.navbar-toggler {
+
+.navbar {
+    color: var(--off-black);
+    padding-left: 4rem;
+    padding-right: 4rem;
+    background: var(--off-white);
+}
+
+.nav-logo {
+    display: flex;
+    text-align: left;
+    justify-content: left;
+    gap: 1rem;
+    align-items: center;
+    height: 100%;
+}
+
+    .nav-logo > h1, ul {
+        margin: 0;
+        list-style-type: none;
+        font-weight: bold;
+    }
+
+.navbar-toggler:focus {
+    box-shadow: none;
     border: none;
 }
 
-    .navbar-toggler:focus {
-        box-shadow: none;
-        border: none;
-    }
-
-.navbar-nav {
-    display: flex;
-    justify-content: end;
-}
-
-.navbar-brand a {
-    vertical-align: top;
-    color: var(--off-black);
+.nav-logo:hover {
+    color: #23201E;
     text-decoration: none;
 }
 
-.navbar .nav-link {
-    font-weight: 800;
+.nav-buttons {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    gap: 1.5rem;
+    font-weight: bold;
+    font-size: larger;
 }
 
-    .navbar .nav-link:hover {
+    .nav-buttons > li > a:hover,
+    .sidenav-buttons > li > a:hover {
         text-decoration: underline;
+        color: #23201E;
     }
 
-.navbar-nav .donate-button {
-    /* (Lewis) This vertically aligns the donate button with the other links in the navbar */
-    margin: auto 0 auto 0.5rem;
-    width: 140px;
+#donate-button {
+    background-color: #D05000;
+    border-radius: 10px;
+    padding: 0.5rem 1.2rem 0.5rem 1.2rem;
+    color: #fff;
 }
 
-    .navbar-nav .donate-button a {
-        text-decoration: none;
-        color: white;
-        font-weight: 900;
-        border-radius: var(--border-radius);
-        background: var(--cooperation-orange);
-        padding: 10px;
-        width: 140px;
-        text-align: center;
-        display: block;
+    #donate-button > a:hover {
+        color: #fff;
     }
 
+#nav-hamburger {
+    color: #23201E;
+    border-radius: 10px;
+    border: 0;
+    background-color: white;
+}
 
-.navbar-brand img {
+.nav-logo > img {
     height: 4rem;
     vertical-align: middle;
     margin: 0.4rem;
 }
 
-
-.navbar-brand h1 {
+.nav-logo > h1 {
     font-size: 2em;
     font-weight: 700;
     margin: auto;
 }
 
+.sidenav {
+    align-items: center;
+    text-align: center;
+    background-color: white;
+    z-index: 10;
+    right: 0;
+    padding: 0;
+    position: absolute;
+    border-radius: 0% 0% 10% 10%;
+    margin-right: 2rem;
+}
+
+.sidenav-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 2rem;
+}
+
 .mobile-only {
     display: none;
+}
+
+@media (max-width: 1240px) {
+    .nav-buttons {
+        font-size: large;
+    }
+
+    .nav-logo > h1 {
+        font-size: larger;
+    }
+}
+
+@media (max-width: 1120px) {
+    .nav-buttons {
+        font-size: medium
+    }
+
+    .nav-logo > h1 {
+        font-size: large;
+    }
 }
 
 @media (max-width: 991px) {
@@ -179,41 +248,30 @@ h1 {
         display: block;
     }
 
+    .nav-logo {
+        padding: 0.5rem;
+        gap: 0.2rem;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+
     .navbar {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
         z-index: 1;
     }
 
-        .navbar .nav-link {
-            margin-right: 0;
-        }
 
-    .navbar-brand h1 {
-        font-size: 1em;
+    .nav-logo > h1 {
+        font-size: 1rem;
     }
 
-    .navbar-collapse {
-        padding-left: 20px;
+    .sidenav {
+        margin-right: 0;
+        border-radius: 0% 0% 0% 15%;
     }
-
-    .navbar-nav {
-        display: flex;
-        justify-content: space-evenly;
-        align-items: center;
-        padding: 30px;
-        position: fixed;
-        top: 0;
-        right: 0;
-        height: 100%;
-        background-color: var(--off-white-solid);
-        overflow-x: hidden;
-        transition: 0.5s;
-    }
-
-        .navbar-nav .donate-button {
-            margin: 0;
-        }
 }
 
 
@@ -224,6 +282,8 @@ h1 {
     position: relative;
     min-height: 200px;
     overflow-y: hidden;
+    max-width: 1920px;
+    margin: auto;
 }
 
     .footer .footer-content {
@@ -278,12 +338,15 @@ h1 {
 .main-content {
     min-height: 86vh;
     color: var(--off-black);
+    max-width: 1920px;
+    margin: auto;
 }
 
 
     .main-content .content-page {
         background-color: var(--city-orange);
         min-height: 86vh;
+        padding-top: 10vh;
     }
 
 /* Home Page */
@@ -366,7 +429,13 @@ h1 {
 /* Homepage block */
 
 .homepage-block > .row {
-    padding: 4rem
+    padding: 3rem 2rem;
+}
+
+@media (min-width: 992px) {
+    .homepage-block > .row {
+        padding: 4rem;
+    }
 }
 
 @media screen and (min-width: 600px) {
@@ -455,21 +524,19 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 2%;
+    gap: 2rem;
     flex-wrap: wrap-reverse;
     background-color: #23201E;
     position: relative;
     overflow: hidden;
     color: white;
-    padding: 2% 12%;
-    padding-top: 200px;
+    padding: 2rem;
+    padding-bottom: 0;
 }
 
     .hww::before {
         content: "";
         position: absolute;
-        width: 200%;
-        height: 200%;
         width: 100%;
         height: 33%;
         bottom: 0;
@@ -486,11 +553,9 @@ h1 {
     }
 
     .hww .video {
-        width: 80%;
         z-index: 10;
         min-width: 50%;
         height: auto;
-        padding-top: calc(15% + 4rem);
     }
 
 .video > iframe {
@@ -503,7 +568,6 @@ h1 {
     height: 100%;
     padding-left: 10px;
     padding-right: 10px;
-    transform: translateY(4rem);
 }
 
     .blurb h1 {
@@ -546,7 +610,6 @@ h1 {
         }
 
         .hww .video {
-            width: 75%;
             min-width: 50%;
             height: auto;
             padding: 0% 0% 0 0;
@@ -581,6 +644,7 @@ h1 {
         width: 100%;
         max-width: 500px;
     }
+
 }
 
 /*Content Page*/
@@ -634,24 +698,24 @@ h1 {
 }
 
 
-.content-text .assemblies-image-container img {
-    max-width:100%;
-}
+    .content-text .assemblies-image-container img {
+        max-width: 100%;
+    }
 
-    /* Safe zone within sibling sections that the call out block can "eat into". May need to be updated once responsivity is tweaked in other sections */
-    body {
-    --call-out-block-safe-area-y: 250px
+/* Safe zone within sibling sections that the call out block can "eat into". May need to be updated once responsivity is tweaked in other sections */
+body {
+    --call-out-block-safe-area-y: 260px
 }
 
 @media (min-width: 400px) {
     body {
-        --call-out-block-safe-area-y: 200px
+        --call-out-block-safe-area-y: 230px
     }
 }
 
 @media (min-width: 992px) {
     body {
-        --call-out-block-safe-area-y: 160px
+        --call-out-block-safe-area-y: 140px
     }
 }
 
@@ -659,11 +723,15 @@ section:has(+ .call-out-block-wrapper) {
     padding-bottom: var(--call-out-block-safe-area-y);
 }
 
+.call-out-block-wrapper + section {
+    padding-top: calc(var(--call-out-block-safe-area-y));
+}
+
 .call-out-block-wrapper {
     position: absolute;
     transform: translateY(-50%);
-    max-width:1920px;
-    z-index:10;]
+    max-width: 1920px;
+    z-index: 10;
 }
 
 .call-out-block {
