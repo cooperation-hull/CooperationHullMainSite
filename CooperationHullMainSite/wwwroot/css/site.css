@@ -370,6 +370,7 @@ h1 {
     background-image: url("../assets/img/hero-mobile.png");
     background-repeat: no-repeat;
     background-position: bottom left;
+    background-size: cover;
 }
 
 @media screen and (min-width: 768px) {
