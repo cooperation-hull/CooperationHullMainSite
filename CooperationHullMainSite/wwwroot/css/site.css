@@ -278,9 +278,11 @@ h1 {
 
     .footer .footer-content {
         display: flex;
+        flex-wrap: wrap;
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
+        max-width: 100%;
     }
 
     .footer .footer-content-left {
@@ -291,12 +293,16 @@ h1 {
 
     .footer .footer-links {
         display: flex;
+        flex-wrap: wrap;
+        z-index: 10;
         gap: 24px;
     }
 
     .footer .footer-socials {
         display: flex;
         gap: 24px;
+        z-index: 10;
+        margin-bottom: 50px;
     }
 
     .footer .footer-illustration {
@@ -578,6 +584,10 @@ h1 {
         flex-wrap: nowrap;
     }
 
+        .hww > .p-0 {
+          padding-bottom: 0;
+        }
+
         .hww::before {
             visibility: hidden;
         }
@@ -587,7 +597,7 @@ h1 {
             bottom: 0;
             right: 33%;
         }
-
+  
         .hww h1 {
             text-align: left;
         }
