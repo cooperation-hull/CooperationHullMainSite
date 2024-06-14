@@ -47,8 +47,7 @@ body {
     font-optical-sizing: auto;
     font-weight: 600;
     line-height: 1.7;
-    /*    max-width: 1920px;
-*/
+    max-width: 1920px;
 }
 
 [class^='heading-'] {
