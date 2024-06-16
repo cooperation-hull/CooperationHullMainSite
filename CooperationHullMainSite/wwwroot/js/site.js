@@ -8,17 +8,10 @@ let rootURL = window.location.origin;
 document.addEventListener('DOMContentLoaded', () => { pageLoadActions(); });
 
 function pageLoadActions() {
-    setNavItemActive();
     $('#homepage-formError').html();
     $('#home_page_signup_form').show();
     $('#form-completed').hide();
 }
-
-function setNavItemActive() {
-    let pageURL = window.location.href.replace(rootURL, '');
-    $(`#topNavBar li > a[href="${pageURL}"]`).parent().addClass('active')
-}
-
 
 //form submission handling
 
