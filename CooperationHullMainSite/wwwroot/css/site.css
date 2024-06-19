@@ -536,7 +536,7 @@ h1 {
         position: absolute;
         right: 12%;
         bottom: 0;
-        z-index: 0;
+        z-index: -1;
     }
 
     .hww .video {
@@ -679,6 +679,19 @@ h1 {
 
 .content-text ul {
     margin-left: 3rem;
+    list-style: disc;
+}
+
+.content-text li {
+    margin-bottom:1rem;
+}
+
+.content-text a {
+    color:white;
+}
+
+.content-text a:hover {
+text-decoration:underline;
 }
 
 
