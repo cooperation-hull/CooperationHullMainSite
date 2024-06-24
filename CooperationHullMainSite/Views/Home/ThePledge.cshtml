@@ -1,13 +1,41 @@
 ﻿
 @{
     ViewData["Title"] = "The Pledge";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="row">
-    <div class="col-12 content-text content-page">
-        <h1 class="heading-xl">@ViewData["Title"]</h1>
+    <div class="col-12 content-page">
 
-        <p>Coming Soon</p>
+        <div class="content-text">
+
+            <div class="top-image"></div>
+
+            <div>
+                <h1 class="heading-xl">@ViewData["Title"]</h1>
+            </div>
+
+
+            <p>
+                People’s Assemblies are a simple tool that will change everything.
+                Public meetings, happening everywhere, replacing party politics with people power.
+            </p>
+            <p>
+                The Hull People’s Assembly will be the first of its kind in the UK.
+                And we need your help to pull it off.
+            </p>
+            <p>
+                We’ll only launch when we have 2,000 signatures from local people.
+                Pledge your support to the Hull People’s Assembly by signing here, now.
+            </p>
+
+        </div>
+
+
+        <link href='https://actionnetwork.org/css/style-embed-whitelabel-v3.css' rel='stylesheet' type='text/css' />
+        <script src='https://actionnetwork.org/widgets/v5/form/support-the-hull-peoples-assembly?format=js&source=widget'></script>
+        <div id='can-form-area-support-the-hull-peoples-assembly'>
+            <!-- this div is the target for our HTML insertion --></div>
     </div>
 </div>
 
