@@ -15,7 +15,7 @@ html {
 }
 
 .btn-lg {
-    font-size: clamp(1.5rem, 0.5vw + 1rem, 2rem);
+    font-size: 1.5rem;
 }
 
 html {
@@ -380,6 +380,12 @@ h1 {
     .hero-image-container {
         background-image: url("../assets/img/hero-desktop.png");
     }
+
+    .hero-container {
+        min-height: 850px;
+        height: 100vh;
+        max-height: 1080px;
+    }
 }
 
 .hero img {
@@ -402,7 +408,7 @@ h1 {
 }
 
 .hero-text {
-    margin: 10rem 3rem 5rem 3rem;
+    margin: 2rem 3rem 6rem 3rem;
     max-width: 80%;
     display: flex;
     flex-direction: column;
