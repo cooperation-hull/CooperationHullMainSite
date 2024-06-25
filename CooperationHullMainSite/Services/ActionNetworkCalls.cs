@@ -1,8 +1,13 @@
 ﻿using CooperationHullMainSite.Models.ActionNetworkAPI;
+using CooperationHullMainSite.Models.ActionNetworkAPI.FormData;
+using CooperationHullMainSite.Models.ActionNetworkAPI.Tags;
 using Microsoft.Extensions.Options;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using System.Linq;
 
 namespace CooperationHullMainSite.Services
 {
@@ -29,6 +34,18 @@ namespace CooperationHullMainSite.Services
 
         public async Task<bool> SubmitNewPersonRecord(ActionNetworkPerson formData)
         {
+
+            List<OsdiTag> tagsData = await GetListOfTags();
+
+            List<string> defaultTags =  config.SignupFormDefaultTags;
+
+            var tagsToAdd = tagsData.Where(x => defaultTags.Any(y => x.name == y)).ToList();
+
+            //TODO - get identifiers from the tagsToAdd list
+            //Remove the action_networks part of the string
+            //Work out how to add them into the data sent to PersonSignupHelper.
+
+
             string endpoint = $"people/";
             var temp = await PostDataAPICall(endpoint, new ActionNetworkPersonSignupHelper(formData));
             return temp;
@@ -64,18 +81,18 @@ namespace CooperationHullMainSite.Services
             return item;
         }
 
-        public async Task<ActionNetworkCustomFieldCollection> GetCustomFieldData()
-        {
+        //public async Task<ActionNetworkCustomFieldCollection> GetCustomFieldData()
+        //{
 
-            string endpoint = $"metadata/custom_fields";
-            var result = await GetDataAPICall(endpoint, new object());
+        //    string endpoint = $"metadata/custom_fields";
+        //    var result = await GetDataAPICall(endpoint, new object());
 
-            ActionNetworkCustomFieldCollection item = new ActionNetworkCustomFieldCollection();
+        //    ActionNetworkCustomFieldCollection item = new ActionNetworkCustomFieldCollection();
 
-            item = JsonSerializer.Deserialize<ActionNetworkCustomFieldCollection>(result);
+        //    item = JsonSerializer.Deserialize<ActionNetworkCustomFieldCollection>(result);
 
-            return item;
-        }
+        //    return item;
+        //}
 
 
         private  async Task<string> GetDataAPICall(string endpoint, object dataModel)
@@ -145,6 +162,16 @@ namespace CooperationHullMainSite.Services
              return result;
         }
 
+       public async Task<List<OsdiTag>> GetListOfTags()
+        {
+            string endpoint = $"tags/";
+            var data = await GetDataAPICall(endpoint, null);
+
+            ActionNetworkTag result = JsonSerializer.Deserialize<ActionNetworkTag>(data);
+
+            return result._embedded.osditags;
+
+        }
 
 
     }
