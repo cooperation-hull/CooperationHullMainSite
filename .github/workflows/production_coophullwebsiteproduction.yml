@@ -45,7 +45,7 @@ jobs:
         env:
          ActionNetworkConfig.APIKey: ${{ secrets.ACTION_NETWORK_CONFIG_API_KEY }}
          ActionNetworkConfig.baseURL: ${{ secrets.ACTION_NETWORK_CONFIG_BASE_URL }}
-         ActionNetworkConfig.FormList: ${{ secrets.ACTION_NETWORK_CONFIG_FORMS_LIST }
+         ActionNetworkConfig.FormList: ${{ secrets.ACTION_NETWORK_CONFIG_FORMS_LIST }}
          
       - name: Publish
         run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
