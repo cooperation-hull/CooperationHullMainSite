@@ -5,14 +5,6 @@
 
 let rootURL = window.location.origin;
 
-document.addEventListener('DOMContentLoaded', () => { pageLoadActions(); });
-
-function pageLoadActions() {
-    $('#homepage-formError').html();
-    $('#home_page_signup_form').show();
-    $('#form-completed').hide();
-}
-
 //form submission handling
 
 function home_page_signup_form_submit() {
@@ -25,17 +17,16 @@ function home_page_signup_form_submit() {
         url: $form.attr('action'),
         data: $form.serialize(),
         error: function (xhr, status, error) {
-            $('#homepage-form-to-complete #homepage-formError').html("Something went wrong.  Please try again later");
+            $('#form-error').show();
         },
         success: function (response) {
-
             if (response.result) {
-                $('#signedbyName').html(response.signedByName);
+                $('#signed-by-name').html(response.signedByName);
                 $('#home_page_signup_form').hide();
                 $('#form-completed').show();
             }
             else {
-                $('#homepage-formError').html(response.error);
+                $('#form-error').show();
             }
         }
     });

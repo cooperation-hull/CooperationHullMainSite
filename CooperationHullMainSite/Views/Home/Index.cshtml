@@ -84,7 +84,7 @@
                     In a short call we’ll answer your questions and find your place in the movement. Join hundreds of local people, working together, today.
                 </p>
             </div>
-            <form class="col-lg-5 call-out-block-form" method="post" id="home_page_signup_form" asp-action="Home_page_signup_form" asp-controller="Home">
+            <form class="col-lg-5 position-relative call-out-block-form" method="post" id="home_page_signup_form" asp-action="Home_page_signup_form" asp-controller="Home">
                 <div class="row">
                    <p id="homepage-formError" class="errorMessage"></p>
                     <div class="col-6">
@@ -96,7 +96,6 @@
                         <input id="PledgeFormSurname" name="PledgeFormSurname" class="form-control form-control-lg" type="text">
                     </div>
                 </div>
-
                 <div class="form-final-row d-flex">
                     <div class="col-xl-9 col-lg-8 col-md-7">
                         <label for="PledgeFormMobile" class="form-label">Phone Number</label>
@@ -106,13 +105,13 @@
                         <button type="button" class="w-100 btn btn-lg px-4" onclick="home_page_signup_form_submit();">Sign</button>
                     </div>
                 </div>
+                <span class="p-2 d-none position-absolute top-100" id="form-error">⚠️ Sorry, that didn't work. Please try again later</span>
             </form>
-            <div class="col-lg-6 call-out-block-form" id="form-completed">
-              <p class="heading-md" >Hello <span id="signedbyName"></span></p>
-              <p class="heading-sm">Thank you for joining our mailing list</p>
+            <div class="col-lg-6 d-none" id="form-completed">
+              <p class="heading-md" >✅ Thanks, <span id="signed-by-name"></span>!</p>
+              <p class="heading-sm">We'll be in touch soon</p>
             </div>
         </div>
-
     </div>
 </section>
 
