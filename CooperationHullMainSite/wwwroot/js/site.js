@@ -8,9 +8,8 @@ let rootURL = window.location.origin;
 //form submission handling
 
 function home_page_signup_form_submit() {
-
+    $('#home_page_signup_form').css({ opacity: 0.5 });
     let $form = $(`#home_page_signup_form`);
-
     $.ajax({
         type: "POST",
         dataType: 'json',
@@ -30,7 +29,7 @@ function home_page_signup_form_submit() {
             }
         }
     });
-
+    $('#home_page_signup_form').css({ opacity: 1 });
     return false;
 
 }
