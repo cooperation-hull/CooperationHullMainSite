@@ -44,10 +44,10 @@ namespace CooperationHullMainSite.Services
             //TODO - get identifiers from the tagsToAdd list
             //Remove the action_networks part of the string
             //Work out how to add them into the data sent to PersonSignupHelper.
-
+            var tagnameList = tagsToAdd.Select(x => x.name).ToList();
 
             string endpoint = $"people/";
-            var temp = await PostDataAPICall(endpoint, new ActionNetworkPersonSignupHelper(formData));
+            var temp = await PostDataAPICall(endpoint, new ActionNetworkPersonSignupHelper(formData, tagnameList));
             return temp;
         }
 
