@@ -3,18 +3,21 @@ using System.Text.Json.Serialization;
 namespace CooperationHullMainSite.Models.ActionNetworkAPI
 {
 
-
     [Serializable]
     public class ActionNetworkPersonSignupHelper
     {
         public ActionNetworkPerson person {  get; set; }
+        public string[] add_tags { get; set; }
         public ActionNetworkPersonSignupHelper() { }
 
         public ActionNetworkPersonSignupHelper(ActionNetworkPerson data) {
             person = data;
         }
 
-        //todo add in tags etc at some point if needed
+        public ActionNetworkPersonSignupHelper(ActionNetworkPerson data, List<string> tagsToAdd) {
+            person = data;
+            add_tags = tagsToAdd.ToArray();
+        }
     }
 
 
