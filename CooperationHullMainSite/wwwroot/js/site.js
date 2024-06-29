@@ -5,7 +5,7 @@
 
 let rootURL = window.location.origin;
 
-//form submission handling
+// form submission handling
 
 function home_page_signup_form_submit() {
     let $form = $(`#home_page_signup_form`);
@@ -16,7 +16,7 @@ function home_page_signup_form_submit() {
         dataType: 'json',
         url: $form.attr('action'),
         data: $form.serialize(),
-        error: function (xhr, status, error) {
+        error: function () {
             $('#form-error').show();
         },
         success: function (response) {
@@ -30,9 +30,8 @@ function home_page_signup_form_submit() {
             }
         }
     });
-    
+
     $form.css({ opacity: 1 });
     return false;
-
 }
 
