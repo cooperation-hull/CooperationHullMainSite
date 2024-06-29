@@ -7,7 +7,12 @@ on:
   push:
     branches:
       - production
-  workflow_dispatch:
+env:
+  AZURE_WEBAPP_NAME: CoopHullWebsiteProduction
+  AZURE_WEBAPP_PACKAGE_PATH: CoopHullWebsiteProduction\published
+  CONFIGURATION: Release
+  DOTNET_CORE_VERSION: 8.0.x
+  WORKING_DIRECTORY: CooperationHullMainSite
 
 jobs:
   build:
@@ -19,34 +24,48 @@ jobs:
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.x'
+          dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
 
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
+      - name: Restore
+        run: dotnet restore "${{ env.WORKING_DIRECTORY }}"
+
       - name: dotnet publish
         run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v4
+      - name: Build
+        run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
+
+      - name: App Settings Variable Substitution
+        uses: microsoft/variable-substitution@v1
         with:
-          name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+          files: '**/appsettings.json'
+        env:
+         ActionNetworkConfig.APIKey: ${{ secrets.ACTION_NETWORK_CONFIG_API_KEY }}
+         ActionNetworkConfig.baseURL: ${{ secrets.ACTION_NETWORK_CONFIG_BASE_URL }}
+         ActionNetworkConfig.FormList: ${{ secrets.ACTION_NETWORK_CONFIG_FORMS_LIST }
+         
+      - name: Publish
+        run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
+           
+      - name: Publish Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: webapp
+          path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
   deploy:
     runs-on: windows-latest
     needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    permissions:
-      id-token: write #This is required for requesting the JWT
 
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: .net-app
+          name: webapp
+          path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
       
       - name: Login to Azure
         uses: azure/login@v2
@@ -59,7 +78,6 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'CoopHullWebsiteProduction'
-          slot-name: 'Production'
-          package: .
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
           
