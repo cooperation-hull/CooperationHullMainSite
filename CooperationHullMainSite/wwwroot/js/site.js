@@ -8,8 +8,9 @@ let rootURL = window.location.origin;
 //form submission handling
 
 function home_page_signup_form_submit() {
-    $('#home_page_signup_form').css({ opacity: 0.5 });
     let $form = $(`#home_page_signup_form`);
+    $form.css({ opacity: 0.5 });
+    
     $.ajax({
         type: "POST",
         dataType: 'json',
@@ -20,8 +21,8 @@ function home_page_signup_form_submit() {
         },
         success: function (response) {
             if (response.result) {
+                $form.hide();
                 $('#signed-by-name').html(response.signedByName);
-                $('#home_page_signup_form').hide();
                 $('#form-completed').show();
             }
             else {
@@ -29,7 +30,8 @@ function home_page_signup_form_submit() {
             }
         }
     });
-    $('#home_page_signup_form').css({ opacity: 1 });
+    
+    $form.css({ opacity: 1 });
     return false;
 
 }
