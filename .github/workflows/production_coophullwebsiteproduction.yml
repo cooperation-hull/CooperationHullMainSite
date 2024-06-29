@@ -1,0 +1,87 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy ASP.Net Core app to Azure Web App - CoopHullWebsiteProduction
+
+on:
+  push:
+    branches:
+      - production
+env:
+  AZURE_WEBAPP_NAME: CoopHullWebsiteProduction
+  AZURE_WEBAPP_PACKAGE_PATH: CoopHullWebsiteProduction\published
+  CONFIGURATION: Release
+  DOTNET_CORE_VERSION: 8.0.x
+  WORKING_DIRECTORY: CooperationHullMainSite
+
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET Core
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_CORE_VERSION }}
+
+      - name: Restore
+        run: dotnet restore ${{ env.WORKING_DIRECTORY }}
+
+      - name: Build
+        run: dotnet build "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-restore
+
+      - name: App Settings Variable Substitution
+        uses: microsoft/variable-substitution@v1
+        with:
+          files: '**/appsettings.json'
+        env:
+         ActionNetworkConfig.APIKey: ${{ secrets.ACTION_NETWORK_CONFIG_API_KEY }}
+         ActionNetworkConfig.baseURL: ${{ secrets.ACTION_NETWORK_CONFIG_BASE_URL }}
+         ActionNetworkConfig.FormList: ${{ secrets.ACTION_NETWORK_CONFIG_FORMS_LIST }}
+         
+      - name: Publish
+        run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
+           
+      - name: Publish Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: webapp
+          path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
+  deploy:
+    runs-on: windows-latest
+    needs: build
+
+    steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: webapp
+          path: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+      - name: Deploy to Azure WebApp
+        uses: azure/webapps-deploy@v2
+        with:
+         app-name: ${{ env.AZURE_WEBAPP_NAME }}
+         publish-profile: ${{ secrets.PRODUCTION_PUBLISH_PROFILE }}
+         package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+      # - name: Login to Azure
+      #   uses: azure/login@v2
+      #   with:
+      #     client-id: ${{ secrets.PRODUCTION_AZUREAPP_CLIENT }}
+      #     tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_0A240E01865F4B80921AEABBB0810436 }}
+      #     subscription-id: ${{ secrets.PRODUCTION_AZUREAPP_SUBSCRIPTION }}
+
+      # - name: Deploy to Azure Web App
+      #   id: deploy-to-webapp
+      #   uses: azure/webapps-deploy@v3
+      #   with:
+      #     app-name: ${{ env.AZURE_WEBAPP_NAME }}
+      #     package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          
