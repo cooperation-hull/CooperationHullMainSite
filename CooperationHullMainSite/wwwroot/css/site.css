@@ -538,12 +538,13 @@ h1 {
         background-repeat: no-repeat;
     }
 
-    .hww .spot {
-        position: absolute;
-        right: 12%;
-        bottom: 0;
-        z-index: -1;
-    }
+.hww .spot {
+    position: absolute;
+    margin:auto;
+    left: 42%;
+    bottom: 0;
+    z-index: 0;
+}
 
     .hww .video {
         z-index: 10;
