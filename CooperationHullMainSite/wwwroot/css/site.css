@@ -121,6 +121,8 @@ h1 {
     color: var(--off-black);
     padding-left: 4rem;
     padding-right: 4rem;
+    max-width: 1903px;
+    margin: auto;
 }
 
 .nav-logo {
