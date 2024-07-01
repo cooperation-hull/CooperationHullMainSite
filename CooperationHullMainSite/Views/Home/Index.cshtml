@@ -76,8 +76,8 @@
 <section class="call-out-block-wrapper">
     <div class="call-out-block">
         <img class="call-out-block-illo" src="~/assets/img/hedgehog-spot.png" alt="" />
-        <div class="row align-items-center">
-            <div class="col-lg-7 class call-out-block-text">
+        <div class="row align-items-center gap-3">
+            <div class="col-lg-7 call-out-block-text">
                 <h2 class="heading-md">Want to be part of something bigger?</h2>
                 <p>
                     If you want to make the world a better place, leaving us your phone number is the easiest way to make a difference. 
@@ -86,7 +86,6 @@
             </div>
             <form class="col-lg-5 position-relative call-out-block-form" method="post" id="home_page_signup_form" asp-action="Home_page_signup_form" asp-controller="Home">
                 <div class="row">
-                   <p id="homepage-formError" class="errorMessage"></p>
                     <div class="col-6">
                         <label for="PledgeFormFirstName" class="form-label">First Name</label>
                         <input id="PledgeFormFirstName" name="PledgeFormFirstName" class="form-control form-control-lg" type="text">
@@ -107,7 +106,7 @@
                 </div>
                 <span class="p-2 position-absolute top-100" id="form-error" style="display:none;">⚠️ Sorry, that didn't work. Please try again later</span>
             </form>
-            <div class="col-lg-6" id="form-completed" style="display:none;">
+            <div class="col-lg-5" id="form-completed" style="display:none;">
               <p class="heading-md" >✅ Thanks, <span id="signed-by-name"></span>!</p>
               <p class="heading-sm">We'll be in touch soon</p>
             </div>
