@@ -1,39 +1,26 @@
 ﻿<!-- Hero -->
 <section class="hero">
 
-    <div class="row">
+    <div class="row hero-container">
 
         <div class="hero-image-container">
 
-            <div class="d-none d-lg-block">
-                <img src="~/assets/img/blackandwhitehero.png" alt="" />
-            </div>
-            <div class="d-lg-none ">
-                <img src="~/assets/img/pattern 1.jpeg" alt="" />
-            </div>
         </div>
 
-        <div class="position-absolute">
-
-            <div class="col-12 col-md-11 col-lg-9 col-xl-7 col-xxl-6 text-left hero-text">
-                <h1 class="heading-xl">THE BIG QUESTION</h1>
-                <p class="heading-sm">Strong, caring communities.</p>
-                <p class="heading-sm">Enough food for everyone.</p>
-                <p class="heading-sm">A healthy planet.</p>
-                <p class="heading-sm">Lives filled with meaning.</p>
-                <br />
-                <p class="heading-sm">This is the kind of society we all want.</p>
-                <p class="heading-sm">So why don't we build it?</p>
-
-                <button type="button" class="btn btn-light btn-lg px-4 gap-3">Sign up now</button>
-            </div>
+        <div class="col-10 col-md-8 col-lg-8 col-xl-6 col-xxl-5 text-left hero-text">
+            <h1 class="heading-xl">THE BIG QUESTION</h1>
+            <p class="text-lg">
+                Strong, caring communities. Enough food for everyone.
+                A healthy planet. Lives filled with meaning.
+            </p>
+            <p class="text-lg this-is">This is the kind of world we all want.</p>
+            <p class="text-lg">So why don't we build it?</p>
+            <button type="button" onClick="document.getElementById('home_page_signup_form').scrollIntoView({block: 'center'});" class="btn btn-light btn-lg px-4 gap-3">Sign up now</button>
         </div>
 
     </div>
 
 </section>
-
-
 
 <section class="homepage-block the-plan orange">
     <div class="row">
@@ -44,8 +31,8 @@
                 A planet in crisis. A failing economy. A divided society. Broken party politics.
             </p>
             <p>
-                This is the story of the world today and nobody (apart from the 1% at the top) 
-                benefits from keeping it this way. No ordinary person wants corrupt leaders, crop failures 
+                This is the story of the world today and nobody (apart from the 1% at the top)
+                benefits from keeping it this way. No ordinary person wants corrupt leaders, crop failures
                 or the culture war and, to put it simply, there are more of us than there are of them. So…
             </p>
         </div>
@@ -116,7 +103,7 @@
                         <input id="PledgeFormMobile" name="PledgeFormMobile" class="form-control form-control-lg" type="text">
                     </div>
                     <div class="align-self-end flex-grow-1">
-                        <button type="button" class="w-100 btn btn-lg px-4 heading-sm" onclick="home_page_signup_form_submit();">Sign</button>
+                        <button type="button" class="w-100 btn btn-lg px-4" onclick="home_page_signup_form_submit();">Sign</button>
                     </div>
                 </div>
             </form>
@@ -125,9 +112,9 @@
               <p class="heading-sm">Thank you for joining our mailing list</p>
             </div>
         </div>
+
     </div>
 </section>
-
 
 
 <section class="homepage-block hww">
@@ -141,7 +128,7 @@
             <br/>
             <p>The good news is, we're not starting from scratch and we're not alone! This stuff is already working all over the world. We've borrowed ideas and tools all the way from Mississippi (Cooperation Jackson) to the Middle East (Rojava) and the East Riding.</p>
             <br/>
-            <a href="/">Find out more about our tools →</a>
+            <a class="" asp-area="" asp-controller="Home" asp-action="HowWeWork">Find out more about our tools &rarr;</a>
         </div>
     </div>
     <div class="spot">
