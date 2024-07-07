@@ -6,14 +6,16 @@
 
 <div class="row">
     <article class="col-12 content-page px-5">
-        <div>
+        <div class="row">
             <h1 class="heading-xl">@ViewData["Title"]</h1>
             <p>If you like what you’ve heard, if you’re just as worried and hopeful about the world as we are, and want to support our work, join us!</p>
         </div>
 
         <div class="pt-5 d-flex flex-column gap-5">
             <section>
-                <h2 class="pb-4">Anyone can become a member of Cooperation Hull</h2>
+                <div class="row">
+                    <h2 class="pb-4">Anyone can become a member of Cooperation Hull</h2>
+                </div>
                 <div class="row">
                     <div class="col-12 col-lg-6">
                         <p>You’ll join a ramshackle community of strangers, from builders to poets, who all have one thing in common: we want to build a better world and we’re ready to roll up our sleeves.</p>
@@ -24,7 +26,9 @@
             </section>
 
             <section>
-                <h3 class="pb-4">Suggested Contributions Based on Your Income</h3>
+                <div class="row">
+                    <h3 class="pb-4">Suggested Contributions Based on Your Income</h3>
+                </div>
                 <div class="row" @* TODO: add vertical gap for smaller screens, without breaking layout *@>
                     <div class="col-sm-6 col-lg-3">
                         <div class="bg-white p-3 rounded h-100 d-flex flex-column justify-content-between gap-3">
@@ -65,7 +69,9 @@
             </section>
 
             <section>
-                <h2 class="pb-4">What’s more helpful than money? Time!</h2>
+                <div class="row">
+                    <h2 class="pb-4">What’s more helpful than money? Time!</h2>
+                </div>
                 <div class="row">
                     <img class="col-12 col-lg-6 object-fit-cover ml-4" src="~/assets/img/membership-photo-3.jpg" alt="2 people at a Cooporation Hull meeting" />
                     <div class="col-12 col-lg-6">
@@ -76,11 +82,15 @@
                 </div>
             </section>
             
-            <section>
-                <h2 class="pb-4">Pledge to Make the Hull People’s Assembly a Reality</h2>
-                <p>When we have 2,000 signatures we’re launching the citywide Assembly. Two hundred people, meeting over several days, tackling a big topic.</p>
-                <p>Organising something this big won’t be easy! It will be all hands on deck go go go and <b>it’s our members who will make it happen</b>, working as part of a team to pull off something groundbreaking.</p>
-                <p>When the time comes we’ll be inviting all our members to <b>commit at least 10 hours</b> of your time to help make The Hull People’s Assembly a reality. </p>
+            <section class="pb-5">
+                <div class="row">
+                    <h2 class="pb-4">Pledge to Make the Hull People’s Assembly a Reality</h2>
+                </div>
+                <div class="row">
+                    <p>When we have 2,000 signatures we’re launching the citywide Assembly. Two hundred people, meeting over several days, tackling a big topic.</p>
+                    <p>Organising something this big won’t be easy! It will be all hands on deck go go go and <b>it’s our members who will make it happen</b>, working as part of a team to pull off something groundbreaking.</p>
+                    <p>When the time comes we’ll be inviting all our members to <b>commit at least 10 hours</b> of your time to help make The Hull People’s Assembly a reality. </p>
+                </div>
             </section>
         </div>
     </article>
