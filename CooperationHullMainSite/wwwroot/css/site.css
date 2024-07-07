@@ -28,6 +28,10 @@ a {
     text-decoration: none;
 }
 
+img {
+    object-fit: cover;
+}
+
 
 /* Abby's CSS */
 
@@ -704,6 +708,14 @@ h1 {
 
 .content-text a:hover {
 text-decoration:underline;
+}
+
+.contribute-link {
+    background-color: var(--cooperation-orange);
+    color: var(--cooperation-white);
+    border-radius: 4px;
+    padding: 2px 10px;
+    width: max-content;
 }
 
 
