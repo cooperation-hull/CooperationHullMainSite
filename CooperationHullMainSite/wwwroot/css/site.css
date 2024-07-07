@@ -95,6 +95,10 @@ h1 {
     font-size: clamp(1rem, 0.4vw + 1rem, 1.5rem);
 }
 
+.gap-8 {
+    gap: 4.8rem
+}
+
 
 /*Cookie Consent Banner*/
 
@@ -710,7 +714,7 @@ h1 {
 text-decoration:underline;
 }
 
-.contribute-link {
+.button-link {
     background-color: var(--cooperation-orange);
     color: var(--cooperation-white);
     border-radius: 4px;
