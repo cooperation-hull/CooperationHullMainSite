@@ -694,6 +694,10 @@ h1 {
     list-style: disc;
 }
 
+.content-text ol {
+    margin-left: 3rem;
+}
+
 .content-text li {
     margin-bottom:1rem;
 }
