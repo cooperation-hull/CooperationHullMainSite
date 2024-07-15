@@ -878,6 +878,7 @@ section:has(+ .call-out-block-wrapper) {
 .happening-next-item .header-image {
     width: 100%;
     height: 200px;
+    object-fit: cover;
 }
 
 .happening-next-item .date-tag {

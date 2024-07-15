@@ -2,25 +2,25 @@
   "title": "Cooperation Hull",
   "eventList": [
     {
-      "title": "HU3 Neighbourhood Assembly",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget dui tortor. Fusce blandit elit sit amet.",
-      "date": "2024-01-01T00:00:00",
-      "imagesName": "pattern 1.jpeg",
-      "eventLink": "https://www.instagram.com/p/C3sMIZQNtIy/"
+      "title": "Waffle",
+      "description": "Every Tuesday evening we get together for some top scran, and pay whatever we like. 5 - 7:30pm at the Lonsdale Centre off Anlaby Road.",
+      "date": "2024-07-16T00:00:00",
+      "imagesName": "waffle.jpeg",
+      "eventLink": "https://www.instagram.com/p/C8uHqcztOz7/"
     },
     {
-      "title": "HU4 Neighbourhood Assembly",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget dui tortor. Fusce blandit elit sit amet.",
-      "date": "2024-02-01T00:00:00",
-      "imagesName": "pattern 2.jpeg",
-      "eventLink": "https://www.instagram.com/p/C3vqGwUo431/"
+      "title": "Facilitation Training",
+      "description": "Facilitators are the glue that hold our assemblies together, and we need you to be one! Stick around after for a social. 6 - 7pm at The Three Crowns on Vistoria Dock.",
+      "date": "2024-07-25T00:00:00",
+      "imagesName": "hu9-facilitator.jpg",
+      "eventLink": "https://www.instagram.com/p/C7ybjUYpUuO/"
     },
     {
-      "title": "HU5 Neighbourhood Assembly",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas eget dui tortor. Fusce blandit elit sit amet.",
-      "date": "2024-03-01T00:00:00",
-      "imagesName": "pattern 1.jpeg",
-      "eventLink": "https://www.instagram.com/p/C3IOg8WNXvI/?img_index=1"
+      "title": "The Peoples Party II",
+      "description": "If I cant dance, its not my revolution. Come for the music, stay to be a part of a historic movement for change. 6pm til late, venue TBC",
+      "date": "2024-08-16T00:00:00",
+      "imagesName": "party-hat.jpg",
+      "eventLink": "https://www.eventbrite.co.uk/e/the-peoples-party-redux-the-revolution-starts-in-hull-tickets-933218049307"
     }
   ]
 
