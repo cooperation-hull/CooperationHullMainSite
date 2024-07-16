@@ -26,13 +26,14 @@ namespace CooperationHullMainSite.Services
 
         public async Task<int> GetNumberSigned(string formName)
         {
+            //Currently not used
             ActionNetworkFormData data = await GetFormData(formName);
 
             return data.total_submissions;
         }
 
 
-        public async Task<bool> SubmitNewPersonRecord(ActionNetworkPerson formData)
+        public async Task<bool> SubmitNewPersonRecord(ActionNetworkPerson formData, bool hullTag)
         {
 
             List<OsdiTag> tagsData = await GetListOfTags();
@@ -41,10 +42,14 @@ namespace CooperationHullMainSite.Services
 
             var tagsToAdd = tagsData.Where(x => defaultTags.Any(y => x.name == y)).ToList();
 
-            //TODO - get identifiers from the tagsToAdd list
-            //Remove the action_networks part of the string
-            //Work out how to add them into the data sent to PersonSignupHelper.
             var tagnameList = tagsToAdd.Select(x => x.name).ToList();
+
+            var hullTagName = tagsData.Where(x => x.name == "Hull").FirstOrDefault();
+
+            if(hullTag && hullTagName != null) 
+            { 
+                tagnameList.Add(hullTagName.name);
+            }
 
             string endpoint = $"people/";
             var temp = await PostDataAPICall(endpoint, new ActionNetworkPersonSignupHelper(formData, tagnameList));
@@ -80,20 +85,6 @@ namespace CooperationHullMainSite.Services
             var item = JsonSerializer.Deserialize<ActionNetworkFormData>(result);
             return item;
         }
-
-        //public async Task<ActionNetworkCustomFieldCollection> GetCustomFieldData()
-        //{
-
-        //    string endpoint = $"metadata/custom_fields";
-        //    var result = await GetDataAPICall(endpoint, new object());
-
-        //    ActionNetworkCustomFieldCollection item = new ActionNetworkCustomFieldCollection();
-
-        //    item = JsonSerializer.Deserialize<ActionNetworkCustomFieldCollection>(result);
-
-        //    return item;
-        //}
-
 
         private  async Task<string> GetDataAPICall(string endpoint, object dataModel)
         {

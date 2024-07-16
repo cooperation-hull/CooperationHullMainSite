@@ -39,15 +39,6 @@ namespace CooperationHullMainSite.Controllers
                 _logger.LogError(ex, "Could not deserialize content file, defaults used");
             }
 
-            try {
-                model.formSignedCounter = await _actionNetworkCalls.GetNumberSigned("support-the-hull-peoples-assembly");
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Could not retreive form counter, defaults used");
-                model.formSignedCounter = -1;
-            }
-
             return View(model);
         }
 
@@ -81,6 +72,14 @@ namespace CooperationHullMainSite.Controllers
                     data.phone_numbers = [phone];
             }
 
+            bool liveInHull = false;
+
+            if(Request.Form["LiveInHull"] == "on")
+            {
+                liveInHull = true;
+            }
+
+
             bool result = false;
 
             if(errorList.Count > 0)
@@ -90,7 +89,7 @@ namespace CooperationHullMainSite.Controllers
             }
             else
             {
-                result = await _actionNetworkCalls.SubmitNewPersonRecord(data);
+                result = await _actionNetworkCalls.SubmitNewPersonRecord(data, liveInHull);
 
                 if (result)
                     return Json(new { result = result, signedByName = data.given_name });

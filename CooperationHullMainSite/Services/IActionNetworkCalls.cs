@@ -7,7 +7,7 @@ namespace CooperationHullMainSite.Services
     {
         Task<int> GetNumberSigned(string formName);
         Task<bool> SubmitForm(string formName, ActionNetworkPerson formData);
-        Task<bool> SubmitNewPersonRecord(ActionNetworkPerson personData);
+        Task<bool> SubmitNewPersonRecord(ActionNetworkPerson personData, bool hullTag);
         Task<List<OsdiTag>> GetListOfTags();
     }
 }
