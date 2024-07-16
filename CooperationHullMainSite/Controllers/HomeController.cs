@@ -74,7 +74,7 @@ namespace CooperationHullMainSite.Controllers
 
             bool liveInHull = false;
 
-            if(Request.Form["LiveInHull"] == "on")
+            if(Request.Form["LiveInHullYes"] == "on")
             {
                 liveInHull = true;
             }

@@ -44,11 +44,16 @@ namespace CooperationHullMainSite.Services
 
             var tagnameList = tagsToAdd.Select(x => x.name).ToList();
 
-            var hullTagName = tagsData.Where(x => x.name == "Hull").FirstOrDefault();
+            OsdiTag locationTag;
 
-            if(hullTag && hullTagName != null) 
-            { 
-                tagnameList.Add(hullTagName.name);
+            if (hullTag)
+                locationTag = tagsData.Where(x => x.name == "Hull").FirstOrDefault();
+            else 
+                locationTag = tagsData.Where(x => x.name == "Not Hull").FirstOrDefault();
+
+            if(locationTag != null)
+            {
+                tagnameList.Add(locationTag.name);
             }
 
             string endpoint = $"people/";
