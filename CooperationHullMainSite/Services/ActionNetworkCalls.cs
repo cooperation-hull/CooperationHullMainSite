@@ -44,17 +44,10 @@ namespace CooperationHullMainSite.Services
 
             var tagnameList = tagsToAdd.Select(x => x.name).ToList();
 
-            OsdiTag locationTag;
-
             if (hullTag)
-                locationTag = tagsData.Where(x => x.name == "Hull").FirstOrDefault();
-            else 
-                locationTag = tagsData.Where(x => x.name == "Not Hull").FirstOrDefault();
-
-            if(locationTag != null)
-            {
-                tagnameList.Add(locationTag.name);
-            }
+                tagnameList.Remove("Not Hull");
+            else
+                tagnameList.Remove("Hull");
 
             string endpoint = $"people/";
             var temp = await PostDataAPICall(endpoint, new ActionNetworkPersonSignupHelper(formData, tagnameList));

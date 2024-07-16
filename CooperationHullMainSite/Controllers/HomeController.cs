@@ -79,7 +79,6 @@ namespace CooperationHullMainSite.Controllers
                 liveInHull = true;
             }
 
-
             bool result = false;
 
             if(errorList.Count > 0)
