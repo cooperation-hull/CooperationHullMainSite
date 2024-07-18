@@ -575,6 +575,7 @@ h1 {
     height: 100%;
     padding-left: 10px;
     padding-right: 10px;
+    z-index: 1;
 }
 
     .blurb h1 {
