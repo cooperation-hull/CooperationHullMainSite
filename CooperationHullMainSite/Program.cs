@@ -33,16 +33,20 @@ try
     builder.Services.Configure<ActionNetworkConfig>(
         builder.Configuration.GetSection("ActionNetworkConfig"));
 
+    builder.Configuration.AddEnvironmentVariables();
     //Custom services
     builder.Services.AddSingleton<IJsonFileReader, JsonFileReader>();
     builder.Services.AddSingleton<IActionNetworkCalls, ActionNetworkCalls>();
 
     //NLog setup
     builder.Logging.ClearProviders();
+    builder.Logging.AddConsole();
     builder.Host.UseNLog();
 
 
     var app = builder.Build();
+
+    app.Logger.LogInformation(Environment.GetEnvironmentVariable("HELLO_FROM_GCP"));  //TODO: set this in cloud run and check build logs to see if it was accessible
 
     // Configure the HTTP request pipeline.
     if (!app.Environment.IsDevelopment())
