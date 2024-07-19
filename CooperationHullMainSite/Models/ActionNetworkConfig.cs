@@ -10,6 +10,8 @@
 
         public List<FormData> FormList { get; set; }
 
+        public List<string> SignupFormDefaultTags { get; set; }
+
     }
 
 
