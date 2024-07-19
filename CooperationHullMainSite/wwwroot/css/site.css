@@ -934,7 +934,7 @@ section:has(+ .call-out-block-wrapper) {
         gap: 2.5rem;
     }
 
-    #whats-happening-scroll {
+#whats-happening-scroll {
         display: block;
     }
 
