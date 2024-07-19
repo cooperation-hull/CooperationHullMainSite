@@ -139,9 +139,13 @@
 <section class="homepage-block orange">
     <div class="row">
         <div class="col-12">
-            <h2 class="heading-lg text-center pt-3 pb-5">What's happening next?</h2>
+            <div class="pt-3 pb-5 text-center">
+                <h2 class="heading-lg">What's happening next?</h2>
+                <h6 id="whats-happening-scroll">Scroll >>></h3>
+            </div>
+            
 
-            <div class="row gx-5 gy-4">
+            <div id="happening-next-boxes" class="row gx-5 gy-4">
                 @foreach (HappenginNextEvent eventItem in Model.eventList)
                 {
                     @Html.Partial("_HappeningNext", eventItem)
