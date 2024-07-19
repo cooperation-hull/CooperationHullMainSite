@@ -124,6 +124,8 @@ h1 {
     width: 100%;
     max-width: 1903px;
     margin: auto;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .navbar {
@@ -132,6 +134,9 @@ h1 {
     padding-right: 4rem;
     max-width: 1903px;
     margin: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+
 }
 
 .nav-logo {
@@ -155,6 +160,7 @@ h1 {
 }
 
 .nav-buttons {
+    position: relative;
     display: flex;
     height: 100%;
     align-items: center;
@@ -182,9 +188,12 @@ h1 {
 
 #nav-hamburger {
     color: #23201E;
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
     border: 0;
     background: transparent;
+    top: 10px;
+    padding-bottom: 20px;
+    position: relative;
 }
 
 .nav-logo > img {
@@ -210,6 +219,7 @@ h1 {
     margin-right: 2rem;
     position: absolute;
     border-radius: 0% 0% 10% 10%;
+    transition: all;
     
 }
 
@@ -280,7 +290,7 @@ h1 {
 
     .sidenav {
         margin-right: 0;
-        border-radius: 0% 0% 0% 15%;
+        border-radius: 15% 0% 0% 15%;
     }
 }
 
