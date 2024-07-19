@@ -381,6 +381,11 @@ h1 {
     gap: 2rem;
 }
 
+.homepage-image {
+    max-width: 99svw;
+    overflow: hidden;
+}
+
 /*Hero*/
 
 .hero {
