@@ -124,6 +124,8 @@ h1 {
     width: 100%;
     max-width: 1903px;
     margin: auto;
+    padding-top: 0;
+    padding-bottom: 50px;
 }
 
 .navbar {
@@ -132,6 +134,9 @@ h1 {
     padding-right: 4rem;
     max-width: 1903px;
     margin: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+
 }
 
 .nav-logo {
@@ -155,6 +160,7 @@ h1 {
 }
 
 .nav-buttons {
+    position: relative;
     display: flex;
     height: 100%;
     align-items: center;
@@ -182,9 +188,12 @@ h1 {
 
 #nav-hamburger {
     color: #23201E;
-    border-radius: 10px;
+    border-radius: 10px 10px 0 0;
     border: 0;
     background: transparent;
+    top: 10px;
+    padding-bottom: 20px;
+    position: relative;
 }
 
 .nav-logo > img {
@@ -210,6 +219,7 @@ h1 {
     margin-right: 2rem;
     position: absolute;
     border-radius: 0% 0% 10% 10%;
+    transition: all;
     
 }
 
@@ -270,9 +280,17 @@ h1 {
         font-size: 1rem;
     }
 
+    .nav-logo > img {
+        height: 3rem;
+    }
+
+    .nav-logo > h1 {
+        font-size: 1rem;
+    }
+
     .sidenav {
         margin-right: 0;
-        border-radius: 0% 0% 0% 15%;
+        border-radius: 15% 0% 0% 15%;
     }
 }
 
@@ -371,7 +389,7 @@ h1 {
 }
 
 .hero-container {
-    min-height: 100vh;
+    min-height: 100svh;
     display: grid;
 }
 
@@ -421,7 +439,7 @@ h1 {
 }
 
 .hero-text {
-    margin: 2rem 3rem 6rem 3rem;
+    margin: 7rem 3rem 6rem 3rem;
     max-width: 80%;
     display: flex;
     flex-direction: column;
@@ -644,6 +662,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: 100vw;
 
     &.white {
         width: 66%;
@@ -873,10 +892,10 @@ section:has(+ .call-out-block-wrapper) {
     text-align: center;
 }
 
+
 .happening-next-item {
     position: relative;
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     background-color: var(--off-black);
@@ -890,6 +909,28 @@ section:has(+ .call-out-block-wrapper) {
     transform: translateY(-0.2rem);
 }
 
+}
+
+#whats-happening-scroll {
+    display: none;
+}
+
+@media (max-width: 992px) {
+    #happening-next-boxes {
+        display: flex;
+        overflow-x: scroll;
+        flex-wrap: nowrap;
+        gap: 2.5rem;
+    }
+
+    #whats-happening-scroll {
+        display: block;
+    }
+
+    .happening-next-item {
+        width: 300px;
+        height: 500px;
+    }
 }
 
 .happening-next-item .header-image {
@@ -1013,6 +1054,6 @@ section:has(+ .call-out-block-wrapper) {
     }
 
     #can-form-area-get-help-to-attend-an-assembly #can_embed_form input[type=checkbox],
-    #can-form-area-support-the-hull-peoples-assembly #can_embed_form input[type=checkbox], {
+    #can-form-area-support-the-hull-peoples-assembly #can_embed_form input[type=checkbox] {
         transform: scale(1.5);
     }

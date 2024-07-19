@@ -32,11 +32,14 @@
     const toggleSidenav = () => {
         const toggle = () => {
             let sidenav = document.getElementById('sidenav');
+            let hamburger = document.getElementById('nav-hamburger');
             if (sidenav.style.display === 'none') {
                 sidenav.style.display = 'flex';
+                hamburger.style.background = 'white';
             }
             else {
                 sidenav.style.display = 'none';
+                hamburger.style.background = 'transparent';
             }
         };
         
