@@ -1,0 +1,4 @@
+﻿User-agent: *
+Allow: /
+
+Sitemap: https://cooperationhull.co.uk/sitemap.xml

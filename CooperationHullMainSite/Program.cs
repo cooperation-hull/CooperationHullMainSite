@@ -46,6 +46,8 @@ try
 
     var app = builder.Build();
 
+    app.Logger.LogInformation(Environment.GetEnvironmentVariable("HELLO_FROM_GCP"));  //TODO: set this in cloud run and check build logs to see if it was accessible
+
     // Configure the HTTP request pipeline.
     if (!app.Environment.IsDevelopment())
     {

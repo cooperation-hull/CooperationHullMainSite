@@ -389,7 +389,7 @@ h1 {
 }
 
 .hero-container {
-    min-height: 100vh;
+    min-height: 100svh;
     display: grid;
 }
 
@@ -439,7 +439,7 @@ h1 {
 }
 
 .hero-text {
-    margin: 2rem 3rem 6rem 3rem;
+    margin: 7rem 3rem 6rem 3rem;
     max-width: 80%;
     display: flex;
     flex-direction: column;
@@ -593,6 +593,7 @@ h1 {
     height: 100%;
     padding-left: 10px;
     padding-right: 10px;
+    z-index: 1;
 }
 
     .blurb h1 {
@@ -661,6 +662,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
+    max-width: 100vw;
 
     &.white {
         width: 66%;
@@ -934,6 +936,7 @@ section:has(+ .call-out-block-wrapper) {
 .happening-next-item .header-image {
     width: 100%;
     height: 200px;
+    object-fit: cover;
 }
 
 .happening-next-item .date-tag {

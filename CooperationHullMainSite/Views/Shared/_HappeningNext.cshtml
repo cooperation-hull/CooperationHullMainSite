@@ -4,9 +4,9 @@
         <img class="header-image" src="~/assets/img/@(Model.imagesName)" />
 
         <div class="content">
-            <h3 class="heading-sm">@(Html.Encode(Model.title))</h3>
+            <h3 class="heading-sm">@(Model.title)</h3>
             <div class="description-block">
-                <p class="text-sm">@(Html.Encode(Model.description))</p>
+                <p class="text-sm">@(Model.description)</p>
                 <a href='@(Model.eventLink)' target='_blank'>
                     <img src="~/assets/img/next arrow.svg" />
                 </a>
