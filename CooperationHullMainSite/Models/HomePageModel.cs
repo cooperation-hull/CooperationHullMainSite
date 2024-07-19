@@ -5,8 +5,6 @@
     {
         public string title { get; set; } = "";
         public List<HappenginNextEvent> eventList { get; set; } = new List<HappenginNextEvent>();
-
-        public int formSignedCounter { get; set; }
         public HomePageModel() { }
     }
 

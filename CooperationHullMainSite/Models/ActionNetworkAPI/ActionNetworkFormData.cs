@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace CooperationHullMainSite.Models.ActionNetworkAPI
+namespace CooperationHullMainSite.Models.ActionNetworkAPI.FormData
 {
     public class ActionNetworkFormData
     {
