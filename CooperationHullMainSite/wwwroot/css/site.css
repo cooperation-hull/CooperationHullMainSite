@@ -468,6 +468,12 @@ h1 {
     }
 }
 
+@media (max-width: 992px) {
+    .homepage-block > .row {
+        padding: 2rem 0rem;
+    }
+}
+
 .homepage-block > div {
     min-height: 10vh;
 }
