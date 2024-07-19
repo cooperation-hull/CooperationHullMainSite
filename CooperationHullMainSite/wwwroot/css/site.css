@@ -270,6 +270,14 @@ h1 {
         font-size: 1rem;
     }
 
+    .nav-logo > img {
+        height: 3rem;
+    }
+
+    .nav-logo > h1 {
+        font-size: 1rem;
+    }
+
     .sidenav {
         margin-right: 0;
         border-radius: 0% 0% 0% 15%;
