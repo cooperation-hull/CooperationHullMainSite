@@ -934,8 +934,12 @@ section:has(+ .call-out-block-wrapper) {
     }
 
     .happening-next-item {
-        width: 300px;
-        height: 500px;
+        width: 350px;
+        height: 450px;
+    }
+
+    #happening-next-boxes-container {
+        padding: 0;
     }
 }
 
