@@ -8,12 +8,17 @@
 
 @if (showBanner)
 {
-    <div id="cookieConsent" class="alert alert-info alert-dismissible fade show" role="alert">
-        This site uses only essential cookies. <a asp-controller="Home" asp-action="CookiePolicy">Learn More</a>
+    <div id="cookieConsent" class="alert alert-info alert-dismissible fade show d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 gap-md-5 rounded-0 p-3" role="alert">
+        <span>
+            This site uses only essential cookies
+        </span>
 
-        <button type="button" class="accept-policy close" data-bs-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
-            <span aria-hidden="true">Accept</span>
-        </button>
+        <span class="d-flex flex-row align-items-center gap-3">
+            <a asp-controller="Home" asp-action="CookiePolicy">Learn More</a>
+            <button type="button" class="accept-policy close button-link border-0" data-bs-dismiss="alert" aria-label="Close" data-cookie-string="@cookieString">
+                <b>Accept</b>
+            </button>
+        </span>
     </div>
     <script>
         (function () {
