@@ -74,16 +74,23 @@ namespace CooperationHullMainSite.Controllers
 
             bool liveInHull = false;
 
-            if(Request.Form["LiveInHullYes"] == "on")
+            if(Request.Form["LiveInHull"] == "yes")
             {
                 liveInHull = true;
+            }
+            else if (Request.Form["LiveInHull"] == "no")
+            {
+                liveInHull = true;
+            }
+            else {
+                errorList.Add("Do you live in Hull?");
             }
 
             bool result = false;
 
             if(errorList.Count > 0)
             {
-                string errorMessage = $"Please complete the following fields {string.Join(", ", errorList)}";
+                string errorMessage = $"Please complete: {string.Join(", ", errorList)}";
                 return Json(new { result = result, error = errorMessage });
             }
             else
@@ -93,7 +100,7 @@ namespace CooperationHullMainSite.Controllers
                 if (result)
                     return Json(new { result = result, signedByName = data.given_name });
                 else
-                    return Json(new { result = result, error = "Something went wrong. Please try again later;" });
+                    return Json(new { result = result, error = "Sorry, that didn't work. Please try again later" });
             }
         }
 

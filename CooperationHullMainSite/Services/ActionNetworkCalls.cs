@@ -44,14 +44,10 @@ namespace CooperationHullMainSite.Services
 
             var tagnameList = tagsToAdd.Select(x => x.name).ToList();
 
-            //if (hullTag)
-            //    tagnameList.Remove("Not Hull");
-            //else
-            //    tagnameList.Remove("Hull");
-
-            //temp roemove hull / not hull tags until front end is sorted out properly.
-            tagnameList.Remove("Not Hull");
-            tagnameList.Remove("Hull");
+            if (hullTag)
+                tagnameList.Remove("Not Hull");
+            else
+                tagnameList.Remove("Hull");
 
             string endpoint = $"people/";
             var temp = await PostDataAPICall(endpoint, new ActionNetworkPersonSignupHelper(formData, tagnameList));
