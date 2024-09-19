@@ -80,7 +80,7 @@ namespace CooperationHullMainSite.Controllers
             }
             else if (Request.Form["LiveInHull"] == "no")
             {
-                liveInHull = true;
+                liveInHull = false;
             }
             else {
                 errorList.Add("Do you live in Hull?");
