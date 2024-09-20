@@ -771,19 +771,19 @@ text-decoration:underline;
 
 /* Safe zone within sibling sections that the call out block can "eat into". May need to be updated once responsivity is tweaked in other sections */
 body {
-    --call-out-block-safe-area-y: 260px;
+    --call-out-block-safe-area-y: 290px;
     margin:auto;
 }
 
 @media (min-width: 400px) {
     body {
-        --call-out-block-safe-area-y: 230px
+        --call-out-block-safe-area-y: 260px;
     }
 }
 
 @media (min-width: 992px) {
     body {
-        --call-out-block-safe-area-y: 140px
+        --call-out-block-safe-area-y: 170px;
     }
 }
 

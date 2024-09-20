@@ -26,6 +26,7 @@ function home_page_signup_form_submit() {
                 $('#form-completed').show();
             }
             else {
+                $('#form-error').html(response.error);
                 $('#form-error').show();
             }
         }
