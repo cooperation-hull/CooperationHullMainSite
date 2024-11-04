@@ -21,7 +21,7 @@ namespace CooperationHullMainSite.Services
 
       public async  Task<List<HappenginNextEvent>> GetHomePageEventsList()
         {
-            var resut = new List<HappenginNextEvent>();
+            var result = new List<HappenginNextEvent>();
 
             try
             {
@@ -43,7 +43,7 @@ namespace CooperationHullMainSite.Services
                             location = item.location
                         };
 
-                        resut.Add(homePageEvent);
+                        result.Add(homePageEvent);
                     }
 
                 }
@@ -59,7 +59,7 @@ namespace CooperationHullMainSite.Services
                 return new List<HappenginNextEvent>();
             }
 
-            return resut;
+            return result;
 
         }
 
