@@ -27,7 +27,7 @@ namespace CooperationHullMainSite.Services
             {
                 var client = getSanityClient();
 
-                var itemList = await client.Query<Event>("*[_type == 'event']{ _id, title, description, date, location, eventLink, imageName }");
+                var itemList = await client.Query<Event>("*[_type == 'event']{ _id, title, description, date, location, eventLink, \"image\": image.asset->url }");
 
                 if(itemList.Item1 == System.Net.HttpStatusCode.OK)
                 {
@@ -39,7 +39,7 @@ namespace CooperationHullMainSite.Services
                             description = item.description,
                             date = item.date,
                             eventLink = item.eventLink,
-                            imagesName = item.imageName,
+                            imagesName = item.image,
                             location = item.location
                         };
 
