@@ -1,8 +1,8 @@
-using CooperationHullMainSite;
+using CooperationHullMainSite.Models.ConfigSections;
 using CooperationHullMainSite.Services;
 using NLog;
 using NLog.Web;
-using static CooperationHullMainSite.ActionNetworkConfig;
+using static CooperationHullMainSite.Models.ConfigSections.ActionNetworkConfig;
 
 
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
@@ -33,10 +33,15 @@ try
     builder.Services.Configure<ActionNetworkConfig>(
         builder.Configuration.GetSection("ActionNetworkConfig"));
 
+    builder.Services.Configure<SanityCMSConfig>(
+        builder.Configuration.GetSection("SanityCMSConfig"));
+
     builder.Configuration.AddEnvironmentVariables();
+
     //Custom services
     builder.Services.AddSingleton<IJsonFileReader, JsonFileReader>();
     builder.Services.AddSingleton<IActionNetworkCalls, ActionNetworkCalls>();
+    builder.Services.AddSingleton<ISanityCMSCalls, SanityCMSCalls>();
 
     //NLog setup
     builder.Logging.ClearProviders();

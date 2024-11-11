@@ -1,4 +1,4 @@
-﻿namespace CooperationHullMainSite
+﻿namespace CooperationHullMainSite.Models.ConfigSections
 {
     public class ActionNetworkConfig
     {
