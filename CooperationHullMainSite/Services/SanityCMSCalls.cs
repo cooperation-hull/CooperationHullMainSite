@@ -40,7 +40,6 @@ namespace CooperationHullMainSite.Services
                             date = item.date,
                             eventLink = item.eventLink,
                             imagesName = item.image,
-                            location = item.location
                         };
 
                         result.Add(homePageEvent);
