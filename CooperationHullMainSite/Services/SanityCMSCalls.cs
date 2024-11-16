@@ -19,9 +19,9 @@ namespace CooperationHullMainSite.Services
             _logger = logger;
         }
 
-      public async  Task<List<HappenginNextEvent>> GetHomePageEventsList()
+      public async  Task<List<HappeningNextEvent>> GetHomePageEventsList()
         {
-            var result = new List<HappenginNextEvent>();
+            var result = new List<HappeningNextEvent>();
 
             try
             {
@@ -33,7 +33,7 @@ namespace CooperationHullMainSite.Services
                 {
                     foreach(Event item in itemList.Item2.Result)
                     {
-                        var homePageEvent = new HappenginNextEvent()
+                        var homePageEvent = new HappeningNextEvent()
                         {
                             title = item.title,
                             description = item.description,
@@ -56,13 +56,60 @@ namespace CooperationHullMainSite.Services
             catch (Exception e)
             {
                 _logger.LogError(e, "Error getting events from Sanity CMS");
-                return new List<HappenginNextEvent>();
+                return new List<HappeningNextEvent>();
             }
 
             return result;
 
         }
 
+
+     public  async Task<List<PostSummary>> GetBlogPostsList()
+        {
+
+            var result = new List<PostSummary>();
+
+            try
+            {
+                var client = getSanityClient();
+
+                var itemList = await client.Query<BlogPostSummary>("*[_type == 'blogPost']{_id, title, author, date, slug, tags, summary, \"image\": image.asset->url }");
+
+                if (itemList.Item1 == System.Net.HttpStatusCode.OK)
+                {
+                    foreach (BlogPostSummary item in itemList.Item2.Result)
+                    {
+                        var post = new PostSummary()
+                        {
+                            Title = item.title,
+                            date = item.date,
+                            slug = item.slug,
+                            author = item.author,
+                            tags = item.tags,
+                            summaryImageUrl = item.image,
+                            summaryText = item.summary
+                        };
+
+                        result.Add(post);
+                    }
+
+                }
+                else
+                {
+                    _logger.LogError($"Error getting events from Sanity CMS {itemList.Item1.ToString()}");
+                }
+
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "Error getting events from Sanity CMS");
+            }
+            return result;
+        }
+    public  async Task<bool> GetBlogPostDetails()
+        {
+            throw new NotImplementedException();
+        }
 
         private SanityClient getSanityClient()
         {

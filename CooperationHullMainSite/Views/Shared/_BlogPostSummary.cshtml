@@ -1,0 +1,15 @@
+﻿    <div class="blog-post-summary col-12">
+
+        <div class="blog-summary-image">
+        <img  src="@(Model.summaryImageUrl)" alt="event image" />
+        </div>
+
+        <div class="blog-summary-text">
+        <h3 class="heading-sm">@Model.Title</h3>
+
+            <p>@Model.date.ToString("dd MMM yyyy")</p>
+            <p>By @Model.author</p>
+            <p>@Model.summaryText</p>
+        </div>
+
+    </div>
