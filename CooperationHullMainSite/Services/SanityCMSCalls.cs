@@ -40,7 +40,6 @@ namespace CooperationHullMainSite.Services
                             date = item.date,
                             eventLink = item.eventLink,
                             imagesName = item.image,
-                            location = item.location
                         };
 
                         result.Add(homePageEvent);
@@ -66,7 +65,7 @@ namespace CooperationHullMainSite.Services
 
         private SanityClient getSanityClient()
         {
-            var projectid = config.ProjectId;
+            var projectid = config.ProjectID;
             var datasetName = config.DatasetName;
 
             var client = new SanityClient(projectid, datasetName, null, false);
