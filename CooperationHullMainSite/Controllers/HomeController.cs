@@ -57,6 +57,22 @@ namespace CooperationHullMainSite.Controllers
             return View(model);
         }
 
+
+
+        [HttpGet]
+        [Route("blog-posts")]
+        public async Task<IActionResult> BlogPostsSummary()
+        {
+            BlogSummaryModel model = new BlogSummaryModel();
+
+            model.PostsList = await _sanityCMSCalls.GetBlogPostsList();
+
+            model.tags = model.PostsList.SelectMany(x => x.tags).Distinct().ToList();
+
+            return View(model);
+        }
+
+
         [HttpPost]
         public async Task<JsonResult> Home_page_signup_form()
         {

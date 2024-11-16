@@ -1072,3 +1072,29 @@ section:has(+ .call-out-block-wrapper) {
     #can-form-area-support-the-hull-peoples-assembly #can_embed_form input[type=checkbox] {
         transform: scale(1.5);
     }
+
+
+
+.blog-post-summary {
+    position: relative;
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    background-color: var(--off-black);
+    color: var(--cooperation-white);
+    margin: 5%;
+}
+
+.blog-summary-image {
+    width:30%;
+}
+
+
+.blog-summary-text {
+
+}
+
+.blog-post-summary img {
+    height: 100%;
+    width: 100%;
+}
