@@ -1,15 +1,21 @@
-﻿    <div class="blog-post-summary col-12">
+﻿    <div class="blog-post-summary">
 
-        <div class="blog-summary-image">
+        <div class="blog-summary-image-container">
         <img  src="@(Model.summaryImageUrl)" alt="event image" />
         </div>
 
-        <div class="blog-summary-text">
-        <h3 class="heading-sm">@Model.Title</h3>
+        <div class="blog-summary-text-container">
+        <h3 class="heading-m">@Model.Title</h3>
+            <span class="date-line">@Model.date.ToString("dd MMMM yyyy")</span>
+        <div class ="summary-text">
 
-            <p>@Model.date.ToString("dd MMM yyyy")</p>
-            <p>By @Model.author</p>
-            <p>@Model.summaryText</p>
+            <p >@Model.summaryText</p>
+        </div>
+        </div>
+        <div class="blog-summary-link-container">
+        <a href='@(Model.slug)' target='_blank'>
+            <img src="~/assets/img/next arrow.svg" alt="arrow" />
+        </a>
         </div>
 
     </div>
