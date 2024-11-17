@@ -1075,26 +1075,62 @@ section:has(+ .call-out-block-wrapper) {
 
 
 
+.blog-post-summary-container {
+    margin-top:2rem;
+}
+
 .blog-post-summary {
     position: relative;
-    width: 90%;
     display: flex;
     flex-direction: row;
-    background-color: var(--off-black);
-    color: var(--cooperation-white);
-    margin: 5%;
+    color: var(--off-black);
+    background-color: var(--cooperation-white);
+    margin-bottom: 5%;
+    border-radius: 1rem;
 }
 
-.blog-summary-image {
-    width:30%;
+.blog-summary-image-container {
+   width: 15rem;
+   height: 15rem;
+    padding: 1rem;
 }
 
+    .blog-summary-image-container img {
+        height: 100%;
+        width: 100%;
+        border-radius: 10%;
+    }
 
-.blog-summary-text {
 
+.blog-summary-text-container {
+    padding-top:1rem;
+    width: 80%;
+    padding-right:1rem;
 }
 
-.blog-post-summary img {
-    height: 100%;
-    width: 100%;
+    .blog-summary-text-container h3 {
+        margin-left: 0;
+        font-weight: bolder;
+    }
+
+.blog-summary-text-container .date-line {
+    font-weight:bold;
+}
+
+    .blog-summary-text-container .summary-text {
+        margin-left: 0;
+        margin-top: 1rem;
+   }
+
+        .blog-summary-text-container .summary-text p {
+            margin-left: 0;
+        }
+
+.blog-summary-link-container {
+    width: 5rem;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.blog-summary-link-container img {
+    object-fit:contain;
 }

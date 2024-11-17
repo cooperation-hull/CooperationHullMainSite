@@ -1,14 +1,18 @@
 ﻿@{
-    ViewData["Title"] = "Blog Posts";
+    ViewData["Title"] = "Blog";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 
 <div class="row">
     <div class="col-12 content-text content-page">
-        <p>Page title and some stuff - search options tag cloud etc can go here one day</p>
-    
-        <div id="blog-post-summary" class="">
+
+        <div class="top-image"></div>
+
+        <div>
+            <h1 class="heading-xl">@ViewData["Title"]</h1>
+        </div>
+        <div id="blog-post-summary-container" class="blog-post-summary-container">
             @foreach (PostSummary eventItem in Model.PostsList)
             {
                 @Html.Partial("_BlogPostSummary", eventItem)
