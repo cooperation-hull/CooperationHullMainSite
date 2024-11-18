@@ -66,7 +66,7 @@ namespace CooperationHullMainSite.Services
 
         private SanityClient getSanityClient()
         {
-            var projectid = config.ProjectId;
+            var projectid = config.ProjectID;
             var datasetName = config.DatasetName;
 
             var client = new SanityClient(projectid, datasetName, null, false);
