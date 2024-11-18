@@ -15,5 +15,6 @@
         public DateTime date { get; set; } 
         public string imagesName { get; set; } = "";
         public string eventLink { get; set; } = "";
+        public string location { get; set; } = "";
     }
 }

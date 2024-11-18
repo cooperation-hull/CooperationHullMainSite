@@ -30,6 +30,7 @@ jobs:
        ActionNetworkConfig.APIKey: ${{ secrets.ACTION_NETWORK_CONFIG_API_KEY }}
        ActionNetworkConfig.baseURL: ${{ secrets.ACTION_NETWORK_CONFIG_BASE_URL }}
        ActionNetworkConfig.FormList: ${{ secrets.ACTION_NETWORK_CONFIG_FORMS_LIST }}
+       SanityCMSConfig.ProjectID: ${{ secrets.SANITY_CMS_PROJECTID }}
     - name: Publish
       run: dotnet publish "${{ env.WORKING_DIRECTORY }}" --configuration ${{ env.CONFIGURATION }} --no-build --output "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}"
     - name: Publish Artifacts

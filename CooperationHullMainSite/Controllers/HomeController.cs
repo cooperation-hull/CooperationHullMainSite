@@ -1,11 +1,15 @@
 using CooperationHullMainSite.Models;
 using CooperationHullMainSite.Models.ActionNetworkAPI;
+using CooperationHullMainSite.Models.SanityCMS;
 using CooperationHullMainSite.Services;
 using Microsoft.AspNetCore.Mvc;
+using Olav.Sanity.Client;
+using System.Data;
 using System.Diagnostics;
 using System.Dynamic;
 using System.Text.Json;
 using System.Web;
+using System.Xml.Linq;
 
 namespace CooperationHullMainSite.Controllers
 {
@@ -14,13 +18,16 @@ namespace CooperationHullMainSite.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IJsonFileReader _jsonFileReader;
         private readonly IActionNetworkCalls _actionNetworkCalls;
+        private readonly ISanityCMSCalls _sanityCMSCalls;
         public HomeController(ILogger<HomeController> logger,
                                 IJsonFileReader jsonFileReader,
-                                IActionNetworkCalls actionNetworkCalls)
+                                IActionNetworkCalls actionNetworkCalls,
+                                ISanityCMSCalls CMSCalls)
         {
             _logger = logger;
             _jsonFileReader = jsonFileReader;
             _actionNetworkCalls = actionNetworkCalls;
+            _sanityCMSCalls = CMSCalls;
         }
 
 
@@ -28,15 +35,23 @@ namespace CooperationHullMainSite.Controllers
         public async Task<IActionResult> Index()
         {
             HomePageModel model = new HomePageModel();
-            try
-            {
-                string temp = await _jsonFileReader.ReadFile("/content/homepageContent.json");
+            model.eventList = await _sanityCMSCalls.GetHomePageEventsList();
 
-                model = JsonSerializer.Deserialize<HomePageModel>(temp);
-            }
-            catch (Exception ex)
+
+            if(model.eventList == null | model.eventList.Count == 0)
             {
-                _logger.LogError(ex, "Could not deserialize content file, defaults used");
+                // fallback to old json file if no events are returned from CMS
+                //temp measure until we are sure CMS is working as expected
+                try
+                {
+                    string temp = await _jsonFileReader.ReadFile("/content/homepageContent.json");
+
+                    model = JsonSerializer.Deserialize<HomePageModel>(temp);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Could not deserialize content file, defaults used");
+                }
             }
 
             return View(model);
