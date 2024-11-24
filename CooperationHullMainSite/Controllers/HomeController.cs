@@ -73,6 +73,26 @@ namespace CooperationHullMainSite.Controllers
         }
 
 
+        [HttpGet]
+        [Route("blog-posts/{slug}")]
+        public async Task<IActionResult> BlogPost(string slug)
+        {
+            //TODO - add 404 handling for invalid slugs
+            //TODO - add in tags to post and use them in og tags
+
+            BlogPostContent model = new BlogPostContent();
+
+            model = await _sanityCMSCalls.GetBlogPostDetails(slug);
+
+            if(model == null || model.contentHtml == null)
+            {
+                return RedirectToAction("BlogPostsSummary");
+            }
+
+            return View(model);
+        }
+
+
         [HttpPost]
         public async Task<JsonResult> Home_page_signup_form()
         {

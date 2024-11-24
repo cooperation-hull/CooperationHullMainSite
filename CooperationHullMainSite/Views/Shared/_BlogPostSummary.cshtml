@@ -1,4 +1,5 @@
-﻿    <div class="blog-post-summary">
+﻿@model CooperationHullMainSite.Models.PostSummary   
+<div class="blog-post-summary">
 
         <div class="blog-summary-image-container">
         <img  src="@(Model.summaryImageUrl)" alt="event image" />
@@ -13,7 +14,7 @@
         </div>
         </div>
         <div class="blog-summary-link-container">
-        <a href='@(Model.slug)' target='_blank'>
+        <a href='blog-posts/@(Model.slug)' target='_blank'>
             <img src="~/assets/img/next arrow.svg" alt="arrow" />
         </a>
         </div>

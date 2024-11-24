@@ -1,4 +1,5 @@
 ﻿using CooperationHullMainSite.Models;
+using CooperationHullMainSite.Models.SanityCMS;
 
 namespace CooperationHullMainSite.Services
 {
@@ -6,6 +7,6 @@ namespace CooperationHullMainSite.Services
     {
         Task<List<HappeningNextEvent>> GetHomePageEventsList();
         Task<List<PostSummary>> GetBlogPostsList();
-        Task<bool> GetBlogPostDetails();
+        Task<BlogPostContent> GetBlogPostDetails(string slug);
     }
 }
