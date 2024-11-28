@@ -370,7 +370,7 @@ h1 {
     .main-content .content-page {
         background-color: var(--city-orange);
         min-height: 86vh;
-        padding-top: 10vh;
+        padding-top: 12vh;
     }
 
 /* Home Page */
@@ -1087,6 +1087,7 @@ section:has(+ .call-out-block-wrapper) {
     background-color: var(--cooperation-white);
     margin-bottom: 5%;
     border-radius: 1rem;
+    padding: 0.5rem;
 }
 
 .blog-summary-image-container {
@@ -1099,13 +1100,15 @@ section:has(+ .call-out-block-wrapper) {
         height: 100%;
         width: 100%;
         border-radius: 10%;
+        object-fit: cover;
     }
 
 
 .blog-summary-text-container {
     padding-top:1rem;
     width: 80%;
-    padding-right:1rem;
+    padding-right:3rem;
+    padding-left: 2rem;
 }
 
     .blog-summary-text-container h3 {

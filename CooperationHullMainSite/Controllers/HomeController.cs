@@ -60,8 +60,8 @@ namespace CooperationHullMainSite.Controllers
 
 
         [HttpGet]
-        [Route("blog-posts")]
-        public async Task<IActionResult> BlogPostsSummary()
+        [Route("blog")]
+        public async Task<IActionResult> OurBlog()
         {
             BlogSummaryModel model = new BlogSummaryModel();
 
@@ -74,7 +74,7 @@ namespace CooperationHullMainSite.Controllers
 
 
         [HttpGet]
-        [Route("blog-posts/{slug}")]
+        [Route("blog/{slug}")]
         public async Task<IActionResult> BlogPost(string slug)
         {
             //TODO - add 404 handling for invalid slugs
@@ -86,7 +86,7 @@ namespace CooperationHullMainSite.Controllers
 
             if(model == null || model.contentHtml == null)
             {
-                return RedirectToAction("BlogPostsSummary");
+                return RedirectToAction("OurBlog");
             }
 
             return View(model);
