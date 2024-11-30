@@ -20,6 +20,7 @@
         public string author { get; set; }
         public string[] tags { get; set; }
         public string summaryImageUrl { get; set; }
+        public string imageAltText { get; set; }
         public string summaryText { get; set; }
     }
 }

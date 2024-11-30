@@ -4,6 +4,7 @@ using CooperationHullMainSite.Models.SanityCMS;
 using Microsoft.Extensions.Options;
 using Sanity.Linq;
 using Sanity.Linq.BlockContent;
+using Sanity.Linq.CommonTypes;
 
 namespace CooperationHullMainSite.Services
 {
@@ -29,7 +30,7 @@ namespace CooperationHullMainSite.Services
             try
             {
 
-                var itemList = await _client.Query<Event>("*[_type == 'event']{ _id, title, description, date, location, eventLink, \"image\": image.asset->url }");
+                var itemList = await _client.Query<Event>("*[_type == 'event']{ _id, title, description, date, location, eventLink, \"image\": image.asset->url,  \"imageAltText\": image.asset -> altText }");
 
                 if(itemList.Item1 == System.Net.HttpStatusCode.OK)
                 {
@@ -42,6 +43,7 @@ namespace CooperationHullMainSite.Services
                             date = item.date,
                             eventLink = item.eventLink,
                             imagesName = item.image,
+                            imageAltText = item.imageAltText,
                             location = item.location
                         };
 
@@ -73,7 +75,7 @@ namespace CooperationHullMainSite.Services
 
             try
             {
-                var itemList = await _client.Query<BlogPostSummary>("*[_type == 'blogPost']{_id, title, author, date, slug, tags, summary, \"image\": image.asset->url }");
+                var itemList = await _client.Query<BlogPostSummary>("*[_type == 'blogPost']{_id, title, author, date, slug, tags, summary, image, \"imageAltText\": image.asset -> altText }");
 
                 if (itemList.Item1 == System.Net.HttpStatusCode.OK)
                 {
@@ -83,10 +85,11 @@ namespace CooperationHullMainSite.Services
                         {
                             Title = item.title,
                             date = item.date,
-                            slug = item.slug,
+                            slug = item.slug.Current,
                             author = item.author,
                             tags = item.tags,
-                            summaryImageUrl = item.image,
+                            summaryImageUrl = GenerateImageURL(item.image, false, 100),
+                            imageAltText = item.imageAltText,
                             summaryText = item.summary
                         };
 
@@ -112,7 +115,7 @@ namespace CooperationHullMainSite.Services
 
             try 
             {
-                var temp = await _client.QuerySingle<BlogPostContent>($"*[_type == 'blogPost' && slug == '{slug}']{{_id, title, author, date, content, summary }}[0]");
+                var temp = await _client.QuerySingle<BlogPostContent>($"*[_type == 'blogPost' && slug.current == '{slug}']{{_id, title, author, date, content, summary }}[0]");
 
                 if (temp.Item1 == System.Net.HttpStatusCode.OK)
                 {
@@ -154,6 +157,25 @@ namespace CooperationHullMainSite.Services
             options.Dataset = config.DatasetName;
 
             return new SanityHtmlBuilder(options);
+        }
+
+        private string GenerateImageURL(SanityImage imageData, bool defaultSize = true, int height = 0)
+        {
+
+            string[] details = imageData.Asset.Ref.Split('-');
+
+            var reference = details[1];
+            var size = details[2];
+            var type = details[3];
+
+            var scaleQuery = "?auto=format";
+
+            if (!defaultSize)
+             scaleQuery += $"&h={height}";
+
+            var imageUrl = $"https://cdn.sanity.io/images/{config.ProjectID}/{config.DatasetName}/{reference}-{size}.{type}{scaleQuery}";
+
+            return imageUrl;
         }
 
     }
