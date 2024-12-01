@@ -7,7 +7,7 @@
         public DateTime date { get; set; }
         public string location { get; set; }
         public string eventLink { get; set; }
-        public string image { get; set; }
+        public SanityImageExtended image { get; set; }
         public string imageAltText { get; set; }
     }
 }

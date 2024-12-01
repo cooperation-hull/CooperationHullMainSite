@@ -9,8 +9,9 @@ namespace CooperationHullMainSite.Models.SanityCMS
         public SanitySlug slug { get; set; }
         public string author { get; set; }
         public string[] tags { get; set; }
-        public SanityImage image { get; set; }
+        public SanityImageExtended image { get; set; }
         public string imageAltText { get; set; }
         public string summary { get; set; }
     }
+
 }

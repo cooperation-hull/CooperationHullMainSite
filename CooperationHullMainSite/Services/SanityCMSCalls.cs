@@ -1,7 +1,10 @@
 ﻿using CooperationHullMainSite.Models;
 using CooperationHullMainSite.Models.ConfigSections;
 using CooperationHullMainSite.Models.SanityCMS;
+using Humanizer;
 using Microsoft.Extensions.Options;
+using NuGet.ContentModel;
+using NuGet.DependencyResolver;
 using Sanity.Linq;
 using Sanity.Linq.BlockContent;
 using Sanity.Linq.CommonTypes;
@@ -23,18 +26,24 @@ namespace CooperationHullMainSite.Services
         }
 
 
-        public async  Task<List<HappeningNextEvent>> GetHomePageEventsList()
+        public async Task<List<HappeningNextEvent>> GetHomePageEventsList()
         {
             var result = new List<HappeningNextEvent>();
+
+            SanityImageConfigOptions imageConfigOptions = new SanityImageConfigOptions()
+            {
+                useRawImage = false,
+                height = 200,
+            };
 
             try
             {
 
-                var itemList = await _client.Query<Event>("*[_type == 'event']{ _id, title, description, date, location, eventLink, \"image\": image.asset->url,  \"imageAltText\": image.asset -> altText }");
+                var itemList = await _client.Query<Event>($"*[_type == 'event']{{ _id, title, description, date, location, eventLink, {SanityImageExtended.ImageQuery},  \"imageAltText\": image.asset -> altText }}");
 
-                if(itemList.Item1 == System.Net.HttpStatusCode.OK)
+                if (itemList.Item1 == System.Net.HttpStatusCode.OK)
                 {
-                    foreach(Event item in itemList.Item2.Result)
+                    foreach (Event item in itemList.Item2.Result)
                     {
                         var homePageEvent = new HappeningNextEvent()
                         {
@@ -42,7 +51,7 @@ namespace CooperationHullMainSite.Services
                             description = item.description,
                             date = item.date,
                             eventLink = item.eventLink,
-                            imagesName = item.image,
+                            imagesName = GenerateImageURL(item.image, imageConfigOptions),
                             imageAltText = item.imageAltText,
                             location = item.location
                         };
@@ -68,14 +77,23 @@ namespace CooperationHullMainSite.Services
         }
 
 
-     public  async Task<List<PostSummary>> GetBlogPostsList()
+        public async Task<List<PostSummary>> GetBlogPostsList()
         {
 
             var result = new List<PostSummary>();
 
+            SanityImageConfigOptions imageConfigOptions = new SanityImageConfigOptions() { useRawImage = false,
+                                                                                            height=300,
+                                                                                            width=300,
+                                                                                            background = "F4E9E6"
+                                                                                          };
+
             try
             {
-                var itemList = await _client.Query<BlogPostSummary>("*[_type == 'blogPost']{_id, title, author, date, slug, tags, summary, image, \"imageAltText\": image.asset -> altText }");
+
+                var query = $"*[_type == 'blogPost']{{_id, title, author, date, slug, tags, summary, {SanityImageExtended.ImageQuery}, 'info': image.asset -> altText }}";
+
+                var itemList = await _client.Query<BlogPostSummary>(query);
 
                 if (itemList.Item1 == System.Net.HttpStatusCode.OK)
                 {
@@ -88,7 +106,7 @@ namespace CooperationHullMainSite.Services
                             slug = item.slug.Current,
                             author = item.author,
                             tags = item.tags,
-                            summaryImageUrl = GenerateImageURL(item.image, false, 100),
+                            summaryImageUrl = GenerateImageURL(item.image, imageConfigOptions),
                             imageAltText = item.imageAltText,
                             summaryText = item.summary
                         };
@@ -113,7 +131,7 @@ namespace CooperationHullMainSite.Services
         {
             var result = new BlogPostContent();
 
-            try 
+            try
             {
                 var temp = await _client.QuerySingle<BlogPostContent>($"*[_type == 'blogPost' && slug.current == '{slug}']{{_id, title, author, date, content, summary }}[0]");
 
@@ -159,23 +177,178 @@ namespace CooperationHullMainSite.Services
             return new SanityHtmlBuilder(options);
         }
 
-        private string GenerateImageURL(SanityImage imageData, bool defaultSize = true, int height = 0)
+        private string GenerateImageURL(SanityImageExtended imageData, SanityImageConfigOptions options)
         {
 
-            string[] details = imageData.Asset.Ref.Split('-');
+            if (imageData == null)
+                return "";  //todo - add in default image
 
+            string[] details = imageData.Asset.Ref.Split('-');
             var reference = details[1];
             var size = details[2];
             var type = details[3];
 
-            var scaleQuery = "?auto=format";
+            if (options.useRawImage)
+                return $"https://cdn.sanity.io/images/{config.ProjectID}/{config.DatasetName}/{reference}-{size}.{type}";
 
-            if (!defaultSize)
-             scaleQuery += $"&h={height}";
+            try
+            {
 
-            var imageUrl = $"https://cdn.sanity.io/images/{config.ProjectID}/{config.DatasetName}/{reference}-{size}.{type}{scaleQuery}";
+                List<string> queryParams = new List<string>();
 
-            return imageUrl;
+                //Format conversion not yet supported
+                //queryParams.Add("auto=format");
+
+                if(imageData.Crop == null)
+                {
+                    if (options.height != -1)
+                        queryParams.Add($"h={options.height}");
+                    if (options.width != -1)
+                        queryParams.Add($"w={options.width}");
+
+                    queryParams.Add("fit=fill");
+                }
+
+                if (imageData.Crop != null && (options.height == -1 && options.width == -1))
+                    queryParams.Add(CalcImageCropBasic(imageData));
+
+                if (imageData.Crop != null && !(options.height == -1 && options.width == -1))
+                    queryParams.AddRange(CalcImageCropHotSpot(imageData, options.height, options.width));
+
+                if (options.background != "")
+                    queryParams.Add($"bg={options.background}");
+
+                switch (options.imageFlip)
+                {
+                    case ImageFlip.Horizontal:
+                        queryParams.Add("flip=h");
+                        break;
+                    case ImageFlip.Vertical:
+                        queryParams.Add("flip=v");
+                        break;
+                    case ImageFlip.Both:
+                        queryParams.Add("flip=hv");
+                        break;
+                }
+
+                var scaleQuery = string.Join("&", queryParams);
+
+                var imageUrl = $"https://cdn.sanity.io/images/{config.ProjectID}/{config.DatasetName}/{reference}-{size}.{type}?{scaleQuery}";
+
+                return imageUrl;
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "Error generating adjusted image URL");
+                return $"https://cdn.sanity.io/images/{config.ProjectID}/{config.DatasetName}/{reference}-{size}.{type}";
+            }
+        }
+
+
+        private string CalcImageCropBasic(SanityImageExtended imageData)
+        {
+            // Compute crop rect in terms of pixel coordinates in the raw source image
+            var cropLeft = Math.Round(imageData.Crop.Left * imageData.width);
+            var cropTop = Math.Round(imageData.Crop.Top * imageData.height);
+            var cropWidth = Math.Round(imageData.width - (imageData.Crop.Right * imageData.width) - cropLeft);
+            var cropHeight = Math.Round(imageData.height - (imageData.Crop.Bottom * imageData.height) - cropTop);
+
+            if (cropLeft != 0 || cropTop != 0 || cropHeight != imageData.height || cropWidth != imageData.width)
+            {
+                return ($"rect={cropLeft},{cropTop},{cropWidth},{cropHeight}");
+            }
+
+            return "";
+        }
+
+        private List<string> CalcImageCropHotSpot(SanityImageExtended imageData, int setHeight, int setWidth)
+        {
+            List<string> result = new List<string>();
+            // If we are not constraining the aspect ratio, we'll just use the whole crop
+            if (imageData.Hotspot == null || (setHeight == -1 || setWidth == -1))
+            {
+                result.Add(CalcImageCropBasic(imageData));
+
+                if (setHeight != -1)
+                    result.Add($"w={setHeight}");
+                if (setWidth != -1)
+                    result.Add($"h={setWidth}");
+
+                return result;
+            }
+
+            //math copied over from https://github.com/sanity-io/image-url/blob/main/src/urlForImage.ts
+
+            var cropLeft = Math.Round(imageData.Crop.Left * imageData.width);
+            var cropTop = Math.Round(imageData.Crop.Top * imageData.height);
+            var cropWidth = Math.Round(imageData.width - (imageData.Crop.Right * imageData.width) - cropLeft);
+            var cropHeight = Math.Round(imageData.height - (imageData.Crop.Bottom * imageData.height) - cropTop);
+
+
+            // If we are here, that means aspect ratio is locked and fitting will be a bit harder
+            var desiredAspectRatio = setWidth / setHeight;
+            var cropAspectRatio = cropWidth / cropHeight;
+
+            var hotSpotVerticalRadius = Math.Round((imageData.Hotspot.Height * imageData.height) / 2);
+            var hotSpotHorizontalRadius = Math.Round((imageData.Hotspot.Width * imageData.width) / 2);
+            var hotSpotCenterX = Math.Round(imageData.Hotspot.X * imageData.width);
+            var hotSpotCenterY = Math.Round(imageData.Hotspot.Y * imageData.height);
+
+            var hotspotleft = hotSpotCenterX - hotSpotHorizontalRadius;
+            var hotspottop = hotSpotCenterY - hotSpotVerticalRadius;
+            var hotspotright = hotSpotCenterX + hotSpotHorizontalRadius;
+            var hotspotbottom = hotSpotCenterY + hotSpotVerticalRadius;
+
+
+            if (cropAspectRatio > desiredAspectRatio)
+            {
+                // The crop is wider than the desired aspect ratio. That means we are cutting from the sides
+
+                var height = cropHeight;
+                var width = Math.Round(height * desiredAspectRatio);
+                var top = cropTop;
+
+                // Center output horizontally over hotspot
+                var hotspotXCenter = Math.Round((hotspotright - hotspotleft) / 2 + hotspotleft);
+
+                var tempLeft = Math.Round(hotspotXCenter - width / 2);
+
+                // Keep output within crop
+                if (tempLeft < cropLeft)
+                    tempLeft = cropLeft;
+                else if (tempLeft + width > cropLeft + cropWidth)
+                    tempLeft = cropLeft + cropWidth - width;
+
+                result.Add($"rect={tempLeft},{top},{width},{height}");
+            }
+            else
+            {
+                // The crop is taller than the desired aspect ratio. That means we are cutting from the top and bottom
+                var width = cropWidth;
+                var height = Math.Round(width / desiredAspectRatio);
+                var left = cropLeft;
+
+                // Center output vertically over hotspot
+                var hotspotYCenter = Math.Round((hotspotbottom - hotspottop) / 2 + hotspottop);
+                var tempTop = Math.Round(hotspotYCenter - height / 2);
+
+                // Keep output rect within crop
+                if (tempTop < cropTop)
+                    tempTop = cropTop;
+                else if (tempTop + height > cropTop + cropHeight)
+                    tempTop = cropTop + cropHeight - height;
+
+                result.Add($"rect={left},{tempTop},{width},{height}");
+            }
+
+            if (setHeight != -1)
+                result.Add($"h={setHeight}");
+            if (setWidth != -1)
+                result.Add($"w={setWidth}");
+
+            // Compute hot spot rect in terms of pixel coordinates
+
+            return result;
         }
 
     }
