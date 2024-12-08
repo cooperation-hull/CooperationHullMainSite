@@ -373,6 +373,7 @@ h1 {
         padding-top: 12vh;
     }
 
+
 /* Home Page */
 
 .homepage-text-block {
@@ -1075,9 +1076,9 @@ section:has(+ .call-out-block-wrapper) {
 
 
 
-.blog-post-summary-container {
+/*.blog-post-summary-container {
     margin-top:2rem;
-}
+}*/
 
 .blog-post-summary {
     position: relative;
@@ -1090,14 +1091,11 @@ section:has(+ .call-out-block-wrapper) {
     padding: 0.5rem;
 }
 
-.blog-summary-image-container {
-   width: 15rem;
-   height: 15rem;
-    padding: 1rem;
+.blog-summary-list-image-container {
+    padding: 0.5rem;
 }
 
-    .blog-summary-image-container img {
-        height: 100%;
+    .blog-summary-list-image-container img {
         width: 100%;
         border-radius: 10%;
         object-fit: cover;
@@ -1111,23 +1109,18 @@ section:has(+ .call-out-block-wrapper) {
     padding-left: 2rem;
 }
 
-    .blog-summary-text-container h3 {
+    .blog-summary-text-container h3,
+    .blog-post-latest-container h3{
         margin-left: 0;
         font-weight: bolder;
     }
 
-.blog-summary-text-container .date-line {
-    font-weight:bold;
-}
-
-    .blog-summary-text-container .summary-text {
+    .blog-summary-text-container .text-line,
+    .blog-post-latest-container .text-line {
+        font-weight: bold;
         margin-left: 0;
-        margin-top: 1rem;
-   }
-
-        .blog-summary-text-container .summary-text p {
-            margin-left: 0;
-        }
+        margin-bottom: 0;
+    }
 
 .blog-summary-link-container {
     width: 5rem;
@@ -1137,3 +1130,40 @@ section:has(+ .call-out-block-wrapper) {
 .blog-summary-link-container img {
     object-fit:contain;
 }
+
+
+.blog-post-latest-container {
+    color: var(--off-black);
+    background-color: var(--cooperation-white);
+    margin-bottom: 5%;
+    border-radius: 1rem;
+    padding: 1.5rem;
+}
+
+    .blog-post-latest-container p {
+        margin-left: 0;
+    }
+
+.blog-summary-latest-image-container {
+    text-align: center;
+    border-radius: 4rem;
+}
+
+.blog-summary-latest-image-container img {
+    border-radius: 1rem;
+    width:100%;
+}
+
+
+.blog-post-latest-container .summary-text {
+    margin-top:1rem;
+}
+
+.blog-post-latest-link-container {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+

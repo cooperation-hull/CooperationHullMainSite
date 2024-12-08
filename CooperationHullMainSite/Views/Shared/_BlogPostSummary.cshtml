@@ -1,17 +1,19 @@
 ﻿@model CooperationHullMainSite.Models.PostSummary
 <div class="blog-post-summary">
 
-    <div class="blog-summary-image-container">
+    <div class="blog-summary-list-image-container">
         <img src="@(Model.summaryImageUrl)" alt="@(Model.imageAltText)" />
     </div>
 
     <div class="blog-summary-text-container">
         <h3 class="heading-m">@Model.Title</h3>
-        <span class="date-line">@Model.date.ToString("dd MMMM yyyy")</span>
-        <div class="summary-text">
+        <p class="text-line">@Model.date.ToString("dd MMMM yyyy")</p>
+        <p class="text-line">By @Model.author</p>
+
+@*         <div class="summary-text">
 
             <p>@Model.summaryText</p>
-        </div>
+        </div> *@
     </div>
     <div class="blog-summary-link-container">
         <a href='blog/@(Model.slug)' target='_blank'>

@@ -3,13 +3,10 @@ using CooperationHullMainSite.Models.ActionNetworkAPI;
 using CooperationHullMainSite.Models.SanityCMS;
 using CooperationHullMainSite.Services;
 using Microsoft.AspNetCore.Mvc;
-using Olav.Sanity.Client;
-using System.Data;
+using Microsoft.Extensions.Logging;
 using System.Diagnostics;
-using System.Dynamic;
 using System.Text.Json;
 using System.Web;
-using System.Xml.Linq;
 
 namespace CooperationHullMainSite.Controllers
 {
@@ -65,7 +62,9 @@ namespace CooperationHullMainSite.Controllers
         {
             BlogSummaryModel model = new BlogSummaryModel();
 
-            model.PostsList = await _sanityCMSCalls.GetBlogPostsList();
+            model.TopPost = await _sanityCMSCalls.GetLatestBlogPostSummary();
+
+            model.PostsList = await _sanityCMSCalls.GetBlogPostsList(1,10);
 
             model.tags = model.PostsList.SelectMany(x => x.tags).Distinct().ToList();
 

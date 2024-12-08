@@ -6,6 +6,7 @@
         public List<string> tags { get; set; } = new List<string>();
 
         public List<PostSummary> PostsList { get; set; } = new List<PostSummary>();
+        public PostSummary TopPost { get; set; }
 
        public BlogSummaryModel() { }
 

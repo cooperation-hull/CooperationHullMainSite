@@ -1,13 +1,10 @@
 ﻿using CooperationHullMainSite.Models;
 using CooperationHullMainSite.Models.ConfigSections;
 using CooperationHullMainSite.Models.SanityCMS;
-using Humanizer;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using NuGet.ContentModel;
-using NuGet.DependencyResolver;
 using Sanity.Linq;
 using Sanity.Linq.BlockContent;
-using Sanity.Linq.CommonTypes;
 
 namespace CooperationHullMainSite.Services
 {
@@ -77,21 +74,22 @@ namespace CooperationHullMainSite.Services
         }
 
 
-        public async Task<List<PostSummary>> GetBlogPostsList()
+        public async Task<List<PostSummary>> GetBlogPostsList(int startIndex, int quantity)
         {
 
             var result = new List<PostSummary>();
 
             SanityImageConfigOptions imageConfigOptions = new SanityImageConfigOptions() { useRawImage = false,
-                                                                                            height=300,
-                                                                                            width=300,
+                                                                                            height=100,
+                                                                                            width=150,
                                                                                             background = "F4E9E6"
                                                                                           };
 
             try
             {
 
-                var query = $"*[_type == 'blogPost']{{_id, title, author, date, slug, tags, summary, {SanityImageExtended.ImageQuery}, 'info': image.asset -> altText }}";
+                var query = $"*[_type == 'blogPost']|order(date desc){{_id, title, author, date, slug, tags, summary," +
+                            $" {SanityImageExtended.ImageQuery}, 'info': image.asset -> altText }}[{startIndex}...{startIndex + quantity}]";
 
                 var itemList = await _client.Query<BlogPostSummary>(query);
 
@@ -127,6 +125,62 @@ namespace CooperationHullMainSite.Services
             }
             return result;
         }
+
+
+       public async Task<PostSummary> GetLatestBlogPostSummary()
+        {
+
+            SanityImageConfigOptions imageConfigOptions = new SanityImageConfigOptions()
+            {
+                useRawImage = false,
+                height = 400,
+                width = 800,
+                background = "F4E9E6"
+            };
+
+            try
+            {
+
+                var query = $"*[_type == 'blogPost']|order(date desc){{_id, title, author, date, slug, tags, summary," +
+                            $" {SanityImageExtended.ImageQuery}, 'info': image.asset -> altText }}[0]";
+
+                var itemList = await _client.QuerySingle<BlogPostSummary>(query);
+
+                if (itemList.Item1 == System.Net.HttpStatusCode.OK)
+                {
+
+                    BlogPostSummary item = itemList.Item2.Result;
+
+                        var post = new PostSummary()
+                        {
+                            Title = item.title,
+                            date = item.date,
+                            slug = item.slug.Current,
+                            author = item.author,
+                            tags = item.tags,
+                            summaryImageUrl = GenerateImageURL(item.image, imageConfigOptions),
+                            imageAltText = item.imageAltText,
+                            summaryText = item.summary
+                        };
+
+                    return post;
+                    }
+
+                else
+                {
+                    _logger.LogError($"Error getting blog posts list from Sanity CMS {itemList.Item1.ToString()}");
+                }
+
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "Error getting blog post lists from Sanity CMS");
+            }
+            return new PostSummary();
+        }
+
+
+
         public async Task<BlogPostContent> GetBlogPostDetails(string slug)
         {
             var result = new BlogPostContent();
