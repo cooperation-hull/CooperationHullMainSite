@@ -1147,6 +1147,7 @@ section:has(+ .call-out-block-wrapper) {
 .blog-summary-latest-image-container {
     text-align: center;
     border-radius: 4rem;
+    margin-bottom: 1rem;
 }
 
 .blog-summary-latest-image-container img {
@@ -1156,7 +1157,7 @@ section:has(+ .call-out-block-wrapper) {
 
 
 .blog-post-latest-container .summary-text {
-    margin-top:1rem;
+    margin-top: 0.5rem;
 }
 
 .blog-post-latest-link-container {
@@ -1166,4 +1167,11 @@ section:has(+ .call-out-block-wrapper) {
     justify-content: space-between;
 }
 
+.blog-post-date {
+    color: var(--city-orange);
+}
 
+.blog-summary-text {
+    color: #474747;
+    margin-bottom: 0.5rem;
+}
