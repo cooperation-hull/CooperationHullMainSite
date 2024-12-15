@@ -7,7 +7,7 @@ namespace CooperationHullMainSite.Models.SanityCMS
     {
        public string _id { get; set; }
         public string title { get; set; }
-        public string date { get; set; }
+        public DateTime date { get; set; }
         public string author { get; set; }
         public JArray content { get; set; }
         public string contentHtml { get; set; }

@@ -770,6 +770,19 @@ text-decoration:underline;
         max-width: 100%;
     }
 
+
+
+.content-text figure {
+    max-width: 100%;
+    text-align: center;
+}
+
+    .content-text figure img {
+        max-width: 100%;
+        padding: 2rem;
+        text-align: center;
+    }
+
 /* Safe zone within sibling sections that the call out block can "eat into". May need to be updated once responsivity is tweaked in other sections */
 body {
     --call-out-block-safe-area-y: 290px;
@@ -1167,7 +1180,8 @@ section:has(+ .call-out-block-wrapper) {
     justify-content: space-between;
 }
 
-.blog-post-date {
+.blog-post-date,
+.blog-summary-date{
     color: var(--city-orange);
 }
 
@@ -1175,3 +1189,29 @@ section:has(+ .call-out-block-wrapper) {
     color: #474747;
     margin-bottom: 0.5rem;
 }
+
+
+@media only screen and (max-width: 600px) {
+    .blog-post-summary {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        color: var(--off-black);
+        background-color: var(--cooperation-white);
+        margin-bottom: 5%;
+        border-radius: 1rem;
+        padding: 0.5rem;
+    }
+
+    .blog-summary-link-container {
+        width: 5rem;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left:85%;
+    }
+
+        .blog-summary-link-container img {
+            object-fit: contain;
+        }
+}
+

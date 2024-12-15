@@ -9,11 +9,6 @@
         <h3 class="heading-m">@Model.Title</h3>
         <p class="text-line blog-summary-date">@Model.date.ToString("dd MMMM yyyy")</p>
         <p class="text-line">By @Model.author</p>
-
-@*         <div class="summary-text">
-
-            <p>@Model.summaryText</p>
-        </div> *@
     </div>
     <div class="blog-summary-link-container">
         <a href='blog/@(Model.slug)' target='_blank'>

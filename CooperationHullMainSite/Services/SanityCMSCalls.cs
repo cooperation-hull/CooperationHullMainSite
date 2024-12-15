@@ -80,8 +80,8 @@ namespace CooperationHullMainSite.Services
             var result = new List<PostSummary>();
 
             SanityImageConfigOptions imageConfigOptions = new SanityImageConfigOptions() { useRawImage = false,
-                                                                                            height=100,
-                                                                                            width=150,
+                                                                                            height=200,
+                                                                                            width=250,
                                                                                             background = "F4E9E6"
                                                                                           };
 
