@@ -1,0 +1,60 @@
+﻿@model CooperationHullMainSite.Models.BlogSummaryModel
+@{
+    ViewBag.Title = $"Our Blog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="content-text content-page">
+
+    <div class="row">
+        <div class="col-12  ">
+
+            <div class="top-image"></div>
+
+            <div>
+                <h1 class="heading-xl">Our Blog</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-xl-6 col-lg-12">
+            <h2 class="our-blog-subtitle">Latest Post</h2>
+
+            <div class="blog-post-latest-container">
+                <div class="blog-summary-latest-image-container">
+                    <img src="@(Model.TopPost.summaryImageUrl)" alt="@(Model.TopPost.imageAltText)" />
+
+                </div>
+
+                <h3 class="heading-m">@Model.TopPost.Title</h3>
+                <p class="text-line blog-post-date">@Model.TopPost.date.ToString("dd MMMM yyyy")</p>
+
+                <div class="summary-text">
+                    <p class=blog-summary-text>@Model.TopPost.summaryText</p>
+
+                    <div class="blog-post-latest-link-container">
+                        <span>By @Model.TopPost.author</span>
+                        <a href='blog/@(Model.TopPost.slug)'>
+                            <img src="~/assets/img/next arrow.svg" alt="arrow" />
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-12">
+            <h2 class="our-blog-subtitle">Previous Posts</h2>
+            <div id="blog-post-summary-container" class="blog-post-summary-container">
+                @foreach (PostSummary eventItem in Model.PostsList)
+                {
+                    @Html.Partial("_BlogPostSummary", eventItem)
+                }
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
