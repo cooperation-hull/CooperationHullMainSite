@@ -66,14 +66,7 @@ namespace CooperationHullMainSite.Controllers
 
             model.PostsList = await _sanityCMSCalls.GetBlogPostsList(1, 10);
 
-            if (model.PostsList.All(x => x.tags == null))
-            {
-                model.tags = new List<string>();
-            }
-            else
-            {
-                model.tags = model.PostsList.SelectMany(x => x.tags).Distinct().ToList();
-            }
+            model.tags = model.PostsList.Where(x => x.tags != null).SelectMany(x => x.tags).Distinct().ToList();
 
             return View(model);
         }
