@@ -1,14 +1,12 @@
 ﻿@{
-    ViewBag.Title = $"Privacy Policy";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-
+    ViewData["Title"] = "Privacy Policy";
 }
 <div class="row">
     <div class="col-12 content-text content-page">
         <div class="top-image"></div>
 
         <div>
-            <h1 class="heading-xl">@ViewBag.Title</h1>
+            <h1 class="heading-xl">@ViewData["Title"]</h1>
             <p>Revised 07 July 2024</p>
         </div>
 
