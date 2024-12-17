@@ -702,6 +702,7 @@ h1 {
         height: 8rem;
         width: 100%;
         background-image: url('../assets/img/contentpagetupimage1.png');
+        /*display: none;*/
     }
 
 .content-text-block {
@@ -712,30 +713,8 @@ h1 {
 }
 
 .content-text h1 {
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     margin-top: 2rem;
-}
-
-.content-text h2 {
-    margin-left: 1rem;
-}
-
-.content-text h3 {
-    margin-left: 2rem;
-}
-
-.content-text p {
-    margin-left: 3rem;
-}
-
-
-.content-text ul {
-    margin-left: 3rem;
-    list-style: disc;
-}
-
-.content-text ol {
-    margin-left: 3rem;
 }
 
 .content-text li {
@@ -1182,12 +1161,16 @@ section:has(+ .call-out-block-wrapper) {
 
 .blog-post-date,
 .blog-summary-date{
-    color: var(--city-orange);
+    color: var(--cooperation-orange);
 }
 
 .blog-summary-text {
     color: #474747;
     margin-bottom: 0.5rem;
+}
+
+.our-blog-subtitle {
+    font-weight: bold;
 }
 
 
