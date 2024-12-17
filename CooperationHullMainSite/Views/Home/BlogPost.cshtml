@@ -1,0 +1,21 @@
+﻿@model CooperationHullMainSite.Models.SanityCMS.BlogPostContent;
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = $"{Model.title}";
+    ViewBag.Description = $"{Model.summary}";
+}
+
+<row>
+    <div class="col-12 content-text content-page">
+
+        <div class="top-image"></div>
+
+        <div>
+            <h1 class="heading-xl">@Model.title</h1>
+        </div>
+
+  @Html.Raw(Model.contentHtml)
+        <p>@Model.date.ToString("dd MMMM yyyy")</p>
+    <p>By @Model.author</p>
+</div>
+</row>

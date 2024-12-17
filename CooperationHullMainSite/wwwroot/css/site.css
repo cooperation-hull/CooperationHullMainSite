@@ -370,8 +370,9 @@ h1 {
     .main-content .content-page {
         background-color: var(--city-orange);
         min-height: 86vh;
-        padding-top: 10vh;
+        padding-top: 12vh;
     }
+
 
 /* Home Page */
 
@@ -701,6 +702,7 @@ h1 {
         height: 8rem;
         width: 100%;
         background-image: url('../assets/img/contentpagetupimage1.png');
+        /*display: none;*/
     }
 
 .content-text-block {
@@ -711,30 +713,8 @@ h1 {
 }
 
 .content-text h1 {
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     margin-top: 2rem;
-}
-
-.content-text h2 {
-    margin-left: 1rem;
-}
-
-.content-text h3 {
-    margin-left: 2rem;
-}
-
-.content-text p {
-    margin-left: 3rem;
-}
-
-
-.content-text ul {
-    margin-left: 3rem;
-    list-style: disc;
-}
-
-.content-text ol {
-    margin-left: 3rem;
 }
 
 .content-text li {
@@ -767,6 +747,19 @@ text-decoration:underline;
 
     .content-text .assemblies-image-container img {
         max-width: 100%;
+    }
+
+
+
+.content-text figure {
+    max-width: 100%;
+    text-align: center;
+}
+
+    .content-text figure img {
+        max-width: 100%;
+        padding: 2rem;
+        text-align: center;
     }
 
 /* Safe zone within sibling sections that the call out block can "eat into". May need to be updated once responsivity is tweaked in other sections */
@@ -1072,3 +1065,136 @@ section:has(+ .call-out-block-wrapper) {
     #can-form-area-support-the-hull-peoples-assembly #can_embed_form input[type=checkbox] {
         transform: scale(1.5);
     }
+
+
+
+/*.blog-post-summary-container {
+    margin-top:2rem;
+}*/
+
+.blog-post-summary {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    color: var(--off-black);
+    background-color: var(--cooperation-white);
+    margin-bottom: 5%;
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+
+.blog-summary-list-image-container {
+    padding: 0.5rem;
+}
+
+    .blog-summary-list-image-container img {
+        width: 100%;
+        border-radius: 10%;
+        object-fit: cover;
+    }
+
+
+.blog-summary-text-container {
+    padding-top:1rem;
+    width: 80%;
+    padding-right:3rem;
+    padding-left: 2rem;
+}
+
+    .blog-summary-text-container h3,
+    .blog-post-latest-container h3{
+        margin-left: 0;
+        font-weight: bolder;
+    }
+
+    .blog-summary-text-container .text-line,
+    .blog-post-latest-container .text-line {
+        font-weight: bold;
+        margin-left: 0;
+        margin-bottom: 0;
+    }
+
+.blog-summary-link-container {
+    width: 5rem;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.blog-summary-link-container img {
+    object-fit:contain;
+}
+
+
+.blog-post-latest-container {
+    color: var(--off-black);
+    background-color: var(--cooperation-white);
+    margin-bottom: 5%;
+    border-radius: 1rem;
+    padding: 1.5rem;
+}
+
+    .blog-post-latest-container p {
+        margin-left: 0;
+    }
+
+.blog-summary-latest-image-container {
+    text-align: center;
+    border-radius: 4rem;
+    margin-bottom: 1rem;
+}
+
+.blog-summary-latest-image-container img {
+    border-radius: 1rem;
+    width:100%;
+}
+
+
+.blog-post-latest-container .summary-text {
+    margin-top: 0.5rem;
+}
+
+.blog-post-latest-link-container {
+    margin-top: auto;
+    margin-bottom: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.blog-post-date,
+.blog-summary-date{
+    color: var(--cooperation-orange);
+}
+
+.blog-summary-text {
+    color: #474747;
+    margin-bottom: 0.5rem;
+}
+
+.our-blog-subtitle {
+    font-weight: bold;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .blog-post-summary {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        color: var(--off-black);
+        background-color: var(--cooperation-white);
+        margin-bottom: 5%;
+        border-radius: 1rem;
+        padding: 0.5rem;
+    }
+
+    .blog-summary-link-container {
+        width: 5rem;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left:85%;
+    }
+
+        .blog-summary-link-container img {
+            object-fit: contain;
+        }
+}
+
