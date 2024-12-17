@@ -1,24 +1,10 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    @{
-        var url = $"https://www.cooperationhull.co.uk{ViewContext.HttpContext.Request.Path}";
-
-        var description = "Cooperation Hull - Strong, caring communities. Enough food for everyone. A healthy planet. Lives filled with meaning. This is the kind of world we all want. So why don't we build it?";
-
-        if( !string.IsNullOrWhiteSpace(ViewBag.Description))
-        {
-            description = ViewBag.Description;
-        }
-
-        //TODO add in ability to set custom images per page for og:image
-        var title = $"Cooperation Hull | {@ViewBag.Title}";
-}
-
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name=description content="@description" />
-    <title>@title</title>
+    <meta name=description content="Cooperation Hull - Strong, caring communities. Enough food for everyone. A healthy planet. Lives filled with meaning. This is the kind of world we all want. So why don't we build it?" />
+    <title>Cooperation Hull</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/CooperationHullMainSite.styles.css" asp-append-version="true" />
@@ -30,12 +16,11 @@
 
     <!--Open Graph-->
 
-
-    <meta property="og:title" content="@ViewBag.Title" />
+    <meta property="og:title" content="Cooperation Hull" />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="\assets\img\Cooperation Hull Circle Logo 2.png" />
-    <meta property="og:url" content="@url" />
-    <meta property="og:description" content="@description" />
+    <meta property="og:url" content="https://www.cooperationhull.co.uk/" />
+    <meta property="og:description" content="Strong, caring communities. Enough food, shelter and warmth for everyone, no matter what. A healthy planet and a respectful relationship with the natural world. Lives filled with meaning and purpose, with a future to look forward to. This is the kind of society we all want. So why don’t we build it?" />
 
 </head>
 <body>
