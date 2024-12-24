@@ -3,13 +3,10 @@ using CooperationHullMainSite.Models.ActionNetworkAPI;
 using CooperationHullMainSite.Models.SanityCMS;
 using CooperationHullMainSite.Services;
 using Microsoft.AspNetCore.Mvc;
-using Olav.Sanity.Client;
-using System.Data;
+using Microsoft.Extensions.Logging;
 using System.Diagnostics;
-using System.Dynamic;
 using System.Text.Json;
 using System.Web;
-using System.Xml.Linq;
 
 namespace CooperationHullMainSite.Controllers
 {
@@ -38,7 +35,7 @@ namespace CooperationHullMainSite.Controllers
             model.eventList = await _sanityCMSCalls.GetHomePageEventsList();
 
 
-            if(model.eventList == null | model.eventList.Count == 0)
+            if (model.eventList == null | model.eventList.Count == 0)
             {
                 // fallback to old json file if no events are returned from CMS
                 //temp measure until we are sure CMS is working as expected
@@ -57,6 +54,44 @@ namespace CooperationHullMainSite.Controllers
             return View(model);
         }
 
+
+
+        [HttpGet]
+        [Route("blog")]
+        public async Task<IActionResult> OurBlog()
+        {
+            BlogSummaryModel model = new BlogSummaryModel();
+
+            model.TopPost = await _sanityCMSCalls.GetLatestBlogPostSummary();
+
+            model.PostsList = await _sanityCMSCalls.GetBlogPostsList(1, 10);
+
+            model.tags = model.PostsList.Where(x => x.tags != null).SelectMany(x => x.tags).Distinct().ToList();
+
+            return View(model);
+        }
+
+
+        [HttpGet]
+        [Route("blog/{slug}")]
+        public async Task<IActionResult> BlogPost(string slug)
+        {
+            //TODO - add 404 handling for invalid slugs
+            //TODO - add in tags to post and use them in og tags
+
+            BlogPostContent model = new BlogPostContent();
+
+            model = await _sanityCMSCalls.GetBlogPostDetails(slug);
+
+            if (model == null || model.contentHtml == null)
+            {
+                return RedirectToAction("OurBlog");
+            }
+
+            return View(model);
+        }
+
+
         [HttpPost]
         public async Task<JsonResult> Home_page_signup_form()
         {
@@ -66,7 +101,7 @@ namespace CooperationHullMainSite.Controllers
 
             //Note relying on actionnetworks api to handle sql injection checks etc.
             //TODO - maybe write validation/ input sanitization service, overkill atm but may be useful later?
-            if(String.IsNullOrWhiteSpace(Request.Form["PledgeFormSurname"]))
+            if (String.IsNullOrWhiteSpace(Request.Form["PledgeFormSurname"]))
                 errorList.Add("Surname");
             else
                 data.family_name = HttpUtility.HtmlEncode(Request.Form["PledgeFormSurname"]);
@@ -83,13 +118,13 @@ namespace CooperationHullMainSite.Controllers
             else
             {
                 var phone = new ActionNetworkPhone(HttpUtility.HtmlEncode(Request.Form["PledgeFormMobile"]));
-                    phone.primary = true;
-                    data.phone_numbers = [phone];
+                phone.primary = true;
+                data.phone_numbers = [phone];
             }
 
             bool liveInHull = false;
 
-            if(Request.Form["LiveInHull"] == "yes")
+            if (Request.Form["LiveInHull"] == "yes")
             {
                 liveInHull = true;
             }
@@ -97,13 +132,14 @@ namespace CooperationHullMainSite.Controllers
             {
                 liveInHull = false;
             }
-            else {
+            else
+            {
                 errorList.Add("Do you live in Hull?");
             }
 
             bool result = false;
 
-            if(errorList.Count > 0)
+            if (errorList.Count > 0)
             {
                 string errorMessage = $"Please complete: {string.Join(", ", errorList)}";
                 return Json(new { result = result, error = errorMessage });
