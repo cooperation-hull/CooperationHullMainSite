@@ -9,6 +9,7 @@ namespace CooperationHullMainSite.Services
         Task<List<PostSummary>> GetBlogPostsList(int startIndex, int quantity);
         Task<BlogPostContent> GetBlogPostDetails(string slug);
         Task<PostSummary> GetLatestBlogPostSummary();
+        Task<int> GetNoOfItems();
 
     }
 }

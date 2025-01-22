@@ -126,6 +126,26 @@ namespace CooperationHullMainSite.Services
             return result;
         }
 
+        public async Task<int> GetNoOfItems()
+        {
+            int itemCount = 10;
+            try
+            {
+                var query = "count(*[_type == \"blogPost\"])";
+                var temp = await _client.QuerySingle<int>(query);
+
+                if (temp.Item1 == System.Net.HttpStatusCode.OK)
+                {
+                    itemCount = temp.Item2.Result;
+                }
+
+            }
+            catch(Exception e)
+            {
+                _logger.LogError(e, "Error getting item count");
+            }
+            return itemCount;
+        }
 
        public async Task<PostSummary> GetLatestBlogPostSummary()
         {
@@ -178,8 +198,6 @@ namespace CooperationHullMainSite.Services
             }
             return new PostSummary();
         }
-
-
 
         public async Task<BlogPostContent> GetBlogPostDetails(string slug)
         {

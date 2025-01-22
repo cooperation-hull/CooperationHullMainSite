@@ -7,7 +7,7 @@
 
         public List<PostSummary> PostsList { get; set; } = new List<PostSummary>();
         public PostSummary TopPost { get; set; }
-
+         public int NoOfItems { get; set; }
        public BlogSummaryModel() { }
 
     }

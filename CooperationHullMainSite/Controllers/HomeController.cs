@@ -68,6 +68,8 @@ namespace CooperationHullMainSite.Controllers
 
             model.tags = model.PostsList.Where(x => x.tags != null).SelectMany(x => x.tags).Distinct().ToList();
 
+            model.NoOfItems = await _sanityCMSCalls.GetNoOfItems();
+
             return View(model);
         }
 
