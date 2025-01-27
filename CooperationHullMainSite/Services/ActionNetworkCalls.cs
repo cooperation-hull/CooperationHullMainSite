@@ -53,11 +53,22 @@ namespace CooperationHullMainSite.Services
                 tagnameList.Remove("Call me");
             }
 
+            //Add in fake email address - temp measure ONLY get rid as soon as possible when a better solution for integration can be found.
+            formData.email_addresses = new List<ActionNetworkEmail>();
+            formData.email_addresses.Add(new ActionNetworkEmail(GenerateFakeEmail()));
+
             string endpoint = $"people/";
             var temp = await PostDataAPICall(endpoint, new ActionNetworkPersonSignupHelper(formData, tagnameList));
             return temp;
         }
 
+
+        private string GenerateFakeEmail()
+        {
+            var rand = new Random(100000);
+
+            return $"hello.{DateTime.Now.ToString("yyyyMMdd")}.{rand.Next().ToString()}@cooperationhull.co.uk";
+        }
 
         public async Task<bool> SubmitForm(string formName, ActionNetworkPerson formData)
         {
