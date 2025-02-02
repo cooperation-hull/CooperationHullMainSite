@@ -74,22 +74,24 @@ namespace CooperationHullMainSite.Services
         }
 
 
-        public async Task<List<PostSummary>> GetBlogPostsList(int startIndex, int quantity)
+
+        public async Task<List<PostSummary>> GetAllBlogPostsList()
         {
 
             var result = new List<PostSummary>();
 
-            SanityImageConfigOptions imageConfigOptions = new SanityImageConfigOptions() { useRawImage = false,
-                                                                                            height=200,
-                                                                                            width=250,
-                                                                                            background = "F4E9E6"
-                                                                                          };
+            SanityImageConfigOptions imageConfigOptions = new SanityImageConfigOptions()
+            {
+                useRawImage = false,
+                height = 200,
+                width = 250,
+                background = "F4E9E6"
+            };
 
             try
             {
-
                 var query = $"*[_type == 'blogPost']|order(date desc){{_id, title, author, date, slug, tags, summary," +
-                            $" {SanityImageExtended.ImageQuery}, 'info': image.asset -> altText }}[{startIndex}...{startIndex + quantity}]";
+                            $" {SanityImageExtended.ImageQuery}, 'info': image.asset -> altText }}[1...10000]";
 
                 var itemList = await _client.Query<BlogPostSummary>(query);
 
@@ -124,27 +126,6 @@ namespace CooperationHullMainSite.Services
                 _logger.LogError(e, "Error getting blog post lists from Sanity CMS");
             }
             return result;
-        }
-
-        public async Task<int> GetNoOfItems()
-        {
-            int itemCount = 10;
-            try
-            {
-                var query = "count(*[_type == \"blogPost\"])";
-                var temp = await _client.QuerySingle<int>(query);
-
-                if (temp.Item1 == System.Net.HttpStatusCode.OK)
-                {
-                    itemCount = temp.Item2.Result;
-                }
-
-            }
-            catch(Exception e)
-            {
-                _logger.LogError(e, "Error getting item count");
-            }
-            return itemCount;
         }
 
        public async Task<PostSummary> GetLatestBlogPostSummary()

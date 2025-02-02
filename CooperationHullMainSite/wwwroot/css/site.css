@@ -1198,3 +1198,16 @@ section:has(+ .call-out-block-wrapper) {
         }
 }
 
+.blog-post-summary-container .page-link {
+    color: var(--cooperation-orange);
+}
+
+.blog-post-summary-container .page-item.active .page-link {
+    background-color: var(--cooperation-orange);
+    border-color: var(--cooperation-orange);
+}
+
+.blog-post-summary-container ul {
+    padding-left : 0;
+}
+
