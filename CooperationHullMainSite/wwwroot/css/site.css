@@ -750,7 +750,6 @@ text-decoration:underline;
     }
 
 
-
 .content-text figure {
     max-width: 100%;
     text-align: center;
@@ -761,6 +760,23 @@ text-decoration:underline;
         padding: 2rem;
         text-align: center;
     }
+
+.valuesList li {
+    margin-bottom:3rem;
+}
+
+
+.valuesList li p {
+    margin-left:1rem;
+}
+
+.valuesList li h3 {
+    padding-bottom:1rem;
+}
+
+.valuesList li::marker {
+    font-size: x-large;
+}
 
 /* Safe zone within sibling sections that the call out block can "eat into". May need to be updated once responsivity is tweaked in other sections */
 body {
