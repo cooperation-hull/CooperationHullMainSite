@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Web;
+using X.PagedList.Extensions;
 
 namespace CooperationHullMainSite.Controllers
 {
@@ -58,15 +59,17 @@ namespace CooperationHullMainSite.Controllers
 
         [HttpGet]
         [Route("blog")]
-        public async Task<IActionResult> OurBlog()
+        public async Task<IActionResult> OurBlog(int? page)
         {
             BlogSummaryModel model = new BlogSummaryModel();
 
             model.TopPost = await _sanityCMSCalls.GetLatestBlogPostSummary();
 
-            model.PostsList = await _sanityCMSCalls.GetBlogPostsList(1, 10);
+            int pageNumber = page ?? 1;
+            var postsList = await _sanityCMSCalls.GetAllBlogPostsList();
+            var onePage = postsList.ToPagedList(pageNumber, 3);
 
-            model.tags = model.PostsList.Where(x => x.tags != null).SelectMany(x => x.tags).Distinct().ToList();
+            model.PostsList = onePage;
 
             return View(model);
         }

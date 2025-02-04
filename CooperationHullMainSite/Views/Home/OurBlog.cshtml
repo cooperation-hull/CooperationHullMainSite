@@ -3,6 +3,10 @@
     ViewBag.Title = $"Our Blog";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@using X.PagedList.Mvc.Core; 
+@using X.PagedList;
+
+<link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 <div class="content-text content-page">
 
@@ -47,10 +51,17 @@
         <div class="col-xl-6 col-lg-12">
             <h2 class="our-blog-subtitle">Previous Posts</h2>
             <div id="blog-post-summary-container" class="blog-post-summary-container">
+            <ul>
                 @foreach (PostSummary eventItem in Model.PostsList)
                 {
                     @Html.Partial("_BlogPostSummary", eventItem)
                 }
+            </ul>
+            @Html.PagedListPager((IPagedList)Model.PostsList, page => Url.Action("OurBlog", new { page }),
+            new PagedListRenderOptions {
+                LiElementClasses = new string[] { "page-item" },
+                PageClasses = new string[] { "page-link" }
+            })
             </div>
         </div>
 

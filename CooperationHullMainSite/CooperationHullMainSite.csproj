@@ -16,6 +16,9 @@
     <PackageReference Include="NLog.Web.AspNetCore" Version="5.3.8" />
     <PackageReference Include="sanity-client" Version="0.1.8" />
     <PackageReference Include="Sanity.Linq" Version="1.7.1" />
+    <PackageReference Include="X.PagedList" Version="10.5.7" />
+    <PackageReference Include="X.PagedList.Mvc.Bootstrap4" Version="10.1.2" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="10.5.7" />
   </ItemGroup>
 
   <ItemGroup>
