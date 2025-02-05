@@ -74,22 +74,24 @@ namespace CooperationHullMainSite.Services
         }
 
 
-        public async Task<List<PostSummary>> GetBlogPostsList(int startIndex, int quantity)
+
+        public async Task<List<PostSummary>> GetAllBlogPostsList()
         {
 
             var result = new List<PostSummary>();
 
-            SanityImageConfigOptions imageConfigOptions = new SanityImageConfigOptions() { useRawImage = false,
-                                                                                            height=200,
-                                                                                            width=250,
-                                                                                            background = "F4E9E6"
-                                                                                          };
+            SanityImageConfigOptions imageConfigOptions = new SanityImageConfigOptions()
+            {
+                useRawImage = false,
+                height = 200,
+                width = 250,
+                background = "F4E9E6"
+            };
 
             try
             {
-
                 var query = $"*[_type == 'blogPost']|order(date desc){{_id, title, author, date, slug, tags, summary," +
-                            $" {SanityImageExtended.ImageQuery}, 'info': image.asset -> altText }}[{startIndex}...{startIndex + quantity}]";
+                            $" {SanityImageExtended.ImageQuery}, 'info': image.asset -> altText }}[1...10000]";
 
                 var itemList = await _client.Query<BlogPostSummary>(query);
 
@@ -125,7 +127,6 @@ namespace CooperationHullMainSite.Services
             }
             return result;
         }
-
 
        public async Task<PostSummary> GetLatestBlogPostSummary()
         {
@@ -178,8 +179,6 @@ namespace CooperationHullMainSite.Services
             }
             return new PostSummary();
         }
-
-
 
         public async Task<BlogPostContent> GetBlogPostDetails(string slug)
         {

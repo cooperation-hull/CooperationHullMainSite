@@ -1,13 +1,11 @@
-﻿namespace CooperationHullMainSite.Models
+﻿using X.PagedList;
+
+namespace CooperationHullMainSite.Models
 {
     public class BlogSummaryModel
     {
-
-        public List<string> tags { get; set; } = new List<string>();
-
-        public List<PostSummary> PostsList { get; set; } = new List<PostSummary>();
+        public IPagedList<PostSummary> PostsList { get; set; }
         public PostSummary TopPost { get; set; }
-
        public BlogSummaryModel() { }
 
     }
