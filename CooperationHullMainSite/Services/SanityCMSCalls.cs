@@ -33,10 +33,11 @@ namespace CooperationHullMainSite.Services
                 height = 200,
             };
 
+            string comparisonDate = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
+
             try
             {
-
-                var itemList = await _client.Query<Event>($"*[_type == 'event']{{ _id, title, description, date, location, eventLink, {SanityImageExtended.ImageQuery},  \"imageAltText\": image.asset -> altText }}");
+                var itemList = await _client.Query<Event>($"*[_type == 'event' && date > '{comparisonDate}']|order(date asc){{ _id, title, description, date, location, eventLink, {SanityImageExtended.ImageQuery},  \"imageAltText\": image.asset -> altText }}[0...3]");
 
                 if (itemList.Item1 == System.Net.HttpStatusCode.OK)
                 {
@@ -55,6 +56,8 @@ namespace CooperationHullMainSite.Services
 
                         result.Add(homePageEvent);
                     }
+
+                    result.OrderBy(x => x.date);
 
                 }
                 else
