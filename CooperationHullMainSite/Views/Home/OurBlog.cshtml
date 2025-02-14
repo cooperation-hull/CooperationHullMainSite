@@ -52,9 +52,9 @@
             <h2 class="our-blog-subtitle">Previous Posts</h2>
             <div id="blog-post-summary-container" class="blog-post-summary-container">
             <ul>
-                @foreach (PostSummary eventItem in Model.PostsList)
+                @foreach (PostSummary post in Model.PostsList)
                 {
-                    @Html.Partial("_BlogPostSummary", eventItem)
+                    @Html.Partial("_BlogPostSummary", post)
                 }
             </ul>
             @Html.PagedListPager((IPagedList)Model.PostsList, page => Url.Action("OurBlog", new { page }),

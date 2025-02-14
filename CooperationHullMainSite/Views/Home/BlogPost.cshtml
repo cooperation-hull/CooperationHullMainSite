@@ -12,10 +12,12 @@
 
         <div>
             <h1 class="heading-xl">@Model.title</h1>
+            <a class="" asp-area="" asp-controller="Home" asp-action="OurBlog">Back to Summary Page &rarr;</a>
         </div>
 
   @Html.Raw(Model.contentHtml)
         <p>@Model.date.ToString("dd MMMM yyyy")</p>
     <p>By @Model.author</p>
-</div>
+        <a class="" asp-area="" asp-controller="Home" asp-action="OurBlog">Back to Summary Page &rarr;</a>
+    </div>
 </row>
