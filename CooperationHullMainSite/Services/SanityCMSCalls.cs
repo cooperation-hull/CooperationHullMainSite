@@ -5,6 +5,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Sanity.Linq;
 using Sanity.Linq.BlockContent;
+using Sanity.Linq.CommonTypes;
 
 namespace CooperationHullMainSite.Services
 {
@@ -212,6 +213,64 @@ namespace CooperationHullMainSite.Services
             return result;
         }
 
+
+        public async Task<EventPageModel> GetEventsPageData()
+        {
+            var result = new EventPageModel();
+
+            SanityImageConfigOptions imageConfigOptions = new SanityImageConfigOptions()
+            {
+                useRawImage = false,
+                height = 200,
+            };
+
+            string comparisonDate = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
+
+            try
+            {
+                var itemList = await _client.Query<EventV2>($"*[_type == 'eventv2' && date > '{comparisonDate}']|order(date asc){{ _id, title, description, eventTags, duration, date, location, eventLink, {SanityImageExtended.ImageQuery},  \"imageAltText\": image.asset -> altText }}");
+
+                if (itemList.Item1 == System.Net.HttpStatusCode.OK)
+                {
+                    foreach (EventV2 item in itemList.Item2.Result)
+                    {
+                        var homePageEvent = new EventItem()
+                        {
+                            title = item.title,
+                            description = item.description,
+                            date = item.date,
+                            startTime = item.duration.start,
+                            endTime = item.duration.end,
+                            imagesName = GenerateImageURL(item.image, imageConfigOptions),
+                            imageAltText = item.imageAltText,
+                            tagData = String.Join(',', item.eventTags.Select(x => x.value).ToArray()),
+                            locationLink = GenerateGoogleMapsURL(item.location)
+                        };
+
+                        result.events.Add(homePageEvent);
+                        result.tags.AddRange(item.eventTags.Select(x => x.value));
+                    }
+
+                    result.events.OrderBy(x => x.date);
+
+                }
+                else
+                {
+                    _logger.LogError($"Error getting V2 events from Sanity CMS {itemList.Item1.ToString()}");
+                }
+
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "Error getting V2 events from Sanity CMS");
+                return new EventPageModel();
+            }
+
+            return result;
+
+        }
+
+
         private void SetSanityClient()
         {
             var projectid = config.ProjectID;
@@ -300,7 +359,10 @@ namespace CooperationHullMainSite.Services
             }
         }
 
-
+        private string GenerateGoogleMapsURL(SanityLocation location)
+        {
+            return "Link to location on google maps will go here";
+        }
         private string CalcImageCropBasic(SanityImageExtended imageData)
         {
             // Compute crop rect in terms of pixel coordinates in the raw source image

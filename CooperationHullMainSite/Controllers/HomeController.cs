@@ -3,7 +3,6 @@ using CooperationHullMainSite.Models.ActionNetworkAPI;
 using CooperationHullMainSite.Models.SanityCMS;
 using CooperationHullMainSite.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 using System.Text.Json;
 using System.Web;
@@ -238,6 +237,22 @@ namespace CooperationHullMainSite.Controllers
         public IActionResult PrinciplesAndValues()
         {
             return View();
+        }
+
+
+        [HttpGet]
+        [Route("events")]
+        public async Task<IActionResult> Events()
+        {
+
+            EventPageModel model = await _sanityCMSCalls.GetEventsPageData();
+
+            if (model == null || model.events.Count == 0)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
         }
 
 

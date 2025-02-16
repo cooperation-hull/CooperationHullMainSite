@@ -9,5 +9,6 @@ namespace CooperationHullMainSite.Services
         Task<BlogPostContent> GetBlogPostDetails(string slug);
         Task<PostSummary> GetLatestBlogPostSummary();
         Task<List<PostSummary>> GetAllBlogPostsList();
+        Task<EventPageModel> GetEventsPageData();
     }
 }
