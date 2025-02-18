@@ -761,6 +761,22 @@ text-decoration:underline;
         text-align: center;
     }
 
+
+    .content-text .footnote {
+        font-size:0.8em;
+    }
+
+    .content-text .superscript {
+        vertical-align: super;
+        font-size:0.8em;
+        color: var(--off-black);
+    }
+
+.content-text .subscript {
+    vertical-align: sub;
+    font-size: 0.8em;
+}
+
 .valuesList li {
     margin-bottom:3rem;
 }
