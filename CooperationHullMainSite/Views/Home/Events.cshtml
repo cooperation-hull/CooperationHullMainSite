@@ -4,34 +4,19 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row">
-    <div class="col-12 content-page "> 
-        <h1>Events</h1>
-
-        <h2> List of tags to go in filter</h2>
-
-        @foreach(string item in Model.tags)
-        {
-            <p>@item</p>
-        }
-
-        <h2> List of data from events items</h2>
+<div class="row content-page content-text">
+    <div class="col-12">
+        <div class="top-image"></div>
+        <div>
+            <h1 class="heading-xl">@ViewBag.Title</h1>
+        </div>
+@*         <select name="eventType" asp-items="Model.tags"></select>
+ *@    </div>
+    <div class="row">
         @foreach (EventItem item in Model.events)
         {
-            <p>@item.title</p>
-            <p>@item.description</p>
-            <p>@item.date.ToString("dd-MM-yyyy")</p>
-            <p>@item.startTime</p>
-            <p>@item.endTime</p>
-            <p>@item.imagesName</p>
-            <p>@item.imageAltText</p>
-            <p>@item.tagData</p>
-            <p>@item.locationLink</p>
-            <br />
+            @Html.Partial("_EventPageItem", item)
         }
-
-
-
     </div>
 
 </div>

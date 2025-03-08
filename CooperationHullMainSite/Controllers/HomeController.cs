@@ -245,7 +245,7 @@ namespace CooperationHullMainSite.Controllers
         public async Task<IActionResult> Events()
         {
 
-            EventPageModel model = await _sanityCMSCalls.GetEventsPageData();
+            EventPageModel model = await _sanityCMSCalls.GetAllEventsPageData();
 
             if (model == null || model.events.Count == 0)
             {

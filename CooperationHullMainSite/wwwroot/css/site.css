@@ -1243,3 +1243,72 @@ section:has(+ .call-out-block-wrapper) {
     padding-left : 0;
 }
 
+
+
+/*Event items*/
+.event-item {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--off-black);
+    color: var(--cooperation-white);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 100ms;
+    &:has(a:hover)
+
+{
+    transform: translateY(-0.2rem);
+}
+
+}
+
+.event-item .header-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.event-item .date-tag {
+    background-color: var(--cooperation-white);
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.2rem 1rem;
+    color: black;
+    z-index: 100;
+    text-align: center;
+    border-radius: 6px;
+}
+
+.event-item .content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    gap: 1rem;
+}
+
+/*
+
+
+    .happening-next-item .content .description-block {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        align-items: end;
+    }
+
+        .happening-next-item .content .description-block .text-sm {
+            line-height: 1.4;
+        }
+
+        .happening-next-item .content .description-block a {
+            transition: filter 100ms;
+            &:hover
+
+{
+    filter: brightness(110%);
+}*/

@@ -1,9 +1,11 @@
-﻿namespace CooperationHullMainSite.Models
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+
+namespace CooperationHullMainSite.Models
 {
     public class EventPageModel
     {
       public  EventPageModel() { }
-        public List<string> tags = new List<string>();
+        public List<SelectListItem> tags = new List<SelectListItem>();
         public List<EventItem> events = new List<EventItem>();
     }
 
@@ -20,6 +22,7 @@
         public string eventLink { get; set; } = "";
         public string locationLink { get; set; }
         public string tagData { get; set; }
+        public string locationName { get; set; } = "";
     }
 
 
