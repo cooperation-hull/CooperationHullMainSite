@@ -738,6 +738,12 @@ text-decoration:underline;
 }
 
 
+    .button-link:hover {
+        text-decoration: underline;
+        color: var(--cooperation-white);
+    }
+
+
 .content-text .assemblies-image-container {
     margin: auto;
     background-color: white;
