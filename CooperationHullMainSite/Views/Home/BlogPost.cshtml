@@ -11,11 +11,15 @@
         <div class="top-image"></div>
 
         <div>
+            <a class="" asp-area="" asp-controller="Home" asp-action="OurBlog">&larr; Back to the blog</a>
             <h1 class="heading-xl">@Model.title</h1>
         </div>
 
-  @Html.Raw(Model.contentHtml)
+        @Html.Raw(Model.contentHtml)
+
         <p>@Model.date.ToString("dd MMMM yyyy")</p>
-    <p>By @Model.author</p>
-</div>
+        <p>By @Model.author</p>
+
+        <a class="" asp-area="" asp-controller="Home" asp-action="OurBlog">&larr; Back to the blog</a>
+    </div>
 </row>
