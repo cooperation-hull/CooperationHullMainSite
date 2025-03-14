@@ -1,0 +1,71 @@
+﻿@model CooperationHullMainSite.Models.BlogSummaryModel
+@{
+    ViewBag.Title = $"Our Blog";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@using X.PagedList.Mvc.Core; 
+@using X.PagedList;
+
+<link href="/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<div class="content-text content-page">
+
+    <div class="row">
+        <div class="col-12  ">
+
+            <div class="top-image"></div>
+
+            <div>
+                <h1 class="heading-xl">Our Blog</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-xl-6 col-lg-12">
+            <h2 class="our-blog-subtitle">Latest Post</h2>
+
+            <div class="blog-post-latest-container">
+                <div class="blog-summary-latest-image-container">
+                    <img src="@(Model.TopPost.summaryImageUrl)" alt="@(Model.TopPost.imageAltText)" />
+
+                </div>
+
+                <h3 class="heading-m">@Model.TopPost.Title</h3>
+                <p class="text-line blog-post-date">@Model.TopPost.date.ToString("dd MMMM yyyy")</p>
+
+                <div class="summary-text">
+                    <p class=blog-summary-text>@Model.TopPost.summaryText</p>
+
+                    <div class="blog-post-latest-link-container">
+                        <span>By @Model.TopPost.author</span>
+                        <a href='blog/@(Model.TopPost.slug)'>
+                            <img src="~/assets/img/next arrow.svg" alt="arrow" />
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-12">
+            <h2 class="our-blog-subtitle">Previous Posts</h2>
+            <div id="blog-post-summary-container" class="blog-post-summary-container">
+            <ul>
+                @foreach (PostSummary post in Model.PostsList)
+                {
+                    @Html.Partial("_BlogPostSummary", post)
+                }
+            </ul>
+            @Html.PagedListPager((IPagedList)Model.PostsList, page => Url.Action("OurBlog", new { page }),
+            new PagedListRenderOptions {
+                LiElementClasses = new string[] { "page-item" },
+                PageClasses = new string[] { "page-link" }
+            })
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
