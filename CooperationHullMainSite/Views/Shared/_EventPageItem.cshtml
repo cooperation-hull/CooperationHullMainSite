@@ -3,14 +3,15 @@
         <p class="date-tag heading-xs">@Model.date.ToString("dd MMM")</p>
         <img class="header-image" src="@(Model.imagesName)" alt="@(Model.imageAltText)" />
         <div class="content">
-            <h3 class="heading-sm">@(Model.title)</h3>
+            <h3 class="heading-md">@(Model.title)</h3>
+            <div class="event-time-and-location">
+                <p>@(Model.tagData)</p>
+                <p>@Model.startTime - @Model.endTime at <a href='@(Model.locationLink)' target='_blank'>@Model.locationName</a></p>
+            </div>
             <div class="description-block">
-                <p class="heading-xs">When: @Model.startTime - @Model.endTime</p>
-               <p><a href='@(Model.locationLink)' target='_blank'>Where: @Model.locationName</a><p></p>
-                <p>Event Type: @(Model.tagData)</p>
                 <p class="text-sm">@(Model.description)</p>
 
-                @if(!String.IsNullOrEmpty(Model.eventLink))
+                @if (!String.IsNullOrEmpty(Model.eventLink))
                 {
                     <a href='@(Model.eventLink)' target='_blank'>
                         <img src="~/assets/img/next arrow.svg" alt="arrow" />
