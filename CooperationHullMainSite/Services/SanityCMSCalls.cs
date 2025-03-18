@@ -233,7 +233,7 @@ namespace CooperationHullMainSite.Services
 
             try
             {
-                var itemList = await _client.Query<EventV2>($"*[_type == 'eventv2' && date > '{comparisonDate}']|order(date asc){{ _id, title, description, eventTags, duration, date, location, locationName, eventLink, {SanityImageExtended.ImageQuery},  \"imageAltText\": image.asset -> altText }}");
+                var itemList = await _client.Query<EventV2>($"*[_type == 'eventv2' && date > '{comparisonDate}']|order(duration.start asc)|order(date asc){{ _id, title, description, eventTags, duration, date, location, locationName, eventLink, {SanityImageExtended.ImageQuery},  \"imageAltText\": image.asset -> altText }}");
 
                 if (itemList.Item1 == System.Net.HttpStatusCode.OK)
                 {
@@ -252,7 +252,7 @@ namespace CooperationHullMainSite.Services
                             endTime = item.duration.end,
                             imagesName = GenerateImageURL(item.image, imageConfigOptions),
                             imageAltText = item.imageAltText,
-                            tagData = String.Join(',', item.eventTags.Select(x => x.value).ToArray()),
+                            tagData = String.Join(',', item.eventTags.Select(x => " " + x.label).ToArray()).Trim(),
                             locationLink = GenerateMapsURL(item.location, item.locationName),
                             locationName = item.locationName,
                             eventLink = item.eventLink
