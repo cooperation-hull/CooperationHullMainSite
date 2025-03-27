@@ -1,0 +1,22 @@
+﻿@model CooperationHullMainSite.Models.EventPageModel
+@{
+    ViewBag.Title = $"Events";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row content-page content-text">
+    <div class="col-12">
+        <div class="top-image"></div>
+        <div>
+            <h1 class="heading-xl">@ViewBag.Title</h1>
+        </div>
+@*         <select name="eventType" asp-items="Model.tags"></select>
+ *@    </div>
+    <div class="row">
+        @foreach (EventItem item in Model.events)
+        {
+            @Html.Partial("_EventPageItem", item)
+        }
+    </div>
+
+</div>
