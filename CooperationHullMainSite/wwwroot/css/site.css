@@ -99,6 +99,10 @@ h1 {
     gap: 4.8rem
 }
 
+.orange-text {
+    color: var(--city-orange);
+}
+
 
 /*Cookie Consent Banner*/
 
@@ -136,7 +140,6 @@ h1 {
     margin: auto;
     padding-top: 0;
     padding-bottom: 0;
-
 }
 
 .nav-logo {
@@ -148,16 +151,16 @@ h1 {
     height: 100%;
 }
 
-.nav-logo > h1, ul {
-    margin: 0;
-    list-style-type: none;
-    font-weight: bold;
-}
+    .nav-logo > h1, ul {
+        margin: 0;
+        list-style-type: none;
+        font-weight: bold;
+    }
 
-.nav-logo:hover {
-    color:#23201E;
-    text-decoration: none;
-}
+    .nav-logo:hover {
+        color: #23201E;
+        text-decoration: none;
+    }
 
 .nav-buttons {
     position: relative;
@@ -169,11 +172,11 @@ h1 {
     font-size: larger;
 }
 
-.nav-buttons > li > a:hover,
-.sidenav-buttons > li > a:hover {
-    text-decoration: underline;
-    color: #23201E;
-}
+    .nav-buttons > li > a:hover,
+    .sidenav-buttons > li > a:hover {
+        text-decoration: underline;
+        color: #23201E;
+    }
 
 #donate-button {
     background-color: #D05000;
@@ -209,7 +212,6 @@ h1 {
 }
 
 .sidenav {
-    
     align-items: center;
     text-align: center;
     background-color: white;
@@ -220,7 +222,6 @@ h1 {
     position: absolute;
     border-radius: 0% 0% 10% 10%;
     transition: all;
-    
 }
 
 .sidenav-buttons {
@@ -468,6 +469,7 @@ h1 {
 .homepage-block > .row {
     padding: 3rem 2rem;
 }
+
 @media (min-width: 992px) {
     .homepage-block > .row {
         padding: 4rem;
@@ -581,13 +583,13 @@ h1 {
         background-repeat: no-repeat;
     }
 
-.hww .spot {
-    position: absolute;
-    margin:auto;
-    left: 42%;
-    bottom: 0;
-    z-index: 0;
-}
+    .hww .spot {
+        position: absolute;
+        margin: auto;
+        left: 42%;
+        bottom: 0;
+        z-index: 0;
+    }
 
     .hww .video {
         z-index: 10;
@@ -634,7 +636,7 @@ h1 {
     }
 
         .hww > .p-0 {
-          padding-bottom: 0;
+            padding-bottom: 0;
         }
 
         .hww::before {
@@ -646,7 +648,7 @@ h1 {
             bottom: 0;
             right: 33%;
         }
-  
+
         .hww h1 {
             text-align: left;
         }
@@ -675,18 +677,19 @@ h1 {
     align-items: center;
     justify-content: center;
     max-width: 100vw;
+    &.white
 
-    &.white {
-        width: 66%;
-        background-color: white;
-        border-radius: 12px;
-        padding: 30px;
-    }
+{
+    width: 66%;
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+}
 
-    & > img {
-        width: 100%;
-        max-width: 500px;
-    }
+& > img {
+    width: 100%;
+    max-width: 500px;
+}
 
 }
 
@@ -718,16 +721,16 @@ h1 {
 }
 
 .content-text li {
-    margin-bottom:1rem;
+    margin-bottom: 1rem;
 }
 
 .content-text a {
-    color:white;
+    color: white;
 }
 
-.content-text a:hover {
-text-decoration:underline;
-}
+    .content-text a:hover {
+        text-decoration: underline;
+    }
 
 .button-link {
     background-color: var(--cooperation-orange);
@@ -762,15 +765,15 @@ text-decoration:underline;
     }
 
 
-    .content-text .footnote {
-        font-size:0.8em;
-    }
+.content-text .footnote {
+    font-size: 0.8em;
+}
 
-    .content-text .superscript {
-        vertical-align: super;
-        font-size:0.8em;
-        color: var(--off-black);
-    }
+.content-text .superscript {
+    vertical-align: super;
+    font-size: 0.8em;
+    color: var(--off-black);
+}
 
 .content-text .subscript {
     vertical-align: sub;
@@ -778,26 +781,26 @@ text-decoration:underline;
 }
 
 .valuesList li {
-    margin-bottom:3rem;
+    margin-bottom: 3rem;
 }
 
 
-.valuesList li p {
-    margin-left:1rem;
-}
+    .valuesList li p {
+        margin-left: 1rem;
+    }
 
-.valuesList li h3 {
-    padding-bottom:1rem;
-}
+    .valuesList li h3 {
+        padding-bottom: 1rem;
+    }
 
-.valuesList li::marker {
-    font-size: x-large;
-}
+    .valuesList li::marker {
+        font-size: x-large;
+    }
 
 /* Safe zone within sibling sections that the call out block can "eat into". May need to be updated once responsivity is tweaked in other sections */
 body {
     --call-out-block-safe-area-y: 290px;
-    margin:auto;
+    margin: auto;
 }
 
 @media (min-width: 400px) {
@@ -815,6 +818,7 @@ body {
 section:has(+ .call-out-block-wrapper) {
     padding-bottom: var(--call-out-block-safe-area-y);
 }
+
 .call-out-block-wrapper + section {
     padding-top: calc(var(--call-out-block-safe-area-y));
 }
@@ -959,7 +963,7 @@ section:has(+ .call-out-block-wrapper) {
         gap: 2.5rem;
     }
 
-#whats-happening-scroll {
+    #whats-happening-scroll {
         display: block;
     }
 
@@ -991,13 +995,18 @@ section:has(+ .call-out-block-wrapper) {
     border-radius: 6px;
 }
 
+.happening-next-item p,
+.event-item p {
+    margin-bottom: 0;
+}
+
 .happening-next-item .content {
     padding: 1.5rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     flex-grow: 1;
-    gap: 1rem;
+    gap: 0.2rem;
 }
 
     .happening-next-item .content .description-block {
@@ -1014,12 +1023,10 @@ section:has(+ .call-out-block-wrapper) {
         .happening-next-item .content .description-block a {
             transition: filter 100ms;
             &:hover
-
-{
-    filter: brightness(110%);
-}
-
-}
+            {
+                filter: brightness(110%);
+            }
+        }
 
 /*Embedded form styling*/
 
@@ -1127,14 +1134,14 @@ section:has(+ .call-out-block-wrapper) {
 
 
 .blog-summary-text-container {
-    padding-top:1rem;
+    padding-top: 1rem;
     width: 80%;
-    padding-right:3rem;
+    padding-right: 3rem;
     padding-left: 2rem;
 }
 
     .blog-summary-text-container h3,
-    .blog-post-latest-container h3{
+    .blog-post-latest-container h3 {
         margin-left: 0;
         font-weight: bolder;
     }
@@ -1151,9 +1158,10 @@ section:has(+ .call-out-block-wrapper) {
     margin-top: auto;
     margin-bottom: auto;
 }
-.blog-summary-link-container img {
-    object-fit:contain;
-}
+
+    .blog-summary-link-container img {
+        object-fit: contain;
+    }
 
 
 .blog-post-latest-container {
@@ -1174,10 +1182,10 @@ section:has(+ .call-out-block-wrapper) {
     margin-bottom: 1rem;
 }
 
-.blog-summary-latest-image-container img {
-    border-radius: 1rem;
-    width:100%;
-}
+    .blog-summary-latest-image-container img {
+        border-radius: 1rem;
+        width: 100%;
+    }
 
 
 .blog-post-latest-container .summary-text {
@@ -1192,7 +1200,7 @@ section:has(+ .call-out-block-wrapper) {
 }
 
 .blog-post-date,
-.blog-summary-date{
+.blog-summary-date {
     color: var(--cooperation-orange);
 }
 
@@ -1222,7 +1230,7 @@ section:has(+ .call-out-block-wrapper) {
         width: 5rem;
         margin-top: auto;
         margin-bottom: auto;
-        margin-left:85%;
+        margin-left: 85%;
     }
 
         .blog-summary-link-container img {
@@ -1240,6 +1248,80 @@ section:has(+ .call-out-block-wrapper) {
 }
 
 .blog-post-summary-container ul {
-    padding-left : 0;
+    padding-left: 0;
+}
+
+
+
+/*Event items*/
+.event-item {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--off-black);
+    color: var(--cooperation-white);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 100ms;
+    &:has(a:hover)
+
+{
+    transform: translateY(-0.2rem);
+}
+
+}
+
+.event-item .header-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.event-item .date-tag {
+    background-color: var(--cooperation-white);
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.2rem 1rem;
+    color: black;
+    z-index: 100;
+    text-align: center;
+    border-radius: 6px;
+}
+
+.event-item .content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+    gap: 0.2rem;
+
+}
+
+    .event-item .content .description-block {
+        display: flex;
+        flex-direction: row;
+        gap: 1rem;
+        align-items: end;
+        margin-top: 0.8rem;
+    }
+
+        .event-item .content .description-block .text-sm {
+            line-height: 1.4;
+        }
+
+    .event-item .content p {
+        font-size: 1rem;
+    }
+
+.event-item .event-time-and-location p {
+    color: var(--city-orange);
+}
+
+.event-item .event-time-and-location a {
+    color: var(--city-orange);
+    text-decoration: underline;
 }
 

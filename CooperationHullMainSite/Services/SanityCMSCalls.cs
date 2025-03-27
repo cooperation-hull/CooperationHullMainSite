@@ -1,10 +1,14 @@
 ﻿using CooperationHullMainSite.Models;
 using CooperationHullMainSite.Models.ConfigSections;
 using CooperationHullMainSite.Models.SanityCMS;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Sanity.Linq;
 using Sanity.Linq.BlockContent;
+using Sanity.Linq.CommonTypes;
+using System.Text.Encodings.Web;
+using System.Web;
 
 namespace CooperationHullMainSite.Services
 {
@@ -212,6 +216,75 @@ namespace CooperationHullMainSite.Services
             return result;
         }
 
+        // TODO - separate out call to get tag filters list
+        // Call to get events filtered by type
+        // Get filters actually working 
+        public async Task<EventPageModel> GetAllEventsPageData()
+        {
+            var result = new EventPageModel();
+
+            SanityImageConfigOptions imageConfigOptions = new SanityImageConfigOptions()
+            {
+                useRawImage = false,
+                height = 200,
+            };
+
+            string comparisonDate = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
+
+            try
+            {
+                var itemList = await _client.Query<EventV2>($"*[_type == 'eventv2' && date > '{comparisonDate}']|order(duration.start asc)|order(date asc){{ _id, title, description, eventTags, duration, date, location, locationName, eventLink, {SanityImageExtended.ImageQuery},  \"imageAltText\": image.asset -> altText }}");
+
+                if (itemList.Item1 == System.Net.HttpStatusCode.OK)
+                {
+
+                    result.tags.Add(new SelectListItem("All", "All"));
+
+
+                    foreach (EventV2 item in itemList.Item2.Result)
+                    {
+                        var homePageEvent = new EventItem()
+                        {
+                            title = item.title,
+                            description = item.description,
+                            date = item.date,
+                            startTime = item.duration.start,
+                            endTime = item.duration.end,
+                            imagesName = GenerateImageURL(item.image, imageConfigOptions),
+                            imageAltText = item.imageAltText,
+                            tagData = String.Join(',', item.eventTags.Select(x => " " + x.label).ToArray()).Trim(),
+                            locationLink = GenerateMapsURL(item.location, item.locationName),
+                            locationName = item.locationName,
+                            eventLink = item.eventLink
+                        };
+
+                        result.events.Add(homePageEvent);
+
+                        var tags = item.eventTags.Select(x => new SelectListItem { Value = x.value, Text = x.value });
+
+                        result.tags.AddRange(tags);
+                    }
+
+                    result.events.OrderBy(x => x.date);
+
+                }
+                else
+                {
+                    _logger.LogError($"Error getting V2 events from Sanity CMS {itemList.Item1.ToString()}");
+                }
+
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, "Error getting V2 events from Sanity CMS");
+                return new EventPageModel();
+            }
+
+            return result;
+
+        }
+
+
         private void SetSanityClient()
         {
             var projectid = config.ProjectID;
@@ -300,7 +373,10 @@ namespace CooperationHullMainSite.Services
             }
         }
 
-
+        private string GenerateMapsURL(SanityLocation location, string name)
+        {
+            return $"https://www.openstreetmap.org/?mlat={location.Lat}&mlon={location.Lng}&zoom=18&layers=M";
+        }
         private string CalcImageCropBasic(SanityImageExtended imageData)
         {
             // Compute crop rect in terms of pixel coordinates in the raw source image
