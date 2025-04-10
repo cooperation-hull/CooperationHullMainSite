@@ -14,6 +14,7 @@ namespace CooperationHullMainSite.Models.SanityCMS
         public string eventLink { get; set; }
         public CustomDuration duration { get; set; }
         public string locationName { get; set; }
+        public string locationLink { get; set; }
 
     }
 }
