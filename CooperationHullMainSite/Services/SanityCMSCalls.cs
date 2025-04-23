@@ -37,7 +37,7 @@ namespace CooperationHullMainSite.Services
                 height = 200,
             };
 
-            string comparisonDate = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
+            string comparisonDate = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd");
 
             try
             {
@@ -229,7 +229,7 @@ namespace CooperationHullMainSite.Services
                 height = 200,
             };
 
-            string comparisonDate = DateTime.Now.AddDays(1).ToString("yyyy-MM-dd");
+            string comparisonDate = DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd");
 
             try
             {
