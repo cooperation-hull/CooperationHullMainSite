@@ -3,52 +3,62 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://cooperationhull.co.uk/</loc>
-    <lastmod>2024-07-19T00:00:00+00:00</lastmod>
+    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://cooperationhull.co.uk/cookie-policy</loc>
-    <lastmod>2024-07-19T00:00:00+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
     <loc>https://cooperationhull.co.uk/the-big-idea</loc>
-    <lastmod>2024-07-19T00:00:00+00:00</lastmod>
+    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://cooperationhull.co.uk/how-we-work</loc>
-    <lastmod>2024-07-19T00:00:00+00:00</lastmod>
+    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://cooperationhull.co.uk/faqs</loc>
-    <lastmod>2024-07-19T00:00:00+00:00</lastmod>
+    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://cooperationhull.co.uk/membership</loc>
-    <lastmod>2024-07-19T00:00:00+00:00</lastmod>
+    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://cooperationhull.co.uk/the-pledge</loc>
-    <lastmod>2024-07-19T00:00:00+00:00</lastmod>
+    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://cooperationhull.co.uk/help-to-attend</loc>
-    <lastmod>2024-07-19T00:00:00+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>https://cooperationhull.co.uk/privacy-policy</loc>
-    <lastmod>2024-07-19T00:00:00+00:00</lastmod>
+    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
     <loc>https://cooperationhull.co.uk/blog</loc>
-    <lastmod>2025-02-14T00:00:00+00:00</lastmod>
+    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://cooperationhull.co.uk/principles-and-values</loc>
+    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
     <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://cooperationhull.co.uk/events</loc>
+    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
+    <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://cooperationhull.co.uk/cookie-policy</loc>
+    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
+    <priority>0.50</priority>
+  </url>
+  <url>
+    <loc>https://cooperationhull.co.uk/privacy-policy</loc>
+    <lastmod>2025-04-04T00:00:00+00:00</lastmod>
+    <priority>0.50</priority>
   </url>
 </urlset>
