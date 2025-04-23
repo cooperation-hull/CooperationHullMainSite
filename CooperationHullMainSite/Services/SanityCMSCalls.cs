@@ -233,7 +233,7 @@ namespace CooperationHullMainSite.Services
 
             try
             {
-                var itemList = await _client.Query<EventV2>($"*[_type == 'eventv2' && date > '{comparisonDate}']|order(duration.start asc)|order(date asc){{ _id, title, description, eventTags, duration, date, location, locationName, eventLink, {SanityImageExtended.ImageQuery},  \"imageAltText\": image.asset -> altText }}");
+                var itemList = await _client.Query<EventV2>($"*[_type == 'eventv2' && date > '{comparisonDate}']|order(duration.start asc)|order(date asc){{ _id, title, description, eventTags, duration, date, locationName, locationLink, eventLink, {SanityImageExtended.ImageQuery},  \"imageAltText\": image.asset -> altText }}");
 
                 if (itemList.Item1 == System.Net.HttpStatusCode.OK)
                 {
@@ -253,9 +253,10 @@ namespace CooperationHullMainSite.Services
                             imagesName = GenerateImageURL(item.image, imageConfigOptions),
                             imageAltText = item.imageAltText,
                             tagData = String.Join(',', item.eventTags.Select(x => " " + x.label).ToArray()).Trim(),
-                            locationLink = GenerateMapsURL(item.location, item.locationName),
+                            locationLink = item.locationLink,
                             locationName = item.locationName,
                             eventLink = item.eventLink
+                            
                         };
 
                         result.events.Add(homePageEvent);
@@ -373,10 +374,6 @@ namespace CooperationHullMainSite.Services
             }
         }
 
-        private string GenerateMapsURL(SanityLocation location, string name)
-        {
-            return $"https://www.openstreetmap.org/?mlat={location.Lat}&mlon={location.Lng}&zoom=18&layers=M";
-        }
         private string CalcImageCropBasic(SanityImageExtended imageData)
         {
             // Compute crop rect in terms of pixel coordinates in the raw source image
