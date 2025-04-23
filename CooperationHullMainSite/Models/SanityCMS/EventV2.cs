@@ -6,7 +6,6 @@ namespace CooperationHullMainSite.Models.SanityCMS
     {
         public SanityImageExtended image { get; set; }
         public string imageAltText { get; set; }
-        public SanityLocation location { get; set; }
         public List<EventTags> eventTags { get; set; }
         public string title { get; set; }
         public DateOnly date { get; set; }
@@ -14,6 +13,7 @@ namespace CooperationHullMainSite.Models.SanityCMS
         public string eventLink { get; set; }
         public CustomDuration duration { get; set; }
         public string locationName { get; set; }
+        public string locationLink { get; set; }
 
     }
 }
