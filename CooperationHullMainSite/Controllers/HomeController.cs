@@ -13,16 +13,13 @@ namespace CooperationHullMainSite.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IJsonFileReader _jsonFileReader;
         private readonly IActionNetworkCalls _actionNetworkCalls;
         private readonly ISanityCMSCalls _sanityCMSCalls;
         public HomeController(ILogger<HomeController> logger,
-                                IJsonFileReader jsonFileReader,
                                 IActionNetworkCalls actionNetworkCalls,
                                 ISanityCMSCalls CMSCalls)
         {
             _logger = logger;
-            _jsonFileReader = jsonFileReader;
             _actionNetworkCalls = actionNetworkCalls;
             _sanityCMSCalls = CMSCalls;
         }
@@ -33,23 +30,6 @@ namespace CooperationHullMainSite.Controllers
         {
             HomePageModel model = new HomePageModel();
             model.eventList = await _sanityCMSCalls.GetHomePageEventsList();
-
-
-            if (model.eventList == null | model.eventList.Count == 0)
-            {
-                // fallback to old json file if no events are returned from CMS
-                //temp measure until we are sure CMS is working as expected
-                try
-                {
-                    string temp = await _jsonFileReader.ReadFile("/content/homepageContent.json");
-
-                    model = JsonSerializer.Deserialize<HomePageModel>(temp);
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogError(ex, "Could not deserialize content file, defaults used");
-                }
-            }
 
             return View(model);
         }

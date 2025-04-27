@@ -27,9 +27,9 @@ namespace CooperationHullMainSite.Services
         }
 
 
-        public async Task<List<HappeningNextEvent>> GetHomePageEventsList()
+        public async Task<List<EventItem>> GetHomePageEventsList()
         {
-            var result = new List<HappeningNextEvent>();
+            var result = new List<EventItem>();
 
             SanityImageConfigOptions imageConfigOptions = new SanityImageConfigOptions()
             {
@@ -41,21 +41,25 @@ namespace CooperationHullMainSite.Services
 
             try
             {
-                var itemList = await _client.Query<Event>($"*[_type == 'event' && date > '{comparisonDate}']|order(date asc){{ _id, title, description, date, location, eventLink, {SanityImageExtended.ImageQuery},  \"imageAltText\": image.asset -> altText }}[0...3]");
+                var itemList = await _client.Query<EventV2>($"*[_type == 'eventv2' && date > '{comparisonDate}']|order(duration.start asc)|order(date asc){{ _id, title, description, eventTags, duration, date, locationName, locationLink, eventLink, {SanityImageExtended.ImageQuery},  \"imageAltText\": image.asset -> altText }}[0...3]");
 
                 if (itemList.Item1 == System.Net.HttpStatusCode.OK)
                 {
-                    foreach (Event item in itemList.Item2.Result)
+                    foreach (EventV2 item in itemList.Item2.Result)
                     {
-                        var homePageEvent = new HappeningNextEvent()
+                        var homePageEvent = new EventItem()
                         {
                             title = item.title,
                             description = item.description,
                             date = item.date,
-                            eventLink = item.eventLink,
+                            startTime = item.duration.start,
+                            endTime = item.duration.end,
                             imagesName = GenerateImageURL(item.image, imageConfigOptions),
                             imageAltText = item.imageAltText,
-                            location = item.location
+                            tagData = String.Join(',', item.eventTags.Select(x => " " + x.label).ToArray()).Trim(),
+                            locationLink = item.locationLink,
+                            locationName = item.locationName,
+                            eventLink = item.eventLink
                         };
 
                         result.Add(homePageEvent);
@@ -73,14 +77,12 @@ namespace CooperationHullMainSite.Services
             catch (Exception e)
             {
                 _logger.LogError(e, "Error getting events from Sanity CMS");
-                return new List<HappeningNextEvent>();
+                return new List<EventItem>();
             }
 
             return result;
 
         }
-
-
 
         public async Task<List<PostSummary>> GetAllBlogPostsList()
         {

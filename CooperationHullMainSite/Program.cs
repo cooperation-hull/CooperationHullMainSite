@@ -1,14 +1,7 @@
 using CooperationHullMainSite.Models.ConfigSections;
 using CooperationHullMainSite.Services;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using NLog;
 using NLog.Web;
-using static CooperationHullMainSite.Models.ConfigSections.ActionNetworkConfig;
 
 
 var logger = LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
@@ -45,7 +38,6 @@ try
     builder.Configuration.AddEnvironmentVariables();
 
     //Custom services
-    builder.Services.AddSingleton<IJsonFileReader, JsonFileReader>();
     builder.Services.AddSingleton<IActionNetworkCalls, ActionNetworkCalls>();
     builder.Services.AddSingleton<ISanityCMSCalls, SanityCMSCalls>();
 

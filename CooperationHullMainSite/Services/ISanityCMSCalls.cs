@@ -5,7 +5,7 @@ namespace CooperationHullMainSite.Services
 {
     public interface ISanityCMSCalls
     {
-        Task<List<HappeningNextEvent>> GetHomePageEventsList();
+        Task<List<EventItem>> GetHomePageEventsList();
         Task<BlogPostContent> GetBlogPostDetails(string slug);
         Task<PostSummary> GetLatestBlogPostSummary();
         Task<List<PostSummary>> GetAllBlogPostsList();
