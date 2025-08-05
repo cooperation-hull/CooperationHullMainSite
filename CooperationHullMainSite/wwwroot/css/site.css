@@ -43,6 +43,7 @@ img {
     --off-white: rgb(232, 217, 212, 0.35);
     --off-white-solid: #f7f2f0;
     --border-radius: 0.5rem;
+    --cooperation-pink: #c33baa;
 }
 
 
@@ -702,11 +703,28 @@ h1 {
 
 
     .content-text .top-image {
-        height: 8rem;
+        height: 12rem;
         width: 100%;
-        background-image: url('../assets/img/contentpagetupimage1.png');
-        /*display: none;*/
+        background-image: url('../assets/img/background-littlefish.png');
+        position: relative;
+        margin-bottom: 1rem;
+        margin-top:1rem;
+        background-position:center;
     }
+
+
+.content-page-header-container {
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 100%;
+}
+
+
+.content-page-header-container h1 {
+    margin:0;
+}
 
 .content-text-block {
     display: flex;
@@ -716,8 +734,7 @@ h1 {
 }
 
 .content-text h1 {
-    margin-bottom: 2rem;
-    margin-top: 2rem;
+   text-align:center;
 }
 
 .content-text li {

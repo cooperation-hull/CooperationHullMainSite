@@ -58,17 +58,23 @@ namespace CooperationHullMainSite.Controllers
         [Route("blog/{slug}")]
         public async Task<IActionResult> BlogPost(string slug)
         {
-            //TODO - add 404 handling for invalid slugs
             //TODO - add in tags to post and use them in og tags
-
             BlogPostContent model = new BlogPostContent();
 
-            model = await _sanityCMSCalls.GetBlogPostDetails(slug);
-
-            if (model == null || model.contentHtml == null)
+            if(String.IsNullOrEmpty(slug))
             {
                 return RedirectToAction("OurBlog");
             }
+            else
+            {
+                model = await _sanityCMSCalls.GetBlogPostDetails(slug);
+
+                if (model == null || model.contentHtml == null)
+                {
+                    return RedirectToAction("OurBlog");
+                }
+            }
+
 
             return View(model);
         }
