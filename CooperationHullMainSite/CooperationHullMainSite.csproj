@@ -24,6 +24,7 @@
   <ItemGroup>
     <Folder Include="DeploymentScripts\" />
     <Folder Include="wwwroot\assets\fonts\" />
+    <Folder Include="wwwroot\content\" />
   </ItemGroup>
 
 </Project>
