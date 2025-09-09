@@ -41,7 +41,7 @@ namespace CooperationHullMainSite.Services
 
             try
             {
-                var itemList = await _client.Query<EventV2>($"*[_type == 'eventv2' && date > '{comparisonDate}']|order(duration.start asc)|order(date asc){{ _id, title, description, eventTags, duration, date, locationName, locationLink, eventLink, {SanityImageExtended.ImageQuery},  \"imageAltText\": image.asset -> altText }}[0...3]");
+                var itemList = await _client.Query<EventV2>($"*[_type == 'eventv2' && date > '{comparisonDate}' && includeOnHomepage == 'yes']|order(duration.start asc)|order(date asc){{ _id, title, description, eventTags, duration, date, locationName, locationLink, eventLink, includeOnHomepage, {SanityImageExtended.ImageQuery},  \"imageAltText\": image.asset -> altText }}[0...3]");
 
                 if (itemList.Item1 == System.Net.HttpStatusCode.OK)
                 {
@@ -235,7 +235,7 @@ namespace CooperationHullMainSite.Services
 
             try
             {
-                var itemList = await _client.Query<EventV2>($"*[_type == 'eventv2' && date > '{comparisonDate}']|order(duration.start asc)|order(date asc){{ _id, title, description, eventTags, duration, date, locationName, locationLink, eventLink, {SanityImageExtended.ImageQuery},  \"imageAltText\": image.asset -> altText }}");
+                var itemList = await _client.Query<EventV2>($"*[_type == 'eventv2' && date > '{comparisonDate}']|order(duration.start asc)|order(date asc){{ _id, title, description, eventTags, duration, date, locationName, locationLink, eventLink, includeOnHomepage, {SanityImageExtended.ImageQuery},  \"imageAltText\": image.asset -> altText }}");
 
                 if (itemList.Item1 == System.Net.HttpStatusCode.OK)
                 {
