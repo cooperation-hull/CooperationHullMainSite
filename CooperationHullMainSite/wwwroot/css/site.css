@@ -700,7 +700,6 @@ h1 {
     max-width: 100%;
 }
 
-
     .content-text .top-image {
         height: 8rem;
         width: 100%;
@@ -711,7 +710,7 @@ h1 {
 .content-text-block {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     margin-bottom: 3rem;
 }
 
