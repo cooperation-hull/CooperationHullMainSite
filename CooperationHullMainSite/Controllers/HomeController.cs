@@ -154,7 +154,7 @@ namespace CooperationHullMainSite.Controllers
 
         [HttpGet]
         [Route("in-practice")]
-        public IActionResult HowWeWork()
+        public IActionResult InPractice()
         {
             return View();
         }
