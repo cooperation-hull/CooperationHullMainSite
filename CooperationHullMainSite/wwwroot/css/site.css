@@ -785,6 +785,15 @@ h1 {
     font-size: 0.8em;
 }
 
+.content-text .quote {
+    font-style: italic;
+    border-left: 4px solid var(--city-orange);
+    padding-left: 1.5rem;
+    margin-left: 0;
+    background-color: rgba(213, 80, 0, 0.1);
+    padding: 1rem 1rem 1rem 1.5rem;
+}
+
 .valuesList li {
     margin-bottom: 3rem;
 }
@@ -801,6 +810,11 @@ h1 {
     .valuesList li::marker {
         font-size: x-large;
     }
+
+
+.content-text-block ul li {
+    list-style: disc;
+}
 
 /* Safe zone within sibling sections that the call out block can "eat into". May need to be updated once responsivity is tweaked in other sections */
 body {
