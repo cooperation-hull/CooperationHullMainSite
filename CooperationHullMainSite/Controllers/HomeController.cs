@@ -235,6 +235,13 @@ namespace CooperationHullMainSite.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        [Route("start-self-organising")]
+        public IActionResult StartSelfOrganising()
+        {
+            return View();
+        }
+
 
         [HttpGet]
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
