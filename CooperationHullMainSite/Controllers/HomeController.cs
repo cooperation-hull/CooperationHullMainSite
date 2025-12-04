@@ -189,20 +189,6 @@ namespace CooperationHullMainSite.Controllers
             return View();
         }
 
-        [HttpGet]
-        [Route("help-to-attend")]
-        public IActionResult HelpToAttend()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult HelpToAttend_Post()
-        {
-            //Help To Attend form submission handling will go here
-            throw new NotImplementedException();
-        }
-
 
         [HttpGet]
         [Route("the-pledge")]
