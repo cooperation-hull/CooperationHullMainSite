@@ -104,6 +104,15 @@ namespace CooperationHullMainSite.Controllers
                 data.phone_numbers = [phone];
             }
 
+            if (String.IsNullOrEmpty(Request.Form["PledgeFormEmail"]))
+            { errorList.Add("Email Address"); }
+            else
+            {
+                var email = new ActionNetworkEmail(HttpUtility.HtmlEncode(Request.Form["PledgeFormEmail"]));
+                email.primary = true;
+                data.email_addresses = [email];
+            }
+
             bool liveInHull = false;
 
             if (Request.Form["LiveInHull"] == "yes")
