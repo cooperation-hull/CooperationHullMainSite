@@ -10,13 +10,22 @@
         <div>
             <h1 class="heading-xl">@ViewBag.Title</h1>
         </div>
-@*         <select name="eventType" asp-items="Model.tags"></select>
- *@    </div>
-    <div class="row">
-        @foreach (EventItem item in Model.events)
-        {
-            @Html.Partial("_EventPageItem", item)
-        }
-    </div>
+   </div>
+
+    @if (Model.events == null || Model.events.Count > 0)
+    {
+        <div class="row">
+            @foreach (EventItem item in Model.events)
+            {
+                @Html.Partial("_EventPageItem", item)
+            }
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            <p>No public events currently planned</p>
+        </div>
+    }
 
 </div>
