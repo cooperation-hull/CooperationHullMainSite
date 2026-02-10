@@ -12,7 +12,7 @@
         </div>
    </div>
 
-    @if (Model.events == null || Model.events.Count > 0)
+    @if (Model.events != null && Model.events.Count > 0)
     {
         <div class="row">
             @foreach (EventItem item in Model.events)
