@@ -200,14 +200,6 @@ namespace CooperationHullMainSite.Controllers
 
 
         [HttpGet]
-        [Route("the-pledge")]
-        public IActionResult ThePledge()
-        {
-            return View();
-        }
-
-
-        [HttpGet]
         [Route("principles-and-values")]
         public IActionResult PrinciplesAndValues()
         {
@@ -221,11 +213,6 @@ namespace CooperationHullMainSite.Controllers
         {
 
             EventPageModel model = await _sanityCMSCalls.GetAllEventsPageData();
-
-            if (model == null || model.events.Count == 0)
-            {
-                return RedirectToAction("Index");
-            }
 
             return View(model);
         }
