@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Membership";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -59,6 +58,20 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row gap-3 justify-content-center ">
+
+                    <div class="col-lg-3 mt-3">
+
+                        <div class="bg-white p-3 rounded h-100 d-flex flex-column gap-3">
+                            <div>
+                                <h4>Income changed?</h4>
+                                <span>Change the amount you pay</span>
+                            </div>
+                            <a class="button-link" href="https://billing.stripe.com/p/login/8wMaGn8TTcMQ6CA8ww" target="_blank">Manage &rarr;</a>
+                        </div>
+                    </div>
+                </div>
             </section>
 
             <section>
@@ -74,21 +87,7 @@
                     </div>
                 </div>
             </section>
-            
-            <section class="pb-5">
-                <div class="row">
-                    <h2 class="pb-4">Pledge to Make the Hull People’s Assembly a Reality</h2>
-                </div>
-                <div class="row gap-4 gap-lg-0">
-                    <div class="col-12 col-lg-6">
-                        <p>When we have 2,000 signatures we’re launching the citywide Assembly. Two hundred people, meeting over several days, tackling a big topic.</p>
-                        <p>Organising something this big won’t be easy! It will be all hands on deck go go go and <b>it’s our members who will make it happen</b>, working as part of a team to pull off something groundbreaking.</p>
-                        <p>When the time comes we’ll be inviting all our members to <b>commit at least 10 hours</b> of your time to help make The Hull People’s Assembly a reality. </p>
-                        <a class="button-link" asp-area="" asp-controller="Home" asp-action="thePledge">Sign the pledge &rarr;</a>
-                    </div>
-                    <img class="col-12 col-lg-6 object-fit-cover ml-4" src="~/assets/img/membership-photo-4.jpg" alt="A room full of people taking part in an People's Assembly" />
-                </div>
-            </section>
+
         </div>
     </article>
 </div>

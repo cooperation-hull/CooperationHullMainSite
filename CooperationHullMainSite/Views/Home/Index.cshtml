@@ -161,20 +161,26 @@
     </div>
 </section>
 
-<section class="homepage-block orange">
-    <div class="row">
-        <div id="happening-next-boxes-container" class="col-12">
-            <div class="pt-3 pb-5 text-center">
-                <h2 class="heading-lg"><a href="events">What's happening next?</a></h2>
-                <h6 id="whats-happening-scroll">Scroll >>></h6>
-            </div>
 
-            <div id="happening-next-boxes" class="row gx-5 gy-4">
-                @foreach (EventItem eventItem in Model.eventList)
-                {
-                    @Html.Partial("_EventPageItem", eventItem)
-                }
+@if (Model.eventList != null && Model.eventList.Count > 0)
+{
+    <section class="homepage-block orange">
+        <div class="row">
+            <div id="happening-next-boxes-container" class="col-12">
+                <div class="pt-3 pb-5 text-center">
+                    <h2 class="heading-lg"><a href="events">What's happening next?</a></h2>
+                    <h6 id="whats-happening-scroll">Scroll >>></h6>
+                </div>
+
+                <div id="happening-next-boxes" class="row gx-5 gy-4">
+                    @foreach (EventItem eventItem in Model.eventList)
+                    {
+                        @Html.Partial("_EventPageItem", eventItem)
+                    }
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+}
+
+
