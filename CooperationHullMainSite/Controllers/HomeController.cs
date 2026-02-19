@@ -222,11 +222,6 @@ namespace CooperationHullMainSite.Controllers
 
             EventPageModel model = await _sanityCMSCalls.GetAllEventsPageData();
 
-            if (model == null || model.events.Count == 0)
-            {
-                return RedirectToAction("Index");
-            }
-
             return View(model);
         }
 
