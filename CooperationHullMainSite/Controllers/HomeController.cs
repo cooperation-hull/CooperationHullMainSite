@@ -200,6 +200,14 @@ namespace CooperationHullMainSite.Controllers
 
 
         [HttpGet]
+        [Route("the-pledge")]
+        public IActionResult ThePledge()
+        {
+            return View();
+        }
+
+
+        [HttpGet]
         [Route("principles-and-values")]
         public IActionResult PrinciplesAndValues()
         {
