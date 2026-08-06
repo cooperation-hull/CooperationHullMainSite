@@ -59,7 +59,7 @@ try
         app.UseHsts();
     }
 
-    app.UseHttpsRedirection();
+    // app.UseHttpsRedirection(); // Disabled for HTTP development
     app.UseStaticFiles();
     app.UseCookiePolicy();
 
